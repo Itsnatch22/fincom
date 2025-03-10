@@ -1,3 +1,106 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const logo = document.getElementById("fincom-logo");
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const day = today.getDate();
+
+    const events = {
+        "1-1": { name: "New Year", color: "gold", effect: "🎆" },
+        "2-14": { name: "Valentine's Day", color: "red", effect: "💖" },
+        "6-1": { name: "Madaraka Day", color: "green", effect: "🇰🇪" },
+        "6-15": { name: "Pride Month", color: "rainbow", effect: "🏳️‍🌈" },
+        "10-10": { name: "Huduma Day", color: "blue", effect: "🤝" },
+        "10-20": { name: "Mashujaa Day", color: "red", effect: "🔥" },
+        "12-12": { name: "Jamhuri Day", color: "black", effect: "🦁" },
+        "12-25": { name: "Christmas", color: "red-green", effect: "🎄" }
+    };
+
+    const eventKey = `${month}-${day}`;
+    if (events[eventKey]) {
+        let event = events[eventKey];
+        updateLogo(event);
+    }
+
+    function updateLogo(event) {
+        if (event.color === "rainbow") {
+            logo.style.background = "linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet)";
+            logo.style.webkitBackgroundClip = "text";
+            logo.style.color = "transparent";
+        } else if (event.color.includes("-")) {
+            let colors = event.color.split("-");
+            logo.style.background = `linear-gradient(45deg, ${colors[0]}, ${colors[1]})`;
+            logo.style.webkitBackgroundClip = "text";
+            logo.style.color = "transparent";
+        } else {
+            logo.style.color = event.color;
+        }
+        logo.innerHTML = `Fincom Africa ${event.effect}`;
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const userCounter = document.createElement("div");
+    userCounter.id = "user-counter";
+    userCounter.className = "text-sm text-gray-500 ml-4";
+    document.querySelector("header nav").appendChild(userCounter);
+
+    function updateUsers() {
+        // Simulating active users count (In real-world, use WebSockets or Firebase)
+        let usersOnline = Math.floor(Math.random() * 50) + 1;
+        let emoji = usersOnline <= 20 ? "😊" : usersOnline <= 40 ? "😂" : "😭";
+        userCounter.innerText = `Currently ${usersOnline} users browsing Fincom Africa ${emoji}`;
+    }
+
+    setInterval(updateUsers, 5000); // Update every 5 seconds
+    updateUsers(); // Initial call
+
+    // Idle Detector
+    let idleTime = 0;
+    const idlePopup = document.createElement("div");
+    idlePopup.id = "idle-popup";
+    idlePopup.className = "fixed bottom-10 right-10 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg hidden";
+    document.body.appendChild(idlePopup);
+
+    function resetIdleTime() {
+        idleTime = 0;
+        idlePopup.classList.add("hidden");
+    }
+
+    function checkIdleTime() {
+        idleTime++;
+        if (idleTime === 30) {
+            idlePopup.innerText = "Hey there! Need help finding something?";
+            idlePopup.classList.remove("hidden");
+        } else if (idleTime === 60) {
+            idlePopup.innerText = "Still with us? Check out our latest offers!";
+        }
+    }
+
+    setInterval(checkIdleTime, 1000); // Check every second
+
+    document.addEventListener("mousemove", resetIdleTime);
+    document.addEventListener("keydown", resetIdleTime);
+
+    const backToTop = document.createElement("button");
+    backToTop.id = "back-to-top";
+    backToTop.innerText = "⬆";
+    backToTop.className = "fixed bottom-10 right-5 bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hidden transition-opacity";
+    document.body.appendChild(backToTop);
+
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 300) {
+            backToTop.classList.remove("hidden");
+        } else {
+            backToTop.classList.add("hidden");
+        }
+    });
+
+    backToTop.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+});
+
+
 function toggleChat() {
     const chat = document.getElementById("chatbot");
     chat.style.display = chat.style.display === "flex" ? "none" : "flex";
@@ -27,6 +130,19 @@ function toggleMenu() {
     document.getElementById("mobileMenu").classList.toggle("hidden");
 }
 
+var swiper = new Swiper(".testimonialSwiper", {
+    loop: true,
+    autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+});
+
+//products filter
 const products = [
     { name: "Acer Chromebook", model: "Chromebook Spin 713", price: "$630", description: "A versatile Chromebook with a 2K display.", image: "https://th.bing.com/th/id/OIP.1Z6J9J9Z9Z9Z9Z9Z9Z9Z9wHaHa?w=198&h=198&c=7&r=0&o=5&pid=1.7", brand: "Acer" },
     { name: "Apple AirPods Pro", model: "AirPods Pro", price: "$250", description: "Wireless earbuds with active noise cancellation.", image: "https://via.placeholder.com/200", brand: "Apple" },
@@ -76,8 +192,6 @@ const products = [
     { name: "Dell UltraSharp 27\"", model: "U2723QE", price: "$650", description: "4K UltraSharp monitor with vivid color accuracy.", image: "https://via.placeholder.com/200", brand: "Dell" },
     { name: "HP 24mh Full HD", model: "24mh", price: "$180", description: "24-inch Full HD monitor with built-in speakers.", image: "https://via.placeholder.com/200", brand: "HP" },
     { name: "Samsung 49\" Ultrawide", model: "Odyssey G9", price: "$1,199", description: "Super ultrawide gaming monitor with QLED technology.", image: "https://via.placeholder.com/200", brand: "Samsung" },
-
-    // 🖨️ PRINTERS & CARTRIDGES
     { name: "HP LaserJet Pro M404dn", model: "LaserJet Pro M404dn", price: "$250", description: "High-speed monochrome laser printer.", image: "https://via.placeholder.com/200", brand: "HP" },
     { name: "Epson EcoTank L3150", model: "EcoTank L3150", price: "$280", description: "Ink-tank printer with wireless connectivity.", image: "https://via.placeholder.com/200", brand: "Epson" },
     { name: "Canon PIXMA G6020", model: "PIXMA G6020", price: "$350", description: "High-efficiency all-in-one inkjet printer.", image: "https://via.placeholder.com/200", brand: "Canon" },
@@ -85,7 +199,6 @@ const products = [
     { name: "HP 67XL Black Ink Cartridge", model: "67XL", price: "$40", description: "High-yield ink cartridge for HP printers.", image: "https://via.placeholder.com/200", brand: "HP" },
     { name: "Canon PG-260XL Ink Cartridge", model: "PG-260XL", price: "$35", description: "Ink cartridge for Canon PIXMA printers.", image: "https://via.placeholder.com/200", brand: "Canon" },
     { name: "Epson T664 Ink Refill", model: "T664", price: "$15", description: "Compatible ink refill for EcoTank printers.", image: "https://via.placeholder.com/200", brand: "Epson" },
-
     // 🛜 NETWORKING & INFRASTRUCTURE
     { name: "Cisco Catalyst 2960-X", model: "2960-X", price: "$750", description: "Managed switch for enterprise networking.", image: "https://via.placeholder.com/200", brand: "Cisco" },
     { name: "TP-Link Archer AX73", model: "Archer AX73", price: "$180", description: "WiFi 6 router with high-speed connectivity.", image: "https://via.placeholder.com/200", brand: "TP-Link" },
@@ -94,7 +207,6 @@ const products = [
     { name: "D-Link DGS-1210", model: "DGS-1210", price: "$150", description: "Smart managed switch with VLAN support.", image: "https://via.placeholder.com/200", brand: "D-Link" },
     { name: "Mikrotik hAP ax3", model: "hAP ax3", price: "$120", description: "Compact yet powerful wireless router.", image: "https://via.placeholder.com/200", brand: "Mikrotik" },
     { name: "CyberRoam CR25iNG", model: "CR25iNG", price: "$300", description: "Next-gen firewall for enterprise security.", image: "https://via.placeholder.com/200", brand: "CyberRoam" },
-
     // 💾 SERVERS & STORAGE
     { name: "Dell PowerEdge R740", model: "PowerEdge R740", price: "$3,500", description: "High-performance server for enterprise workloads.", image: "https://via.placeholder.com/200", brand: "Dell" },
     { name: "HPE ProLiant DL380 Gen10", model: "DL380 Gen10", price: "$4,200", description: "Enterprise-grade server with redundancy features.", image: "https://via.placeholder.com/200", brand: "HPE" },
@@ -102,14 +214,47 @@ const products = [
     { name: "Seagate Exos 18TB", model: "Exos 18TB", price: "$550", description: "Enterprise HDD with high durability.", image: "https://via.placeholder.com/200", brand: "Seagate" },
     { name: "Samsung 970 EVO Plus 1TB", model: "970 EVO Plus", price: "$120", description: "High-speed NVMe SSD for performance computing.", image: "https://via.placeholder.com/200", brand: "Samsung" },
     { name: "WD My Book 8TB", model: "My Book 8TB", price: "$180", description: "External HDD for reliable data backup.", image: "https://via.placeholder.com/200", brand: "WD" },
-
     // 🔌 POWER & BACKUP SOLUTIONS
     { name: "APC Smart-UPS 1500VA", model: "Smart-UPS 1500VA", price: "$500", description: "Reliable backup power for critical devices.", image: "https://via.placeholder.com/200", brand: "APC" },
+    { name: "CyberPower CP1500PFCLCD", model: "CP1500PFCLCD", price: "$200", description: "Sinewave UPS for sensitive electronics.", image: "https://via.placeholder.com/200", brand: "CyberPower" },
+    { name: "Tripp Lite SMART1500LCDT", model: "SMART1500LCDT", price: "$180", description: "LCD UPS system for network devices and PCs.", image: "https://via.placeholder.com/200", brand: "Tripp Lite" },
+    { name: "CyberPower EC850LCD", model: "EC850LCD", price: "$90", description: "Compact UPS for home and office devices.", image: "https://via.placeholder.com/200", brand: "CyberPower" },
+    { name: "APC Back-UPS 650VA", model: "Back-UPS 650VA", price: "$80", description: "Entry-level UPS for basic power backup.", image: "https://via.placeholder.com/200", brand: "APC" },
+    { name: "Eaton 5S UPS 1500VA", model: "5S 1500VA", price: "$250", description: "Line-interactive UPS for small business servers.", image: "https://via.placeholder.com/200", brand: "Eaton" },
+    { name: "Tripp Lite SMART1000LCD", model: "SMART1000LCD", price: "$150", description: "LCD UPS system for PCs and peripherals.", image: "https://via.placeholder.com/200", brand: "Tripp Lite" },
+    { name: "APC Smart-UPS 3000VA", model: "Smart-UPS 3000VA", price: "$1,000", description: "Rack-mounted UPS for data centers and servers.", image: "https://via.placeholder.com/200", brand: "APC" },
+    { name: "CyberPower PR1500LCD", model: "PR1500LCD", price: "$400", description: "Pure sine wave UPS for high-end electronics.", image: "https://via.placeholder.com/200", brand: "CyberPower" },
+    { name: "Tripp Lite SU1500XLCD", model: "SU1500XLCD", price: "$600", description: "Online UPS system for critical applications.", image: "https://via.placeholder.com/200", brand: "Tripp Lite" },
+    { name: "Eaton 9PX UPS 1500VA", model: "9PX 1500VA", price: "$800", description: "High-performance UPS for data centers and IT.", image: "https://via.placeholder.com/200", brand: "Eaton" },
+    { name: "APC Smart-UPS 1000VA", model: "Smart-UPS 1000VA", price: "$300", description: "Tower UPS for network devices and servers.", image: "https://via.placeholder.com/200", brand: "APC" },
+    { name: "CyberPower CP1000AVRLCD", model: "CP1000AVRLCD", price: "$120", description: "Compact UPS for home and office use.", image: "https://via.placeholder.com/200", brand: "CyberPower" },
+    { name: "Tripp Lite SMART750LCD", model: "SMART750LCD", price: "$100", description: "LCD UPS system for PCs and peripherals.", image: "https://via.placeholder.com/200", brand: "Tripp Lite" },
     { name: "Eaton 9PX UPS 3000VA", model: "9PX 3000VA", price: "$1,200", description: "High-efficiency UPS for business continuity.", image: "https://via.placeholder.com/200", brand: "Eaton" },
-
     // 📊 SOFTWARE & LICENSING
     { name: "Microsoft 365 Business Premium", model: "365 Business", price: "$15/user/month", description: "Cloud productivity suite with security features.", image: "https://via.placeholder.com/200", brand: "Microsoft" },
+    { name: "Adobe Acrobat Pro DC", model: "Acrobat Pro DC", price: "$15/month", description: "PDF editing and document signing software.", image: "https://via.placeholder.com/200", brand: "Adobe" },
+    { name: "Microsoft Windows 10 Pro", model: "Windows 10 Pro", price: "$200", description: "Operating system for business and power users.", image: "https://via.placeholder.com/200", brand: "Microsoft" },
+    { name: "Microsoft Windows 11 Pro", model: "Windows 11 Pro", price: "$250", description: "Next-generation operating system for modern PCs.", image: "https://via.placeholder.com/200", brand: "Microsoft" },
+    { name: "Microsoft Office Home & Business", model: "Office Home & Business", price: "$250", description: "Office suite for home and small businesses.", image: "https://via.placeholder.com/200", brand: "Microsoft" },
+    { name: "Microsoft Project Standard", model: "Project Standard", price: "$600", description: "Project management software for planning and tracking.", image: "https://via.placeholder.com/200", brand: "Microsoft" },
+    { name: "Microsoft Visio Professional", model: "Visio Professional", price: "$500", description: "Diagramming and flowchart tool for professionals.", image: "https://via.placeholder.com/200", brand: "Microsoft" },
+    { name: "Adobe Creative Cloud Photography", model: "Creative Cloud Photography", price: "$10/month", description: "Photo editing and cloud storage for photographers.", image: "https://via.placeholder.com/200", brand: "Adobe" },
+    { name: "Adobe Creative Cloud Single App", model: "Creative Cloud Single App", price: "$20/month", description: "Access to a single app from the Adobe suite.", image: "https://via.placeholder.com/200", brand: "Adobe" },
+    { name: "Adobe Creative Cloud Student & Teacher", model: "Creative Cloud Student & Teacher", price: "$20/month", description: "Discounted subscription for students and educators.", image: "https://via.placeholder.com/200", brand: "Adobe" },
+    { name: "Adobe Creative Cloud Teams", model: "Creative Cloud Teams", price: "$80/month", description: "Collaboration and license management for teams.", image: "https://via.placeholder.com/200", brand: "Adobe" },
+    { name: "Microsoft 365 Family", model: "365 Family", price: "$10/user/month", description: "Cloud productivity suite for families and households.", image: "https://via.placeholder.com/200", brand: "Microsoft" },
+    { name: "Microsoft 365 Personal", model: "365 Personal", price: "$7/month", description: "Cloud productivity suite for individuals.", image: "https://via.placeholder.com/200", brand: "Microsoft" },
+    { name: "Microsoft Exchange Online Plan 1", model: "Exchange Online Plan 1", price: "$4/user/month", description: "Business email hosting with 50 GB mailbox.", image: "https://via.placeholder.com/200", brand: "Microsoft" },
+    { name: "Microsoft Exchange Online Plan 2", model: "Exchange Online Plan 2", price: "$8/user/month", description: "Advanced email hosting with unlimited storage.", image: "https://via.placeholder.com/200", brand: "Microsoft" },
+    { name: "Microsoft Office 2019 Home & Student", model: "Office 2019 Home & Student", price: "$150", description: "Perpetual license for home and student use.", image: "https://via.placeholder.com/200", brand: "Microsoft" },
+    { name: "Microsoft Office 2019 Home & Business", model: "Office 2019 Home & Business", price: "$250", description: "Perpetual license for home and business use.", image: "https://via.placeholder.com/200", brand: "Microsoft" },
+    { name: "Microsoft Office 2019 Professional", model: "Office 2019 Professional", price: "$440", description: "Perpetual license for professional use.", image: "https://via.placeholder.com/200", brand: "Microsoft" },
+    { name: "Adobe Creative Cloud All Apps", model: "Creative Cloud", price: "$53/month", description: "Complete creative suite for design professionals.", image: "https://via.placeholder.com/200", brand: "Adobe" },
+    { name: "AutoDesk AutoCAD 2022", model: "AutoCAD 2022", price: "$1,690/year", description: "Industry-standard CAD software for design and drafting.", image: "https://via.placeholder.com/200", brand: "AutoDesk" },
+    { name: "Kaspersky Total Security", model: "Total Security", price: "$50/year", description: "Comprehensive security suite for devices and data.", image: "https://via.placeholder.com/200", brand: "Kaspersky" },
+    { name: "Avast Business Antivirus Pro", model: "Antivirus Pro", price: "$40/year", description: "Advanced antivirus protection for small businesses.", image: "https://via.placeholder.com/200", brand: "Avast" },
     { name: "VMware vSphere Essentials Plus", model: "vSphere Essentials", price: "$5,600", description: "Virtualization software for data centers.", image: "https://via.placeholder.com/200", brand: "VMware" }
+
 ];
 
 
@@ -138,31 +283,90 @@ function filterDropdown() {
             li.onclick = () => selectProduct(product);
             dropdown.appendChild(li);
         });
+
+        // Auto-close dropdown after 3 seconds
+        setTimeout(() => {
+            dropdown.classList.add("hidden");
+        }, 3000);
     } else {
         dropdown.classList.add("hidden");
     }
 }
 
 // Function to display selected product details
+// Modify the selectProduct function to include "Add to Cart" button
 function selectProduct(product) {
     const productDisplay = document.getElementById("product-display");
     const dropdown = document.getElementById("dropdown-list");
 
+    // Clear previous results
+    productDisplay.innerHTML = "";
+
     productDisplay.innerHTML = `
         <div class="bg-white p-6 shadow-lg rounded-lg max-w-lg text-center">
-            <img src="${product.image}" alt="${product.name}" class="mx-auto mb-4 rounded-lg w-32 h-32">
+            <img class="lazy-load mx-auto mb-4 rounded-lg w-32 h-32" data-src="${product.image}" alt="${product.name}">
             <h3 class="text-xl font-semibold text-gray-700">${product.name}</h3>
             <p class="text-gray-500"><strong>Model:</strong> ${product.model}</p>
             <p class="text-gray-500"><strong>Price:</strong> ${product.price}</p>
             <p class="text-gray-500 mt-2">${product.description}</p>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Buy now</button>
+            <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-4" onclick='addToCart(${JSON.stringify(product)})'>Add to Cart</button>
         </div>
     `;
+
+    // Lazy load images
+    lazyLoadImages();
 
     // Hide dropdown after selection
     dropdown.classList.add("hidden");
     document.getElementById("search-input").value = product.name;
 }
+
+//cart
+let cart = [];
+
+function addToCart(product) {
+    cart.push(product);
+    updateCartUI();
+}
+
+function updateCartUI() {
+    const cartCount = document.getElementById("cart-count");
+    const cartItems = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+
+    cartItems.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((product, index) => {
+        total += parseFloat(product.price.replace("$", ""));
+        let li = document.createElement("li");
+        li.classList = "flex justify-between items-center border-b pb-2";
+        li.innerHTML = `
+            <span>${product.name} - ${product.price}</span>
+            <button class="text-red-500" onclick="removeFromCart(${index})">❌</button>
+        `;
+        cartItems.appendChild(li);
+    });
+
+    cartTotal.innerText = `$${total.toFixed(2)}`;
+    cartCount.innerText = cart.length;
+    cartCount.classList.toggle("hidden", cart.length === 0);
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCartUI();
+}
+
+function clearCart() {
+    cart = [];
+    updateCartUI();
+}
+
+function toggleCart() {
+    document.getElementById("cart-modal").classList.toggle("hidden");
+}
+
 
 const cursorGlow = document.getElementById("cursor-glow");
 
