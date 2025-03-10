@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const events = {
         "1-1": { name: "New Year", color: "gold", effect: "🎆" },
-        "3-10": { name: "New Year", color: "gold", effect: "🎆" },
         "2-14": { name: "Valentine's Day", color: "red", effect: "💖" },
+        "3-10": { name: "Christmas", color: "red-green", effect: "🎄" },
         "6-1": { name: "Madaraka Day", color: "green", effect: "🇰🇪" },
         "6-15": { name: "Pride Month", color: "rainbow", effect: "🏳️‍🌈" },
         "10-10": { name: "Huduma Day", color: "blue", effect: "🤝" },
