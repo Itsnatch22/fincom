@@ -207,39 +207,68 @@
         </div>
     </section>
     
-    <section id="services" class="py-16 bg-gray-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-10">Our Services</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section id="services" class="relative py-16 bg-gray-900 text-white overflow-hidden">
+        <!-- Cursor Glow Effect -->
+        <div id="cursor-glow" class="absolute w-36 h-36 bg-blue-500 opacity-50 blur-3xl rounded-full pointer-events-none transform scale-0 transition duration-300"></div>
+    
+        <div class="container mx-auto text-center relative z-10">
+            <h2 class="text-4xl font-bold mb-10">Why Choose <span class="text-orange-500">Fincom Africa?</span></h2>
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+                    <i class="ri-award-line text-5xl text-orange-400"></i>
+                    <h3 class="text-xl font-semibold mt-4">Industry Expertise</h3>
+                    <p class="text-gray-300 mt-2">With over 15 years of experience, we provide top-tier ICT solutions.</p>
+                </div>
+                <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+                    <i class="ri-customer-service-2-line text-5xl text-blue-400"></i>
+                    <h3 class="text-xl font-semibold mt-4">24/7 Support</h3>
+                    <p class="text-gray-300 mt-2">Our team is always available to assist you, anytime, anywhere.</p>
+                </div>
+                <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+                    <i class="ri-team-line text-5xl text-green-400"></i>
+                    <h3 class="text-xl font-semibold mt-4">Certified Professionals</h3>
+                    <p class="text-gray-300 mt-2">Our experts are trained and certified by top tech partners.</p>
+                </div>
+                <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300">
+                    <i class="ri-global-line text-5xl text-purple-400"></i>
+                    <h3 class="text-xl font-semibold mt-4">Global Partnerships</h3>
+                    <p class="text-gray-300 mt-2">We collaborate with tech giants like Microsoft, Cisco, and Dell.</p>
+                </div>
+            </div>
+    
+            <h2 class="text-4xl font-bold mb-10">Our Services</h2>
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition transform duration-300">
-                    <i class="ri-cloud-line text-3xl sm:text-4xl text-blue-600"></i>
-                    <h3 class="text-lg sm:text-xl font-semibold mt-4">Cloud Solutions</h3>
-                    <p class="text-gray-300 text-sm sm:text-base mt-2">Empowering businesses with secure and scalable cloud infrastructure.</p>
+                    <i class="ri-cloud-line text-4xl text-blue-600"></i>
+                    <h3 class="text-xl font-semibold mt-4">Cloud Solutions</h3>
+                    <p class="text-gray-300 mt-2">Empowering businesses with secure and scalable cloud infrastructure.</p>
                 </div>
                 <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition transform duration-300">
-                    <i class="ri-lock-line text-3xl sm:text-4xl text-green-600"></i>
-                    <h3 class="text-lg sm:text-xl font-semibold mt-4">Network Security</h3>
-                    <p class="text-gray-300 text-sm sm:text-base mt-2">Ensuring robust cybersecurity measures to protect business data.</p>
+                    <i class="ri-lock-line text-4xl text-green-600"></i>
+                    <h3 class="text-xl font-semibold mt-4">Network Security</h3>
+                    <p class="text-gray-300 mt-2">Ensuring robust cybersecurity measures to protect business data.</p>
                 </div>
                 <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition transform duration-300">
-                    <i class="ri-server-line text-4xl sm:text-6xl text-yellow-400"></i>
-                    <h3 class="text-lg sm:text-xl font-semibold mt-4">Server Management</h3>
-                    <p class="text-gray-300 text-sm sm:text-base mt-2">Reliable server setups and maintenance for smooth IT operations.</p>
+                    <i class="ri-server-line text-6xl text-yellow-400"></i>
+                    <h3 class="text-xl font-semibold mt-4">Server Management</h3>
+                    <p class="text-gray-300 mt-2">Reliable server setups and maintenance for smooth IT operations.</p>
                 </div>
                 <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition transform duration-300">
-                    <i class="ri-code-s-slash-line text-4xl sm:text-6xl text-yellow-400"></i>
-                    <h3 class="text-lg sm:text-xl font-semibold mt-4">Software Development</h3>
-                    <p class="text-gray-300 text-sm sm:text-base mt-2">Building Android, Mac, and iOS apps tailored for businesses.</p>
+                    <i class="ri-code-s-slash-line text-6xl text-yellow-400"></i>
+                    <h3 class="text-xl font-semibold mt-4">Software Development</h3>
+                    <p class="text-gray-300 mt-2">Building Android, Mac, and iOS apps tailored to company needs.</p>
                 </div>
                 <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition transform duration-300">
-                    <i class="ri-computer-line text-4xl sm:text-6xl text-yellow-400"></i>
-                    <h3 class="text-lg sm:text-xl font-semibold mt-4">IT Support</h3>
-                    <p class="text-gray-300 text-sm sm:text-base mt-2">Providing 24/7 ICT Support to all our customers across the country.</p>
+                    <i class="ri-computer-line text-6xl text-yellow-400"></i>
+                    <h3 class="text-xl font-semibold mt-4">IT Support</h3>
+                    <p class="text-gray-300 mt-2">Providing 24/7 ICT Support to all our customers nationwide.</p>
                 </div>
                 <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition transform duration-300">
-                    <i class="fas fa-chart-line text-4xl sm:text-6xl text-yellow-400"></i>
-                    <h3 class="text-lg sm:text-xl font-semibold mt-4">Sales Management</h3>
-                    <p class="text-gray-300 text-sm sm:text-base mt-2">Our team provides sales expertise to help businesses purchase high-quality tech solutions.</p>
+                    <i class="fas fa-chart-line text-6xl text-yellow-400"></i>
+                    <h3 class="text-xl font-semibold mt-4">Sales Management</h3>
+                    <p class="text-gray-300 mt-2">Expert sales assistance for purchasing high-end quality merch.</p>
                 </div>
             </div>
         </div>
