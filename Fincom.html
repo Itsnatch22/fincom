@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fincom Africa - ICT Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+    <style>
+         @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .old-english-font {
+            font-family: 'UnifrakturCook', cursive;
+        }
+
+        .marquee-container {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 40px; 
+        }
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .chat-header {
+            background: #2563eb;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .chat-body {
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+        }
+        .chat-footer {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+        .chat-footer input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+        }
+        .chat-footer button {
+            background: #2563eb;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2563eb;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        @keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+}
+
+    </style>
+</head>
+<body class="bg-gray-100">
+    
+    <!-- Header -->
+    <header class="bg-white shadow-md fixed top-0 w-full z-50">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <a href="#" class="text-2xl font-bold text-orange-600">Fincom Africa</a>
+
+            <div class="md:hidden text-2xl cursor-pointer" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <nav class="hidden md:flex space-x-6">
+                <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 text-center">
+                    <li><a href="#about" class="text-gray-700 hover:text-blue-500">About</a></li>
+                    <li><a href="#services" class="text-gray-700 hover:text-blue-500">Services</a></li>
+                    <li><a href="#products" class="text-gray-700 hover:text-blue-500">Products</a></li>
+                    <li><a href="#contact" class="text-gray-700 hover:text-blue-500">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div id="mobileMenu" class="hidden fixed top-16 left-0 w-full bg-white shadow-lg p-6 md:hidden">
+                <ul class="flex flex-col space-y-4 text-center">
+                    <li><a href="#about" class="text-gray-700 hover:text-blue-500">About</a></li>
+                    <li><a href="#services" class="text-gray-700 hover:text-blue-500">Services</a></li>
+                    <li><a href="#products" class="text-gray-700 hover:text-blue-500">Products</a></li>
+                    <li><a href="#contact" class="text-gray-700 hover:text-blue-500">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <section class="h-screen relative bg-cover bg-center flex items-center justify-center px-4 sm:px-8" style="background-image: url('https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?w=1080&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2VydmVyfGVufDB8fDB8fHww');">
+    
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        
+        <div class="relative z-10 text-center max-w-4xl">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-bold leading-tight">
+                Leaders in Contracted ICT Support
+            </h1>
+            <p class="text-gray-300 mt-4 text-sm sm:text-lg md:text-xl">
+                Providing innovative tech solutions for businesses
+            </p>
+            <a href="#services" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">
+                Explore Services
+            </a>
+        </div>
+    </section>
+
+
+    <section id="about" class="relative overflow-hidden">
+
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+            <source src="https://cdn.videvo.net/videvo_files/video/free/2022-05/large_preview/220429_02_HongKongCityscape_1080p_006.mp4" type="video/mp4">
+        </video>
+
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center px-4 sm:px-8">
+            <div class="max-w-4xl text-white z-10">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 fade-in">Shaping the Future of ICT</h2>
+                <p class="text-sm sm:text-lg md:text-xl text-gray-300 fade-in">
+                    At Fincom Africa, we blend innovation with expertise to deliver cutting-edge ICT solutions. Our journey is defined by excellence, efficiency, and a relentless drive to transform businesses through technology.
+                </p>
+                <a href="#services" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">
+                    Explore Our Journey
+                </a>
+                <div id="ai-intro" class="mt-6 text-sm sm:text-lg text-gray-400 italic opacity-0">
+                    AI: "Empowering businesses with seamless tech solutions."
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section id="timeline" class="py-16 bg-gray-100 relative">
+        <div class="container mx-auto text-center px-4 sm:px-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 fade-in">Our Evolution</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="p-6 bg-white rounded-lg shadow-md flex flex-col items-center sm:flex-row slide-in">
+                    <div class="text-center sm:text-left">
+                        <h3 class="text-lg sm:text-xl font-semibold">2005 - The Beginning</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">We started as a small IT consultancy, paving the way for business solutions.</p>
+                    </div>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md flex flex-col items-center sm:flex-row slide-in">
+                    <div class="text-center sm:text-left">
+                        <h3 class="text-lg sm:text-xl font-semibold">2015 - Expansion</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Growing our reach, we partnered with industry leaders to enhance our offerings.</p>
+                    </div>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-md flex flex-col items-center sm:flex-row slide-in">
+                    <div class="text-center sm:text-left">
+                        <h3 class="text-lg sm:text-xl font-semibold">2023 - Innovation</h3>
+                        <p class="text-gray-600 text-sm sm:text-base">Introducing AI-driven ICT solutions, we revolutionized digital transformations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="services" class="py-16 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-10">Our Services</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition transform duration-300">
+                    <i class="ri-cloud-line text-3xl sm:text-4xl text-blue-600"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold mt-4">Cloud Solutions</h3>
+                    <p class="text-gray-300 text-sm sm:text-base mt-2">Empowering businesses with secure and scalable cloud infrastructure.</p>
+                </div>
+                <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition transform duration-300">
+                    <i class="ri-lock-line text-3xl sm:text-4xl text-green-600"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold mt-4">Network Security</h3>
+                    <p class="text-gray-300 text-sm sm:text-base mt-2">Ensuring robust cybersecurity measures to protect business data.</p>
+                </div>
+                <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition transform duration-300">
+                    <i class="ri-server-line text-4xl sm:text-6xl text-yellow-400"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold mt-4">Server Management</h3>
+                    <p class="text-gray-300 text-sm sm:text-base mt-2">Reliable server setups and maintenance for smooth IT operations.</p>
+                </div>
+                <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition transform duration-300">
+                    <i class="ri-code-s-slash-line text-4xl sm:text-6xl text-yellow-400"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold mt-4">Software Development</h3>
+                    <p class="text-gray-300 text-sm sm:text-base mt-2">Building Android, Mac, and iOS apps tailored for businesses.</p>
+                </div>
+                <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition transform duration-300">
+                    <i class="ri-computer-line text-4xl sm:text-6xl text-yellow-400"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold mt-4">IT Support</h3>
+                    <p class="text-gray-300 text-sm sm:text-base mt-2">Providing 24/7 ICT Support to all our customers across the country.</p>
+                </div>
+                <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-lg hover:scale-105 transition transform duration-300">
+                    <i class="fas fa-chart-line text-4xl sm:text-6xl text-yellow-400"></i>
+                    <h3 class="text-lg sm:text-xl font-semibold mt-4">Sales Management</h3>
+                    <p class="text-gray-300 text-sm sm:text-base mt-2">Our team provides sales expertise to help businesses purchase high-quality tech solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="products" class="py-16 bg-gray-100">
+        <div class="container mx-auto text-center px-4 sm:px-6">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8">Our Products</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 shadow-lg rounded-lg hover:scale-105 transition-transform duration-300">
+                    <img src="https://th.bing.com/th/id/OIP.up3XOYkI5Z5kr4QAwE84egHaHa?w=198&h=198&c=7&r=0&o=5&pid=1.7" 
+                         alt="Computer Accessories" class="mx-auto mb-4 rounded-lg w-full h-48 object-cover">
+                    <h3 class="text-lg sm:text-xl font-semibold text-gray-700">Computer Accessories</h3>
+                    <p class="text-gray-500 text-sm sm:text-base mt-2">Our computer accessories come in a variety of brands from HP, Dell, to Lenovo.</p>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 transition-transform transform hover:scale-105">
+                        Buy Now
+                    </button>
+                </div>
+                <div class="bg-white p-6 shadow-lg rounded-lg hover:scale-105 transition-transform duration-300">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkMvfJQ3Z0CQeENcc1ai9NFAF8tt9GIQTZVQ&s" 
+                         alt="Printers and Cartridges" class="mx-auto mb-4 rounded-lg w-full h-48 object-cover">
+                    <h3 class="text-lg sm:text-xl font-semibold text-gray-700">Printers and Cartridges</h3>
+                    <p class="text-gray-500 text-sm sm:text-base mt-2">Our company offers a wide collection of printers and cartridges at fair prices.</p>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 transition-transform transform hover:scale-105">
+                        Buy Now
+                    </button>
+                </div>
+                <div class="bg-white p-6 shadow-lg rounded-lg hover:scale-105 transition-transform duration-300">
+                    <img src="https://th.bing.com/th/id/OIP.9WNUBHeROIl6S34e86kGAgHaIq?w=162&h=189&c=7&r=0&o=5&pid=1.7" 
+                         alt="UPS" class="mx-auto mb-4 rounded-lg w-full h-48 object-cover">
+                    <h3 class="text-lg sm:text-xl font-semibold text-gray-700">UPS</h3>
+                    <p class="text-gray-500 text-sm sm:text-base mt-2">UPS batteries are the heart of Uninterruptible Power Supply systems, which provide emergency power to connected devices when the main power source fails.</p>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 transition-transform transform hover:scale-105">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="partners" class="py-16 bg-white">
+        <div class="container mx-auto text-center px-4 sm:px-6">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8">Our Partners & Clients</h2>
+            <div class="overflow-hidden whitespace-nowrap relative">
+                <div class="marquee-container inline-flex space-x-12 animate-marquee">
+                    <span class="text-2xl sm:text-4xl font-semibold old-english-font">MICROSOFT</span>
+                    <span class="text-2xl sm:text-4xl font-semibold old-english-font">IBM</span>
+                    <span class="text-2xl sm:text-4xl font-semibold old-english-font">DELL</span>
+                    <span class="text-2xl sm:text-4xl font-semibold old-english-font">SIEMON</span>
+                    <span class="text-2xl sm:text-4xl font-semibold old-english-font">HP</span>
+                    <span class="text-2xl sm:text-4xl font-semibold old-english-font">CISCO</span>
+                    <span class="text-2xl sm:text-4xl font-semibold old-english-font">LENOVO</span>
+                    <span class="text-2xl sm:text-4xl font-semibold old-english-font">VMWARE</span>
+                    <span class="text-2xl sm:text-4xl font-semibold old-english-font">DLINK</span>
+                    <span class="text-2xl sm:text-4xl font-semibold old-english-font">CYBERROAM</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <style>
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+        }
+    </style>
+
+<section id="contact" class="py-16 bg-gray-100">
+    <div class="container mx-auto text-center px-4 sm:px-6">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8">Contact Us</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white p-6 shadow-lg rounded-lg">
+                <form action="#" method="POST" class="space-y-4">
+                    <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="email" name="email" placeholder="Your Email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <textarea name="message" rows="5" placeholder="Your Message" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                    <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-transform transform hover:scale-105">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+            <div class="flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
+                <h3 class="text-lg sm:text-xl font-semibold text-gray-700">Get in Touch</h3>
+                <p class="text-gray-500 mt-2">📍 <strong>Location:</strong> Nairobi, Kenya</p>
+                <p class="text-gray-500">📧 <strong>Email:</strong> info@fincomafrica.com</p>
+                <p class="text-gray-500">📞 <strong>Phone:</strong> +254 700 123 456</p>
+                <div class="mt-4 w-full">
+                    <iframe class="w-full h-56 rounded-lg shadow-lg"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.079353361776!2d36.821946050000005!3d-1.2863898999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d4f3e8559d%3A0xc6bb9b6d3a89d7b2!2sNairobi!5e0!3m2!1sen!2ske!4v1630937878951!5m2!1sen!2ske"
+                        allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-gray-900 text-gray-300 py-10">
+    <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left px-4 sm:px-6">
+        <!-- Brand -->
+        <div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white">Fincom <span class="text-orange-600">Africa</span></h2>
+            <p class="mt-2 text-gray-400 text-sm sm:text-base">Innovating the Future of ICT Solutions.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+            <h3 class="text-lg sm:text-xl font-semibold text-white mb-3">Quick Links</h3>
+            <ul class="space-y-2 text-sm sm:text-base">
+                <li><a href="#home" class="hover:text-blue-500">Home</a></li>
+                <li><a href="#about" class="hover:text-blue-500">About Us</a></li>
+                <li><a href="#services" class="hover:text-blue-500">Services</a></li>
+                <li><a href="#products" class="hover:text-blue-500">Products</a></li>
+                <li><a href="#contact" class="hover:text-blue-500">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+            <h3 class="text-lg sm:text-xl font-semibold text-white mb-3">Contact Info</h3>
+            <p class="text-gray-400 text-sm sm:text-base">📍 Nairobi, Kenya</p>
+            <p class="text-gray-400 text-sm sm:text-base">📧 info@fincomafrica.com</p>
+            <p class="text-gray-400 text-sm sm:text-base">📞 +254 700 123 456</p>
+        </div>
+
+        <!-- Social Media -->
+        <div>
+            <h3 class="text-lg sm:text-xl font-semibold text-white mb-3">Follow Us</h3>
+            <div class="flex justify-center md:justify-start space-x-4 text-2xl">
+                <a href="#" class="hover:text-blue-500"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="hover:text-blue-500"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="hover:text-blue-500"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="hover:text-blue-500"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <h3 class="text-lg sm:text-xl font-semibold text-white mb-3">Scan to Chat</h3>
+        <img src="qr-code.png" 
+             alt="WhatsApp QR Code" class="mx-auto w-24 sm:w-32 shadow-lg rounded-lg">
+        <p class="text-gray-400 text-sm sm:text-base mt-2">Scan to chat with us on WhatsApp</p>
+    </div>
+        
+    <!-- Copyright -->
+    <div class="mt-10 text-center text-gray-500 border-t border-gray-700 pt-5">
+        <p>&copy; 2025 Fincom Africa. All Rights Reserved.</p>
+        <p>Powered by GPT-4.0</p>
+    </div>
+</footer>
+
+<!-- AI Chatbot -->
+<div class="chat-icon fixed bottom-6 right-6 bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg cursor-pointer hover:bg-blue-700 transition" onclick="toggleChat()">
+    💬
+</div>
+
+<div class="chatbot-container fixed bottom-16 right-6 w-80 bg-white shadow-lg rounded-lg overflow-hidden hidden" id="chatbot">
+    <div class="chat-header bg-blue-600 text-white p-3 flex justify-between items-center">
+        <span>AI Assistant</span>
+        <span onclick="toggleChat()" class="cursor-pointer">✖</span>
+    </div>
+    <div class="chat-body p-4 h-56 overflow-y-auto" id="chat-body">
+        <p>Hello! How can I assist you?</p>
+    </div>
+    <div class="chat-footer flex border-t border-gray-300">
+        <input type="text" id="chat-input" class="flex-1 p-2 border-none outline-none" placeholder="Type a message...">
+        <button onclick="sendMessage()" class="bg-blue-600 text-white px-4">➤</button>
+    </div>
+</div>
+</body>
+</html>
