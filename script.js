@@ -1,9 +1,11 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const logo = document.getElementById("fincom-logo");
     const today = new Date();
     const month = today.getMonth() + 1;
     const day = today.getDate();
+    const weekday = today.getDay(); // 0 = Sunday, 1 = Monday, etc.
 
+    // Special Events
     const events = {
         "1-1": { name: "New Year", color: "gold", effect: "🎆" },
         "2-14": { name: "Valentine's Day", color: "red", effect: "💖" },
@@ -15,13 +17,26 @@ document.addEventListener("DOMContentLoaded", function() {
         "12-25": { name: "Christmas", color: "red-green", effect: "🎄" }
     };
 
+    // Daily Font & Color Rotations
+    const dailyStyles = [
+        { font: "font-bold", color: "text-blue-600" },  // Monday
+        { font: "italic", color: "text-red-600" },      // Tuesday
+        { font: "underline", color: "text-green-600" }, // Wednesday
+        { font: "font-serif", color: "text-orange-600" }, // Thursday
+        { font: "font-sans", color: "text-purple-600" }, // Friday
+        { font: "font-cursive", color: "text-yellow-600" }, // Saturday
+        { font: "font-extrabold", color: "text-pink-600" } // Sunday
+    ];
+
     const eventKey = `${month}-${day}`;
+
     if (events[eventKey]) {
-        let event = events[eventKey];
-        updateLogo(event);
+        applyEventStyling(events[eventKey]);
+    } else {
+        applyDailyStyling(dailyStyles[weekday]);
     }
 
-    function updateLogo(event) {
+    function applyEventStyling(event) {
         if (event.color === "rainbow") {
             logo.style.background = "linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet)";
             logo.style.webkitBackgroundClip = "text";
@@ -35,6 +50,10 @@ document.addEventListener("DOMContentLoaded", function() {
             logo.style.color = event.color;
         }
         logo.innerHTML = `Fincom Africa ${event.effect}`;
+    }
+
+    function applyDailyStyling(style) {
+        logo.className = `text-3xl ${style.font} ${style.color}`;
     }
 });
 
