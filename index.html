@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fincom Africa - ICT Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
@@ -102,7 +104,7 @@
     <!-- Header -->
     <header class="bg-white shadow-md fixed top-0 w-full z-50">
         <div class="container mx-auto flex justify-between items-center py-4 px-6">
-            <a href="#" class="text-2xl font-bold text-orange-600">Fincom Africa</a>
+            <a href="#" class="text-2xl font-bold text-orange-600" id="fincom-logo">Fincom Africa</a>
 
             <div class="md:hidden text-2xl cursor-pointer" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
@@ -125,21 +127,29 @@
                     <li><a href="#contact" class="text-gray-700 hover:text-blue-500">Contact</a></li>
                 </ul>
             </div>
-            <div class="relative cursor-pointer" onclick="toggleCart()">
-                <i class="fas fa-shopping-cart text-2xl text-gray-700"></i>
-                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full hidden">0</span>
+
+            <div class="flex items-center space-x-4">
+                <div class="relative cursor-pointer" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart text-2xl text-gray-700"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full hidden">0</span>
+                </div>
             </div>
         </div>
     </header>
 
-    <div id="cart-sidebar" class="fixed top-0 right-0 w-80 h-full bg-white shadow-lg transform translate-x-full transition-transform duration-300 p-6">
-        <h2 class="text-xl font-bold mb-4">Shopping Cart</h2>
-        <ul id="cart-items" class="space-y-4"></ul>
-        <p class="font-bold mt-4">Total: <span id="cart-total">$0</span></p>
-        <button class="w-full bg-red-500 text-white py-2 rounded-lg mt-4" onclick="clearCart()">Clear Cart</button>
-        <button class="w-full bg-blue-500 text-white py-2 rounded-lg mt-2">Checkout</button>
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+            <h2 class="text-xl font-bold mb-4">Shopping Cart</h2>
+            <ul id="cart-items" class="space-y-4"></ul>
+            <p class="text-lg font-semibold mt-4">Total: <span id="cart-total">$0.00</span></p>
+            <div class="flex justify-between mt-4">
+                <button class="bg-red-500 text-white px-4 py-2 rounded" onclick="clearCart()">Clear Cart</button>
+                <button class="bg-blue-600 text-white px-4 py-2 rounded">Checkout</button>
+            </div>
+            <button class="absolute top-2 right-4 text-gray-500" onclick="toggleCart()">✖</button>
+        </div>
     </div>
-
+    
     <section class="h-screen relative bg-cover bg-center flex items-center justify-center px-4 sm:px-8" style="background-image: url('https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?w=1080&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2VydmVyfGVufDB8fDB8fHww');">
     
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -273,12 +283,12 @@
             </div>
         </div>
     </section>
-    
 
     <section id="products" class="py-16 bg-gray-100">
         <div class="container mx-auto text-center px-4 sm:px-6">
             <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8">Our Products</h2>
-           <div class="relative max-w-lg mx-auto mb-6">
+
+            <div class="relative max-w-lg mx-auto mb-6">
                 <input type="text" id="search-input" 
                     placeholder="Search for a product..." 
                     class="w-full p-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-blue-500"
@@ -322,6 +332,63 @@
         }
     </style>
 
+<section id="testimonials" class="py-16 bg-gray-900 text-white relative">
+    <div class="container mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-10">What Our Clients Say</h2>
+
+        <!-- Swiper Testimonial Slider -->
+        <div class="swiper testimonialSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+                    <p class="text-lg text-gray-300">"Fincom Africa transformed our business with top-notch IT solutions!"</p>
+                    <h4 class="mt-4 font-bold text-orange-400">- John Doe, CEO of TechCorp</h4>
+                </div>
+                <div class="swiper-slide bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+                    <p class="text-lg text-gray-300">"Their cybersecurity solutions are the best in the industry!"</p>
+                    <h4 class="mt-4 font-bold text-orange-400">- Sarah Johnson, IT Manager</h4>
+                </div>
+                <div class="swiper-slide bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
+                    <p class="text-lg text-gray-300">"Reliable, fast, and innovative. Highly recommended!"</p>
+                    <h4 class="mt-4 font-bold text-orange-400">- Mike Smith, CTO of InnovateX</h4>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<section id="case-studies" class="py-16 bg-gray-800 text-white relative">
+    <div class="container mx-auto text-center">
+        <h2 class="text-4xl font-bold mb-10">Our Success Stories</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-md relative group">
+                <img src="data:image/png;base64,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" alt="EABL" class="h-20 mx-auto">
+                <h3 class="text-xl font-semibold">East African Breweries Limited</h3>
+                <p class="text-gray-400 mt-2 group-hover:hidden">Click to learn more</p>
+                <div class="hidden group-hover:block text-gray-300 mt-4">
+                    <p>Fincom Africa is responsible for managing EABL’s ICT infrastructure, including networking solutions, cloud computing, and cybersecurity. We provide preventative maintenance for IT equipment, reducing operational disruptions and ensuring continuous productivity. Our collaboration includes supporting EABL’s digital transformation, enabling efficient data management, connectivity, and remote support.</p>
+                </div>
+            </div>
+            <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-md relative group">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pny7AAAA21BMVEX///8AJmX///z//f////oAKWUAJ2QAH2I8UHgAAFGfqrglM2odL2IAJmcAAELO2+muusq6x9EAGl4UNWrCzNf09fcACVQAAEuzwNElKmQAAE4aH1+lrL8AAFljdJgAAEUAJmwAKWAAAD4AFFzf5ed+jKdjaYh3iJ0AB1tJT3MAG2UAEmC7wczo6u8vPW7Z4OiQm7BLYX5YaJDy//96fpdRWoFJVIJaX3/P0didnq1DSnY9SHs0OmKKlrJzgKEvR3AAAC83RWNfc44/U3MgOWVscYkAGlEqLlmOmKMzELZpAAAMmUlEQVR4nO2bC1uqShfHYUQIikJitNyYEKCm4OCtqHOqfdyX0/f/RO9ag5r3rI67et75PW41hGH+s2bWrDXMliSBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBC8ApK/I9Ls6wfW502QjZX+elo28gXtApVWJl9oyFjmOLHjOCxMKBxRlG0XfkZokjmWkQ6HvxqN0ej6+u76ejRq/BpGhpN8dN1eYDZAFCJRFrvRsHFz9fd5oCPlIGgDdrsD2P5VI3I+dXfjw11RUEoWx5Zh3N4aRpreg6iDU1vXa7ZnqsWiKpumZpe1uyFD2Z8UrFiBfyskSUKnwPeQZVnJeHisVm1VleEFmEFwc/KxFd7GC61ME+akB7WOpxZRjOqr5Sv68mUfxQCcFnYwy7WAM/Bc3HFJvMJ8eMBQ6pXbJreM58kV4/PMOESZjGDKHCuFoQEu6+rur27OX3d3o5vGr6YRM37yxD+E7mEHho5qAu0ueIsPlbBIkhkRd1plvQpjvBbYmqzhS9NsOwgCWz68GzUil01mHfAOJ70ADMOtUxt8HjGZBc4KSZHo4WL0eKpXqrUO+C1ZBselqui5gsDsjn65SW5LME5D00yupko/jRhCkzB8dlzotnDQuFH/Z6Wug+NCt6VCl1JlMNPhzRObjPakNxFT+USWWQ/ICjMr+lHRA1NG14XDQ5a1QL26pdjRiMSONBV+M/XPNWY2QsPM7Zd1G0wDnQ1NBHIOGwz6GbxSkKj5QU8qfN55c44C9kLnvovdzc9nFrCO/cjQGErShY5W1I0vEnByP0woc+90Lfdd6A1Mu3uioJyxJqved/ZVxOTvICc9qk3EQN9SWz/Qq0muKfutmw+u4yuYxsQ0a+iap06mlmI1xbDAOVf9uvMVxssiCklStVNUczG+5qMTCM/l4Ip+iT42D4/JjCObx8rQz2TdBdOEh97xCSl8dOVeD1YZ1Mi5SzM7fRg14Xnl4WvMMUvwmDnKg2Uf/p2CmNK3o3dmzoQUdjbshsls5yGrkGl0n0+TSaOFMw0MGr8KMox6Nk3ltoO56xxk8iL8h92qsmm5C8ohSv6ubH8p84XgF6urYSczVbOTEOmflO6YyRTWs1NLTO/uxJKyYp0NBa+711KLEJI0Apw3ZchiEiWJKHl3IEN2HXPZP433rjcst3xaRLP4ZmtMCdvZK1uPB2u5GzV3XUJIHvTyPV05nP5YX/IKj8NkZXjFjzZI8eW6BVmMgrZ7oafw1nB1bRPfupakbC8DvcTA0D3Zdld+i2R7Y9EL1BrhiphslIsphts1LInJY6FVMNCrjF90SYoU/9aKRftnvHxmpJrq+qKX6KwRw0a2B/lNJV21+FYxm+9ietXe1skKS8j+6hQhbG/BsFm04q5i1E1iPNU+ZbsOFz7AN1qG30etN18oJHmAAnywYy1amtjeZZnsGpPl47PdF5dyy+BSglpcxsyzvvZ3trGj4WRN3SqcC6geZE8LZ0a+vKbcNQSLYvIOcwgNUb9/VXRJ0DKA16pUqpUFymoRyoOUAjvaOj0w1RElLps8bQfztosw28ydOaxXcUXpZeo3q2KatilXx8mr/D2KgUr7wYN1tsRDjQdIZh1aZ52x0S4SewzkWV8q37D5Mx1rV5wl1wzl3gSm/iN8xcydi6mXg3Kr/jRY+cU64sMG+u1aMQrcKRzrPF3PV4RNPUr+kwVUBXqZVvvJcHJ5RT8j0ln/AuhbKwUqUk9D01SNTZdK1K1Dqg5qOq3c+1WWinlFOLNA0ujUumznCGQFZQlokgiXGuXK/QYPQIije+CwYMCNIx3cQNHXjpzFEskMZX7ViywxXyi+p7Z+EL4lg9nQWnD3HhdTvV8fShQkdmqDF1NV/Rdl/arKv442BWlYsyYnOtmyms+Vle6OR2/SstJKs9aKz7GbqXVrw52Tvo7eW+4cgDlKPzu+6vnFynCjB1Kk33oNaJU21pPw1IzdXEb0dWN/cm1ysp4sCviQkesDhaxrSZoe8xUhzXexHxo11fR82ausBmkzMSbEPUX5W2lziIQ/DIaVN6z3EbzC+F4/XkedjwdZ1opMWjvPOBWv6MMEE0S8EWmz5mEGoqnZBk9OpFNM7bVzZ0u8RyQ6PNp2wmYxEo8A1iKbkzBH+94fYDK72FSEyQF/ElG7SCSeOrF+2Tc92W9dr40ZcjEgXkPLbKpsQRo0G2/K918MNHN/a9YuE2nZOEkvv65z7UwrG3fbHkZA+nKQNpNziktIKGZzjWi0sZv+F2JwRb4yWFzdIDS95L/Zh8bEqUNd05bm+57qV90CWdPnp91sixgpNN6asm7PZ57FmGb5USKFuXsU4st8yVGLZocKEo1qkOoWi+2gtC7l3kFMCIHNG2fKXEx1WxLIB44pF49LC80V/m7zRS2v+HhaPAX8foYRVaNlQnSqdg7YutvtYJl3Pk927aNt2G0eRwYHUiG/T0HhM4zHH9vBcJ5QhfkFks67NrflSm6zs5i94vzUeF+rDmZ9WYEB46vmQu9UZT0dwO+pnE9Ol+5qJvIHxCwtAs6iqcmSoHRi856mn0wfohQUp2r6vuct+jz7yILuTofosGXfbq3W+OMto0iPGi6T6tN4mEihjYnOktswZX2EwyZsBNxntFaHzR8QM92CMx+/ktmuIxBzkIs5m16Q/IBE2/TAYc9p0TRVhrAM12ruAhUcQxEG0dJY3q+YPAI4rgL1+7ntnc9nwOwx4P3GrKA7wwtoWoeGlz1ZPV9GNzDWNiCPxnC74hJlwc/uWQymkDDPgAPWn+h6wh/cP3mX+YCGZO4SlzrMttl0lilllOCwaXObaaB/wdHuEAG8TwyPADBguruYML6YZxwEfKAHj3CqAhNjEsiQt8hmu7F2dY5vEOkH3J13HtmKmL1aZrrUVLRbrTLSak2+5H8FXj7Q6yUuRkmuy3zoa1fZalY3rXN8Z6NHUPXhwmzzR8RgQ0OUjI9DJotlz/B9HqYc/JP3ftqs8tyyfWjlPp2slIcYRU3FWfXSnTffHxGzLTZTuTj7W8hPJ2fHGK0UVe1+cwgFpRaGGiRqnq/pzly0/UfEbNNimp6ntf+N8/NP6pqKc3+7Udjy8AZ+YDdtnkQH3bkgeOIAzL2K2f68wW6fXzm5HZKfLVNT4dAVI1ueDhAepP3WcH6qXjyv74GYAAvcp5hvh1v5e2QMJpNP9O3wiB+yXojTwWq33cPDczi3bhWexXTxyGF3PxEA3iYztmKxwdQI9Gl67OWCCbWmJTxvI5Xc/Ah7xXPoz8kf2fi6HDUvRdDzi6d5erzjPvY87l46l0wS7A9hbbV3W5173qSw7dCeeelW76jKxJvvc0PPUuVmyyq4GMa3gZBZRrCw9j2Rtabp869k+qHgww9eEL/Xfu0yq8IsnZnkmQrfLDI3hPK6zZ2yUrFpCcpsrwo/MjmxIL1/p8WOKITyzbcKRP78D6DAkzdcNOUHpfwdF874AYDv4C/wC3n/oXx7NZ5I8ssm20l5IWiWQmGfxmEZ/yAkLJXihBCGH4qSxVbMCC1ZVimBlAsOSgqzSnG+y4DBcYcq1IGZCPfFU9zkDzoYHob2KFlxBimQBZfBR3JmWRA1wAQFCese/6MSUYxppH7btHog7DY9A000dntGKNG4OYa/pLoTQ9BoNOPbX7kYY5w6lFrN2GhmEmtC9BanocQio9S0KBwwrB6TaA8+HCKlafY0LkinVLITqbfrPoU3wNwozof5rcGGIMawshC7SPLE73rGJ3yfZdA5XCvJGtJk8yFDSWCn2JXYwwMLx9Aot3BykjL4IUuaWWHwkCVpSUnGcEHTkVyX9d0EN/Xta1uf0UxxTweIcYfpRaxIbppa+KyHNbkYi4vR0nQAP12kvRJfB5QS4wTE4JUlAzrX/dNTaoXSbYzr0CCmmfbh8kE/feglSoiLuMaZREcRHMFnlXsaNawZpeOYt/aTkVhGIrlnSYhiwlyMwR/Q+jTBLXlxMmZkIga6HbXckBkxGIIZRga2itMsdN1EclL2BC0yGIdWCp5gnCVsDNc/3EhRb4//ecyBhi+dcQ8Tp+k9jOQ4NaD3FJQwjxGdGO/dt1wcFqGUpXmz0hIujIWpAWYE15FQGsYJqEuNJxjqrETpE3RBsFwTzsuejHtssJNYCl30enuaOLmDpVg4oWGIuwHgAyyDHnpyAk6aScjC3A9PfRHNhw4cJiQ/lZ/JGPr1AeUnE3Rs4AulQRby3V60QF7/tFIgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAIBAIBAKBQCAQCASC/zP+B4z7N58BBLkAAAAAAElFTkSuQmCC" alt="BAT" class="h-20 mx-auto">
+                <h3 class="text-xl font-semibold">British American Tobacco</h3>
+                <p class="text-gray-400 mt-2 group-hover:hidden">Click to learn more</p>
+                <div class="hidden group-hover:block text-gray-300 mt-4">
+                    <p>Fincom Africa provides ICT support & infrastructure management to BAT, ensuring smooth day-to-day operations. We handle network security, server management, and IT maintenance, enabling BAT to maintain an efficient and secure digital ecosystem. Our team ensures zero downtime in IT services, facilitating seamless workflow across BAT's operations in East Africa.</p>
+                </div>
+            </div>
+            <div class="p-6 bg-white bg-opacity-10 rounded-lg shadow-md relative group">
+                <img src="data:image/jpeg;base64,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" alt="I&M Bank" class="h-20 mx-auto">
+                <h3 class="text-xl font-semibold">CFAO Mobility</h3>
+                <p class="text-gray-400 mt-2 group-hover:hidden">Click to learn more</p>
+                <div class="hidden group-hover:block text-gray-300 mt-4">
+                    <p>We play a critical role in CFAO Mobility’s ICT management, helping to integrate automotive business solutions with digital platforms. Our IT support services ensure that CFAO’s operations—ranging from vehicle sales to servicing and logistics—run efficiently. We provide enterprise software solutions, helping CFAO manage inventory, customer relations, and real-time vehicle tracking.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="contact" class="py-16 bg-gray-100">
     <div class="container mx-auto text-center px-4 sm:px-6">
         <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8">Contact Us</h2>
@@ -352,76 +419,76 @@
     </div>
 </section>
 
-<footer class="bg-gray-900 text-gray-300 py-10">
-    <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left px-4 sm:px-6">
-        <!-- Brand -->
-        <div>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white">Fincom <span class="text-orange-600">Africa</span></h2>
-            <p class="mt-2 text-gray-400 text-sm sm:text-base">Innovating the Future of ICT Solutions.</p>
-        </div>
+    <footer class="bg-gray-900 text-gray-300 py-10">
+        <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left px-4 sm:px-6">
+            <!-- Brand -->
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Fincom <span class="text-orange-600">Africa</span></h2>
+                <p class="mt-2 text-gray-400 text-sm sm:text-base">Innovating the Future of ICT Solutions.</p>
+            </div>
 
-        <!-- Quick Links -->
-        <div>
-            <h3 class="text-lg sm:text-xl font-semibold text-white mb-3">Quick Links</h3>
-            <ul class="space-y-2 text-sm sm:text-base">
-                <li><a href="#home" class="hover:text-blue-500">Home</a></li>
-                <li><a href="#about" class="hover:text-blue-500">About Us</a></li>
-                <li><a href="#services" class="hover:text-blue-500">Services</a></li>
-                <li><a href="#products" class="hover:text-blue-500">Products</a></li>
-                <li><a href="#contact" class="hover:text-blue-500">Contact</a></li>
-            </ul>
-        </div>
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-lg sm:text-xl font-semibold text-white mb-3">Quick Links</h3>
+                <ul class="space-y-2 text-sm sm:text-base">
+                    <li><a href="#home" class="hover:text-blue-500">Home</a></li>
+                    <li><a href="#about" class="hover:text-blue-500">About Us</a></li>
+                    <li><a href="#services" class="hover:text-blue-500">Services</a></li>
+                    <li><a href="#products" class="hover:text-blue-500">Products</a></li>
+                    <li><a href="#contact" class="hover:text-blue-500">Contact</a></li>
+                </ul>
+            </div>
 
-        <!-- Contact Info -->
-        <div>
-            <h3 class="text-lg sm:text-xl font-semibold text-white mb-3">Contact Info</h3>
-            <p class="text-gray-400 text-sm sm:text-base">📍 Nairobi, Kenya</p>
-            <p class="text-gray-400 text-sm sm:text-base">📧 info@fincomafrica.com</p>
-            <p class="text-gray-400 text-sm sm:text-base">📞 +254 700 123 456</p>
-        </div>
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-lg sm:text-xl font-semibold text-white mb-3">Contact Info</h3>
+                <p class="text-gray-400 text-sm sm:text-base">📍 Nairobi, Kenya</p>
+                <p class="text-gray-400 text-sm sm:text-base">📧 info@fincomafrica.com</p>
+                <p class="text-gray-400 text-sm sm:text-base">📞 +254 700 123 456</p>
+            </div>
 
-        <!-- Social Media -->
-        <div>
-            <h3 class="text-lg sm:text-xl font-semibold text-white mb-3">Follow Us</h3>
-            <div class="flex justify-center md:justify-start space-x-4 text-2xl">
-                <a href="#" class="hover:text-blue-500"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="hover:text-blue-500"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="hover:text-blue-500"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="hover:text-blue-500"><i class="bx bxl-linkedin"></i></a>
+            <!-- Social Media -->
+            <div>
+                <h3 class="text-lg sm:text-xl font-semibold text-white mb-3">Follow Us</h3>
+                <div class="flex justify-center md:justify-start space-x-4 text-2xl">
+                    <a href="#" class="hover:text-blue-500"><i class="bx bxl-facebook"></i></a>
+                    <a href="#" class="hover:text-blue-500"><i class="bx bxl-twitter"></i></a>
+                    <a href="#" class="hover:text-blue-500"><i class="bx bxl-instagram"></i></a>
+                    <a href="#" class="hover:text-blue-500"><i class="bx bxl-linkedin"></i></a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="text-center">
-        <h3 class="text-lg sm:text-xl font-semibold text-white mb-3">Scan to Chat</h3>
-        <img src="qr-code.png" 
-             alt="WhatsApp QR Code" class="mx-auto w-24 sm:w-32 shadow-lg rounded-lg">
-        <p class="text-gray-400 text-sm sm:text-base mt-2">Scan to chat with us on WhatsApp</p>
-    </div>
-        
-    <!-- Copyright -->
-    <div class="mt-10 text-center text-gray-500 border-t border-gray-700 pt-5">
-        <p>&copy; 2025 Fincom Africa. All Rights Reserved.</p>
-        <p>Powered by GPT-4.0</p>
-    </div>
-</footer>
+        <div class="text-center">
+            <h3 class="text-lg sm:text-xl font-semibold text-white mb-3">Scan to Chat</h3>
+            <img src="qr-code.png" 
+                alt="WhatsApp QR Code" class="mx-auto w-24 sm:w-32 shadow-lg rounded-lg">
+            <p class="text-gray-400 text-sm sm:text-base mt-2">Scan to chat with us on WhatsApp</p>
+        </div>
+            
+        <!-- Copyright -->
+        <div class="mt-10 text-center text-gray-500 border-t border-gray-700 pt-5">
+            <p>&copy; 2025 Fincom Africa. All Rights Reserved.</p>
+            <p>Powered by GPT-4.0</p>
+        </div>
+    </footer>
 
-<!-- AI Chatbot -->
-<div class="chat-icon fixed bottom-6 right-6 bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg cursor-pointer hover:bg-blue-700 transition" onclick="toggleChat()">
-    💬
-</div>
+    <!-- AI Chatbot -->
+    <div class="chat-icon fixed bottom-6 right-6 bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-lg cursor-pointer hover:bg-blue-700 transition" onclick="toggleChat()">
+        💬
+    </div>
 
-<div class="chatbot-container fixed bottom-16 right-6 w-80 bg-white shadow-lg rounded-lg overflow-hidden hidden" id="chatbot">
-    <div class="chat-header bg-blue-600 text-white p-3 flex justify-between items-center">
-        <span>AI Assistant</span>
-        <span onclick="toggleChat()" class="cursor-pointer">✖</span>
+    <div class="chatbot-container fixed bottom-16 right-6 w-80 bg-white shadow-lg rounded-lg overflow-hidden hidden" id="chatbot">
+        <div class="chat-header bg-blue-600 text-white p-3 flex justify-between items-center">
+            <span>AI Assistant</span>
+            <span onclick="toggleChat()" class="cursor-pointer">✖</span>
+        </div>
+        <div class="chat-body p-4 h-56 overflow-y-auto" id="chat-body">
+            <p>Hello! How can I assist you?</p>
+        </div>
+        <div class="chat-footer flex border-t border-gray-300">
+            <input type="text" id="chat-input" class="flex-1 p-2 border-none outline-none" placeholder="Type a message...">
+            <button onclick="sendMessage()" class="bg-blue-600 text-white px-4">➤</button>
+        </div>
     </div>
-    <div class="chat-body p-4 h-56 overflow-y-auto" id="chat-body">
-        <p>Hello! How can I assist you?</p>
-    </div>
-    <div class="chat-footer flex border-t border-gray-300">
-        <input type="text" id="chat-input" class="flex-1 p-2 border-none outline-none" placeholder="Type a message...">
-        <button onclick="sendMessage()" class="bg-blue-600 text-white px-4">➤</button>
-    </div>
-</div>
 </body>
 </html>
