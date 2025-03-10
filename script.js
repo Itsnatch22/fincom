@@ -163,3 +163,18 @@ function selectProduct(product) {
     dropdown.classList.add("hidden");
     document.getElementById("search-input").value = product.name;
 }
+
+const cursorGlow = document.getElementById("cursor-glow");
+
+    document.addEventListener("mousemove", (e) => {
+        cursorGlow.style.transform = `translate(${e.clientX - 72}px, ${e.clientY - 72}px) scale(1)`; 
+    });
+
+    document.addEventListener("mouseenter", () => {
+        cursorGlow.style.transition = "opacity 0.2s ease-in-out, transform 0.1s linear";
+        cursorGlow.style.opacity = "1";
+    });
+
+    document.addEventListener("mouseleave", () => {
+        cursorGlow.style.opacity = "0";
+    });
