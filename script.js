@@ -322,10 +322,15 @@ function selectProduct(product) {
 }
 
 //cart
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function addToCart(product) {
-    cart.push(product);
+    // Convert price to number before storing
+    let productPrice = parseFloat(product.price.replace(/[^0-9.]/g, ""));
+    cart.push({ ...product, price: productPrice });
+
+    // Store updated cart in localStorage
+    localStorage.setItem("cart", JSON.stringify(cart));
     updateCartUI();
 }
 
@@ -338,28 +343,31 @@ function updateCartUI() {
     let total = 0;
 
     cart.forEach((product, index) => {
-        total += parseFloat(product.price.replace("$", ""));
+        total += product.price; // No need to parse again
+
         let li = document.createElement("li");
         li.classList = "flex justify-between items-center border-b pb-2";
         li.innerHTML = `
-            <span>${product.name} - ${product.price}</span>
+            <span>${product.name} - $${product.price.toFixed(2)}</span>
             <button class="text-red-500" onclick="removeFromCart(${index})">❌</button>
         `;
         cartItems.appendChild(li);
     });
 
-    cartTotal.innerText = `$${total.toFixed(2)}`;
+    cartTotal.innerText = `Total: $${total.toFixed(2)}`;
     cartCount.innerText = cart.length;
     cartCount.classList.toggle("hidden", cart.length === 0);
 }
 
 function removeFromCart(index) {
     cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart)); // Update storage
     updateCartUI();
 }
 
 function clearCart() {
     cart = [];
+    localStorage.removeItem("cart");
     updateCartUI();
 }
 
@@ -367,6 +375,8 @@ function toggleCart() {
     document.getElementById("cart-modal").classList.toggle("hidden");
 }
 
+// Load cart on page load
+document.addEventListener("DOMContentLoaded", updateCartUI);
 
 const cursorGlow = document.getElementById("cursor-glow");
 
