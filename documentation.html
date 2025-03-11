@@ -3,43 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fincom Documentation</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-</head>
-<body class="bg-gray-100">
-    <div id="doc-container" class="container mx-auto p-8">
-        <h1 class="text-4xl font-bold text-center text-blue-600">Fincom Africa Documentation</h1>
-        <p class="text-gray-600 text-center mt-2">Technical guides, API references, and updates.</p>
-        
-        <div class="mt-6">
-            <h2 class="text-2xl font-semibold text-gray-800">1. Introduction</h2>
-            <p class="text-gray-600">Fincom Africa provides IT solutions ranging from networking, cybersecurity, cloud solutions, and more.</p>
-        </div>
-        
-        <div class="mt-6">
-            <h2 class="text-2xl font-semibold text-gray-800">2. Tech Stack</h2>
-            <ul class="list-disc ml-6 text-gray-600">
-                <li>Frontend: HTML, Tailwind CSS, JavaScript</li>
-                <li>Backend: Node.js (Upcoming)</li>
-                <li>Database: MongoDB (Upcoming)</li>
-                <li>APIs: OpenAI API for AI integration</li>
-            </ul>
-        </div>
-        
-        <div class="mt-6">
-            <h2 class="text-2xl font-semibold text-gray-800">3. Future Updates</h2>
-            <p class="text-gray-600">- E-commerce checkout integration <br>- User authentication system <br>- AI-powered chatbot</p>
-        </div>
-    </div>
-    
-    <script>
-        const isAdmin = localStorage.getItem("isAdmin") === "true"; 
-        if (!isAdmin) {
-            document.getElementById("doc-container").innerHTML = `
-                <h1 class='text-3xl text-center mt-20 text-gray-800'>Feature Rolling Out Soon 🚀</h1>
-                <p class='text-center text-gray-500'>Stay tuned for updates.</p>
-            `;
+    <title>Fincom Admin Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
         }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        pre {
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!localStorage.getItem("fincomAdminAuth")) {
+                let access = prompt("Enter Admin Password:");
+                if (access !== "fincom2024") {
+                    document.body.innerHTML = "<h1>Feature Rolling Out Soon</h1>";
+                } else {
+                    localStorage.setItem("fincomAdminAuth", "true");
+                }
+            }
+        });
     </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Fincom Africa - Admin Documentation</h1>
+        <h2>1. Introduction</h2>
+        <p>Fincom Africa is a leading ICT solutions provider, specializing in Managed ICT Services, Networking & Infrastructure, Servers & Storage, and more.</p>
+        
+        <h2>2. Installation & Setup</h2>
+        <pre>git clone https://github.com/Fincom-Africa/website.git</pre>
+        <pre>npm install</pre>
+        <pre>vercel --prod</pre>
+        
+        <h2>3. Features & Services</h2>
+        <ul>
+            <li>✔ Dynamic Logo Changing</li>
+            <li>✔ Interactive Product Search</li>
+            <li>✔ Shopping Cart & Checkout Redirection</li>
+            <li>✔ Testimonials Section with Swiper.js</li>
+        </ul>
+
+        <h2>4. API Integration (Planned)</h2>
+        <ul>
+            <li>🚀 OpenAI API (Chatbot)</li>
+            <li>🚀 Daraja API (MPesa Payments)</li>
+            <li>🚀 External Tech Stores API (Product Prices)</li>
+        </ul>
+
+        <h2>5. Maintenance & Updates</h2>
+        <pre>git add .
+git commit -m "Updated product search feature"
+git push origin main</pre>
+        <p>Re-deploy the site on Vercel.</p>
+
+        <h2>6. Access Control</h2>
+        <p><strong>Admins Can:</strong> Manage products, track users, push updates.</p>
+        <p><strong>Regular Users:</strong> Can browse, but restricted from admin features.</p>
+    </div>
 </body>
 </html>
