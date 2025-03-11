@@ -7,33 +7,51 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            if (localStorage.getItem("fincomAdminAuth")) {
-                alert("Admin already logged in. Only one admin session allowed.");
-                document.body.innerHTML = "<h1 class='text-2xl text-center text-gray-700 mt-10'>Feature Rolling Out Soon</h1>";
-                return;
-            }
+    if (localStorage.getItem("fincomAdminAuth")) {
+        alert("Admin already logged in. Only one admin session allowed.");
+        document.body.innerHTML = "<h1 class='text-2xl text-center text-gray-700 mt-10'>Feature Rolling Out Soon</h1>";
+        return;
+    }
 
-            let access = prompt("Enter Admin Password:");
-            if (access !== "fincom2025") {
-                document.body.innerHTML = "<h1 class='text-2xl text-center text-gray-700 mt-10'>Feature Rolling Out Soon</h1>";
-            } else {
-                localStorage.setItem("fincomAdminAuth", "true");
-                alert("Welcome, Admin!");
-            }
-        });
+    let passwordPrompt = document.createElement("div");
+    passwordPrompt.innerHTML = `
+        <div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-80 text-center">
+                <h2 class="text-xl font-semibold mb-3">Enter Admin Password</h2>
+                <input type="password" id="admin-password" class="w-full p-2 border rounded-lg text-center" placeholder="********">
+                <button id="submit-password" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg">Login</button>
+            </div>
+        </div>
+    `;
 
-        function adminLogout() {
-            localStorage.removeItem("fincomAdminAuth");
-            alert("Logged out successfully.");
+    document.body.appendChild(passwordPrompt);
+
+    document.getElementById("submit-password").addEventListener("click", function () {
+        let access = document.getElementById("admin-password").value;
+        if (access !== "fincom2025") {
+            document.body.innerHTML = "<h1 class='text-2xl text-center text-gray-700 mt-10'>Feature Rolling Out Soon 🚀🔥</h1>";
+        } else {
+            localStorage.setItem("fincomAdminAuth", "true");
+            alert("Welcome, Admin!");
             location.reload();
         }
+    });
+});
+
+function adminLogout() {
+    localStorage.removeItem("fincomAdminAuth");
+    alert("Logged out successfully.");
+    location.reload();
+}
+
     </script>
 </head>
 <body class="bg-gray-100 p-6">
     <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
         <h1 class="text-3xl font-bold text-gray-800">Fincom Africa - Admin Documentation</h1>
         <h2 class="text-2xl font-semibold mt-6">1. Introduction</h2>
-        <p class="text-gray-700 mt-2">Fincom Africa is a leading ICT solutions provider, specializing in Managed ICT Services, Networking & Infrastructure, Servers & Storage, and more.</p>
+        <p class="text-gray-700 mt-2">Fincom Africa is a leading ICT solutions provider, specializing in Managed ICT Services, Networking & Infrastructure, Servers & Storage, and more. This documentation serves as a reference for internal administration, updates, and system maintenance.</p>
+        <p class="text-gray-700 mt-2"><strong>Note:</strong>This document is only accessible to admins. Regular users will see a "Feature Rolling Out Soon" message.</p>
         
         <h2 class="text-2xl font-semibold mt-6">2. Installation & Setup</h2>
         <pre class="bg-gray-200 p-4 rounded-md mt-2">git clone https://github.com/Fincom-Africa/website.git</pre>
@@ -42,10 +60,10 @@
         
         <h2 class="text-2xl font-semibold mt-6">3. Features & Services</h2>
         <ul class="list-disc list-inside text-gray-700 mt-2">
-            <li>✔ Dynamic Logo Changing</li>
-            <li>✔ Interactive Product Search</li>
-            <li>✔ Shopping Cart & Checkout Redirection</li>
-            <li>✔ Testimonials Section with Swiper.js</li>
+            <li>✔️ Dynamic Logo Changing</li>
+            <li>✔️ Interactive Product Search</li>
+            <li>✔️ Shopping Cart & Checkout Redirection</li>
+            <li>✔️ Testimonials Section with Swiper.js</li>
         </ul>
 
         <h2 class="text-2xl font-semibold mt-6">4. API Integration (Planned)</h2>
@@ -65,6 +83,15 @@ git push origin main</pre>
         <p class="text-gray-700 mt-2"><strong>Admins Can:</strong> Manage products, track users, push updates.</p>
         <p class="text-gray-700"><strong>Regular Users:</strong> Can browse, but restricted from admin features.</p>
     </div>
+
+    <h2 class="text-2xl font-semibold mt-6">7. Future Plans</h2>
+        <ul class="list-disc list-inside text-gray-700 mt-2">
+            <li>✔️ Ensure the website scales efficiently</li>
+            <li>✔️ Maintain a high-performance, secure ICT platform</li>
+            <li>✔️ Continuously enhance user experience</li>
+            <li>✔️ A more updated UI with cool and stunning features</li>
+        </ul>
+
     <button onclick="adminLogout()" class="fixed bottom-6 right-6 bg-red-600 text-white px-4 py-2 rounded-md shadow-lg hover:bg-red-700">Logout</button>
 </body>
 </html>
