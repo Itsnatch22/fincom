@@ -4,90 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fincom Admin Documentation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            color: #333;
-        }
-        pre {
-            background: #eee;
-            padding: 10px;
-            border-radius: 5px;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-        if (localStorage.getItem("fincomAdminAuth")) {
-            alert("Admin already logged in. Only one admin session allowed.");
-            document.body.innerHTML = "<h1>Feature Rolling Out Soon</h1>";
-            return;
-        }
+            if (localStorage.getItem("fincomAdminAuth")) {
+                alert("Admin already logged in. Only one admin session allowed.");
+                document.body.innerHTML = "<h1 class='text-2xl text-center text-gray-700 mt-10'>Feature Rolling Out Soon</h1>";
+                return;
+            }
 
-        let access = prompt("Enter Admin Password:");
-        if (access !== "fincom2025") {
-            document.body.innerHTML = "<h1>Feature Rolling Out Soon</h1>";
-        } else {
-            localStorage.setItem("fincomAdminAuth", "true");
-            alert("Welcome, Admin!");
-        }
-    });
+            let access = prompt("Enter Admin Password:");
+            if (access !== "fincom2025") {
+                document.body.innerHTML = "<h1 class='text-2xl text-center text-gray-700 mt-10'>Feature Rolling Out Soon</h1>";
+            } else {
+                localStorage.setItem("fincomAdminAuth", "true");
+                alert("Welcome, Admin!");
+            }
+        });
 
-    function adminLogout() {
-        localStorage.removeItem("fincomAdminAuth");
-        alert("Logged out successfully.");
-        location.reload();
-    }
+        function adminLogout() {
+            localStorage.removeItem("fincomAdminAuth");
+            alert("Logged out successfully.");
+            location.reload();
+        }
     </script>
 </head>
-<body>
-    <div class="container">
-        <h1>Fincom Africa - Admin Documentation</h1>
-        <h2>1. Introduction</h2>
-        <p>Fincom Africa is a leading ICT solutions provider, specializing in Managed ICT Services, Networking & Infrastructure, Servers & Storage, and more.</p>
+<body class="bg-gray-100 p-6">
+    <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold text-gray-800">Fincom Africa - Admin Documentation</h1>
+        <h2 class="text-2xl font-semibold mt-6">1. Introduction</h2>
+        <p class="text-gray-700 mt-2">Fincom Africa is a leading ICT solutions provider, specializing in Managed ICT Services, Networking & Infrastructure, Servers & Storage, and more.</p>
         
-        <h2>2. Installation & Setup</h2>
-        <pre>git clone https://github.com/Fincom-Africa/website.git</pre>
-        <pre>npm install</pre>
-        <pre>vercel --prod</pre>
+        <h2 class="text-2xl font-semibold mt-6">2. Installation & Setup</h2>
+        <pre class="bg-gray-200 p-4 rounded-md mt-2">git clone https://github.com/Fincom-Africa/website.git</pre>
+        <pre class="bg-gray-200 p-4 rounded-md mt-2">npm install</pre>
+        <pre class="bg-gray-200 p-4 rounded-md mt-2">vercel --prod</pre>
         
-        <h2>3. Features & Services</h2>
-        <ul>
+        <h2 class="text-2xl font-semibold mt-6">3. Features & Services</h2>
+        <ul class="list-disc list-inside text-gray-700 mt-2">
             <li>✔ Dynamic Logo Changing</li>
             <li>✔ Interactive Product Search</li>
             <li>✔ Shopping Cart & Checkout Redirection</li>
             <li>✔ Testimonials Section with Swiper.js</li>
         </ul>
 
-        <h2>4. API Integration (Planned)</h2>
-        <ul>
+        <h2 class="text-2xl font-semibold mt-6">4. API Integration (Planned)</h2>
+        <ul class="list-disc list-inside text-gray-700 mt-2">
             <li>🚀 OpenAI API (Chatbot)</li>
             <li>🚀 Daraja API (MPesa Payments)</li>
             <li>🚀 External Tech Stores API (Product Prices)</li>
         </ul>
 
-        <h2>5. Maintenance & Updates</h2>
-        <pre>git add .
+        <h2 class="text-2xl font-semibold mt-6">5. Maintenance & Updates</h2>
+        <pre class="bg-gray-200 p-4 rounded-md mt-2">git add .
 git commit -m "Updated product search feature"
 git push origin main</pre>
-        <p>Re-deploy the site on Vercel.</p>
+        <p class="text-gray-700 mt-2">Re-deploy the site on Vercel.</p>
 
-        <h2>6. Access Control</h2>
-        <p><strong>Admins Can:</strong> Manage products, track users, push updates.</p>
-        <p><strong>Regular Users:</strong> Can browse, but restricted from admin features.</p>
+        <h2 class="text-2xl font-semibold mt-6">6. Access Control</h2>
+        <p class="text-gray-700 mt-2"><strong>Admins Can:</strong> Manage products, track users, push updates.</p>
+        <p class="text-gray-700"><strong>Regular Users:</strong> Can browse, but restricted from admin features.</p>
     </div>
-    <button onclick="adminLogout()" style="position: fixed; bottom: 20px; right: 20px; background: red; color: white; padding: 10px; border: none; cursor: pointer;">Logout</button>
+    <button onclick="adminLogout()" class="fixed bottom-6 right-6 bg-red-600 text-white px-4 py-2 rounded-md shadow-lg hover:bg-red-700">Logout</button>
 </body>
 </html>
