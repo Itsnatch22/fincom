@@ -411,3 +411,36 @@ const cursorGlow = document.getElementById("cursor-glow");
     document.addEventListener("mouseleave", () => {
         cursorGlow.style.opacity = "0";
     });
+
+document.addEventListener("DOMContentLoaded", function () {
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+        });
+    });
+
+    
+    document.addEventListener("DOMContentLoaded", function () {
+        new Swiper(".testimonialSwiper", {
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    });
