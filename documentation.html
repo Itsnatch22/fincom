@@ -6,45 +6,33 @@
     <title>Fincom Admin Documentation</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    if (localStorage.getItem("fincomAdminAuth")) {
-        alert("Admin already logged in. Only one admin session allowed.");
-        document.body.innerHTML = "<h1 class='text-2xl text-center text-gray-700 mt-10'>Feature Rolling Out Soon🚀🔥</h1>";
-        return;
-    }
+    document.addEventListener("DOMContentLoaded", function () {
+        if (localStorage.getItem("fincomAdminAuth") === "true") {
+            // Admin is logged in, proceed to documentation
+            return;
+        }
 
-    let passwordPrompt = document.createElement("div");
-    passwordPrompt.innerHTML = `
-        <div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-            <div class="bg-white p-6 rounded-lg shadow-lg w-80 text-center">
-                <h2 class="text-xl font-semibold mb-3">Enter Admin Password</h2>
-                <input type="password" id="admin-password" class="w-full p-2 border rounded-lg text-center" placeholder="********">
-                <button id="submit-password" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg">Login</button>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(passwordPrompt);
-
-    document.getElementById("submit-password").addEventListener("click", function () {
-        let access = document.getElementById("admin-password").value;
+        let access = prompt("Enter Admin Password:");
         if (access !== "fincom2025") {
-            document.body.innerHTML = "<h1 class='text-2xl text-center text-gray-700 mt-10'>Feature Rolling Out Soon 🚀🔥</h1>";
+            document.body.innerHTML = "<h1 class='text-2xl text-center text-gray-700 mt-10'>Feature Rolling Out Soon🚀🔥</h1>";
         } else {
             localStorage.setItem("fincomAdminAuth", "true");
             alert("Welcome, Admin!");
-            location.reload();
         }
     });
-});
 
-function adminLogout() {
-    localStorage.removeItem("fincomAdminAuth");
-    alert("Logged out successfully.");
-    location.reload();
-}
+    function adminLogout() {
+        localStorage.removeItem("fincomAdminAuth");
+        alert("Logged out successfully.");
+        location.reload();
+    }
 
-    </script>
+    function resetAdminAccess() {
+        localStorage.clear();
+        alert("Admin access reset. You will need to log in again.");
+        location.reload();
+    }
+</script>
 </head>
 <body class="bg-gray-100 p-6">
     <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
@@ -92,6 +80,8 @@ git push origin main</pre>
             <li>✔️ A more updated UI with cool and stunning features</li>
         </ul>
 
-    <button onclick="adminLogout()" class="fixed bottom-6 right-6 bg-red-600 text-white px-4 py-2 rounded-md shadow-lg hover:bg-red-700">Logout</button>
+    <!-- Logout & Emergency Reset Buttons -->
+<button onclick="adminLogout()" class="fixed bottom-5 right-5 bg-red-500 text-white px-4 py-2 rounded-lg">Logout</button>
+<button onclick="resetAdminAccess()" class="fixed bottom-5 left-5 bg-gray-600 text-white px-4 py-2 rounded-lg">Reset Access</button>
 </body>
 </html>
