@@ -5,27 +5,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const day = today.getDate();
     const weekday = today.getDay(); // 0 = Sunday, 1 = Monday, etc.
 
-    // Special Events
+    // 🎉 Special Events
     const events = {
-        "1-1": { name: "New Year", color: "gold", effect: "🎆" },
-        "2-14": { name: "Valentine's Day", color: "red", effect: "💖" },
-        "6-1": { name: "Madaraka Day", color: "green", effect: "🇰🇪" },
-        "6-15": { name: "Pride Month", color: "rainbow", effect: "🏳️‍🌈" },
-        "10-10": { name: "Huduma Day", color: "blue", effect: "🤝" },
-        "10-20": { name: "Mashujaa Day", color: "red", effect: "🔥" },
-        "12-12": { name: "Jamhuri Day", color: "black", effect: "🦁" },
-        "12-25": { name: "Christmas", color: "red-green", effect: "🎄" }
+        "1-1": { name: "New Year", color: "gold", font: "font-extrabold", effect: "🎆" },
+        "2-14": { name: "Valentine's Day", color: "red", font: "italic", effect: "💖" },
+        "6-1": { name: "Madaraka Day", color: "green", font: "font-bold", effect: "🇰🇪" },
+        "6-15": { name: "Pride Month", color: "rainbow", font: "font-serif", effect: "🏳️‍🌈" },
+        "10-10": { name: "Huduma Day", color: "blue", font: "underline", effect: "🤝" },
+        "10-20": { name: "Mashujaa Day", color: "red", font: "font-bold", effect: "🔥" },
+        "10-31": { name: "Halloween", color: "orange", font: "font-cursive", effect: "🎃" },
+        "12-12": { name: "Jamhuri Day", color: "black", font: "font-extrabold", effect: "🦁" },
+        "12-25": { name: "Christmas", color: "red-green", font: "font-sans", effect: "🎄" }
     };
 
-    // Daily Font & Color Rotations
+    // 🔄 Daily Font & Color Rotation
     const dailyStyles = [
-        { font: "font-bold", color: "text-blue-600" },  // Monday
-        { font: "italic", color: "text-red-600" },      // Tuesday
-        { font: "underline", color: "text-green-600" }, // Wednesday
-        { font: "font-serif", color: "text-orange-600" }, // Thursday
-        { font: "font-sans", color: "text-purple-600" }, // Friday
-        { font: "font-cursive", color: "text-yellow-600" }, // Saturday
-        { font: "font-extrabold", color: "text-pink-600" } // Sunday
+        { font: "font-bold", color: "blue" },  // Monday
+        { font: "italic", color: "red" },      // Tuesday
+        { font: "underline", color: "green" }, // Wednesday
+        { font: "font-serif", color: "orange" }, // Thursday
+        { font: "font-sans", color: "purple" }, // Friday
+        { font: "font-cursive", color: "yellow" }, // Saturday
+        { font: "font-extrabold", color: "pink" } // Sunday
     ];
 
     const eventKey = `${month}-${day}`;
@@ -49,13 +50,30 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             logo.style.color = event.color;
         }
+
+        logo.style.fontFamily = getFontFamily(event.font);
         logo.innerHTML = `Fincom Africa ${event.effect}`;
     }
 
     function applyDailyStyling(style) {
-        logo.className = `text-3xl ${style.font} ${style.color}`;
+        logo.style.color = style.color;
+        logo.style.fontFamily = getFontFamily(style.font);
+    }
+
+    function getFontFamily(font) {
+        const fonts = {
+            "font-bold": "'Poppins', sans-serif",
+            "italic": "'Dancing Script', cursive",
+            "underline": "'Oswald', sans-serif",
+            "font-serif": "'Merriweather', serif",
+            "font-sans": "'Roboto', sans-serif",
+            "font-cursive": "'Pacifico', cursive",
+            "font-extrabold": "'UnifrakturCook', cursive"
+        };
+        return fonts[font] || "'Arial', sans-serif"; // Default font
     }
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const userCounter = document.createElement("div");
