@@ -11,93 +11,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
-    <style>
-         @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        .old-english-font {
-            font-family: 'UnifrakturCook', cursive;
-        }
-
-        .marquee-container {
-            display: flex;
-            flex-wrap: nowrap;
-            gap: 40px; 
-        }
-        .chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-        }
-        .chat-header {
-            background: #2563eb;
-            color: white;
-            padding: 10px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .chat-body {
-            padding: 10px;
-            height: 200px;
-            overflow-y: auto;
-        }
-        .chat-footer {
-            display: flex;
-            border-top: 1px solid #ddd;
-        }
-        .chat-footer input {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            outline: none;
-        }
-        .chat-footer button {
-            background: #2563eb;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-        }
-        .chat-icon {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #2563eb;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        @keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.animate-gradient {
-  background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
-}
-
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body class="bg-gray-100">
     
@@ -150,24 +66,41 @@
         </div>
     </div>
     
-    <section class="h-screen relative bg-cover bg-center flex items-center justify-center px-4 sm:px-8" style="background-image: url('https://images.unsplash.com/photo-1571786256017-aee7a0c009b6?w=1080&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2VydmVyfGVufDB8fDB8fHww');">
+    <section class="hero">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- Slide 1: Networking -->
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <h1>Advanced Networking Solutions</h1>
+                        <p>Secure, fast, and scalable networking infrastructure for businesses.</p>
+                        <a href="#networking" class="read-more">Read More</a>
+                    </div>
+                </div>
     
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-        
-        <div class="relative z-10 text-center max-w-4xl">
-            <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-bold leading-tight">
-                Leaders in Contracted ICT Support
-            </h1>
-            <p class="text-gray-300 mt-4 text-sm sm:text-lg md:text-xl">
-                Providing innovative tech solutions for businesses
-            </p>
-            <a href="#services" class="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">
-                Explore Services
-            </a>
+                <!-- Slide 2: Cybersecurity -->
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <h1>Cutting-Edge Cybersecurity</h1>
+                        <p>Protecting your business with AI-driven security solutions.</p>
+                        <a href="#cybersecurity" class="read-more">Read More</a>
+                    </div>
+                </div>
+    
+                <!-- Slide 3: Cloud Solutions -->
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <h1>Scalable Cloud Solutions</h1>
+                        <p>Flexible cloud platforms to power your business transformation.</p>
+                        <a href="#cloud" class="read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Swiper Pagination -->
+            <div class="swiper-pagination"></div>
         </div>
     </section>
-
-
+    
     <section id="about" class="relative overflow-hidden">
 
         <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
@@ -332,26 +265,38 @@
         }
     </style>
 
-<section id="testimonials" class="py-16 bg-gray-900 text-white relative">
-    <div class="container mx-auto text-center">
-        <h2 class="text-4xl font-bold mb-10">What Our Clients Say</h2>
+<section id="testimonials" class="testimonials-section">
+    <div class="container">
+        <h2 class="section-title">What Our Clients Say</h2>
 
         <!-- Swiper Testimonial Slider -->
         <div class="swiper testimonialSwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
-                    <p class="text-lg text-gray-300">"Fincom Africa transformed our business with top-notch IT solutions!"</p>
-                    <h4 class="mt-4 font-bold text-orange-400">- John Doe, CEO of TechCorp</h4>
+                <div class="swiper-slide testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe" class="testimonial-img">
+                    <h4 class="testimonial-name">John Doe</h4>
+                    <p class="testimonial-position">CEO, TechCorp</p>
+                    <p class="testimonial-text">"Fincom Africa transformed our business with top-notch IT solutions!"</p>
                 </div>
-                <div class="swiper-slide bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
-                    <p class="text-lg text-gray-300">"Their cybersecurity solutions are the best in the industry!"</p>
-                    <h4 class="mt-4 font-bold text-orange-400">- Sarah Johnson, IT Manager</h4>
+                <div class="swiper-slide testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson" class="testimonial-img">
+                    <h4 class="testimonial-name">Sarah Johnson</h4>
+                    <p class="testimonial-position">IT Manager</p>
+                    <p class="testimonial-text">"Their cybersecurity solutions are the best in the industry!"</p>
                 </div>
-                <div class="swiper-slide bg-white bg-opacity-10 p-6 rounded-lg shadow-md">
-                    <p class="text-lg text-gray-300">"Reliable, fast, and innovative. Highly recommended!"</p>
-                    <h4 class="mt-4 font-bold text-orange-400">- Mike Smith, CTO of InnovateX</h4>
+                <div class="swiper-slide testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/50.jpg" alt="Mike Smith" class="testimonial-img">
+                    <h4 class="testimonial-name">Mike Smith</h4>
+                    <p class="testimonial-position">CTO, InnovateX</p>
+                    <p class="testimonial-text">"Reliable, fast, and innovative. Highly recommended!"</p>
                 </div>
             </div>
+
+            <!-- Navigation Buttons -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+
+            <!-- Pagination -->
             <div class="swiper-pagination"></div>
         </div>
     </div>
@@ -407,7 +352,7 @@
                 <h3 class="text-lg sm:text-xl font-semibold text-gray-700">Get in Touch</h3>
                 <p class="text-gray-500 mt-2">📍 <strong>Location:</strong> Nairobi, Kenya</p>
                 <p class="text-gray-500">📧 <strong>Email:</strong> info@fincomafrica.com</p>
-                <p class="text-gray-500">📞 <strong>Phone:</strong> +254 700 123 456</p>
+                <p class="text-gray-500">📞 <strong>Phone:</strong> +254 20 273 1144</p>
                 <div class="mt-4 w-full">
                     <iframe class="w-full h-56 rounded-lg shadow-lg"
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.079353361776!2d36.821946050000005!3d-1.2863898999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d4f3e8559d%3A0xc6bb9b6d3a89d7b2!2sNairobi!5e0!3m2!1sen!2ske!4v1630937878951!5m2!1sen!2ske"
@@ -436,6 +381,7 @@
                     <li><a href="#services" class="hover:text-blue-500">Services</a></li>
                     <li><a href="#products" class="hover:text-blue-500">Products</a></li>
                     <li><a href="#contact" class="hover:text-blue-500">Contact</a></li>
+                    <li><a href="#contact" class="hover:text-blue-500">Documentation</a></li>
                 </ul>
             </div>
 
