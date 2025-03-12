@@ -4,44 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cybersecurity | Fincom</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/plugins/animation.gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/plugins/debug.addIndicators.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .glitch {
+            position: relative;
+            display: inline-block;
+            color: #0ff;
+            font-weight: bold;
+            animation: glitch 1s infinite linear alternate-reverse;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px #ff0000; }
+            25% { text-shadow: -2px -2px #00ff00; }
+            50% { text-shadow: 2px -2px #0000ff; }
+            75% { text-shadow: -2px 2px #ff00ff; }
+            100% { text-shadow: 2px 2px #00ffff; }
+        }
+        .shield {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: url('https://cdn-icons-png.flaticon.com/512/2103/2103665.png') no-repeat center;
+            background-size: contain;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
-    
-    <!-- Header -->
-    <header class="bg-blue-600 text-white p-5 text-center text-3xl font-bold">
-        Fincom Africa - Cybersecurity Solutions
+<body class="bg-gray-900 text-white">
+    <header class="bg-black text-white py-4 text-center text-3xl font-bold shadow-md">
+        <span class="glitch">Cybersecurity Solutions</span>
     </header>
-    
-    <!-- Main Content -->
-    <section class="max-w-6xl mx-auto p-6">
-        <h1 class="text-4xl font-bold text-center my-6">Protecting Your Business with Cutting-Edge Cybersecurity</h1>
-        
-        <p class="text-lg text-gray-700 text-center">At Fincom Africa, we provide robust cybersecurity solutions to safeguard your data and IT infrastructure.</p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-semibold text-blue-600">Network Security</h2>
-                <p class="mt-2 text-gray-600">We ensure your networks are protected from threats through firewalls, VPNs, and intrusion detection systems.</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-semibold text-blue-600">Endpoint Protection</h2>
-                <p class="mt-2 text-gray-600">Our endpoint security solutions protect all devices from malware, ransomware, and unauthorized access.</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-semibold text-blue-600">Data Encryption</h2>
-                <p class="mt-2 text-gray-600">Secure your sensitive business data with state-of-the-art encryption techniques.</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-lg">
-                <h2 class="text-2xl font-semibold text-blue-600">Security Audits & Compliance</h2>
-                <p class="mt-2 text-gray-600">We conduct security assessments to ensure your business is compliant with global cybersecurity standards.</p>
+    <div class="shield" id="shield"></div>
+    <section class="container mx-auto px-6 py-12">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold text-green-400 mb-6">Protecting Your Digital Assets</h2>
+            <p class="text-lg text-gray-300 leading-relaxed">Cybersecurity is essential in today's digital landscape, safeguarding sensitive information, preventing cyber threats, and ensuring business continuity.</p>
+            <div class="mt-6 p-6 bg-gray-800 shadow-lg rounded-lg">
+                <h3 class="text-2xl font-semibold text-green-300">Our Solutions</h3>
+                <ul class="list-disc pl-5 text-gray-300 mt-3">
+                    <li>Advanced threat detection and prevention</li>
+                    <li>Data encryption and secure access control</li>
+                    <li>Cyber risk assessment and compliance</li>
+                    <li>Incident response and recovery solutions</li>
+                </ul>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white text-center p-4 mt-10">
-        &copy; 2025 Fincom Africa | All Rights Reserved
+    <footer class="bg-black text-white text-center py-4 mt-10">
+        <p>&copy; 2025 Fincom Africa | All Rights Reserved.</p>
     </footer>
+    <script>
+        gsap.from("h2", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
+        gsap.from("p", { opacity: 0, y: 30, duration: 1, delay: 0.3, ease: "power2.out" });
+        gsap.from(".bg-gray-800", { opacity: 0, scale: 0.8, duration: 1, delay: 0.6, ease: "power2.out" });
+        
+        // Security shield animation
+        const shield = document.getElementById("shield");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+                shield.style.opacity = "1";
+            } else {
+                shield.style.opacity = "0";
+            }
+        });
+    </script>
 </body>
 </html>
