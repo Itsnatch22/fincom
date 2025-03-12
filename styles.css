@@ -101,8 +101,15 @@
 .swiper-slide:nth-child(1) { background-image: url('network.jpg'); }
 .swiper-slide:nth-child(2) { background-image: url('cyber.jpg'); }
 .swiper-slide:nth-child(3) { background-image: url('cloud.jpg'); }
-.swiper-slide:nth-child(4) { background-image: url('ict.jpg'); }
-.swiper-slide:nth-child(5) { background-image: url('bank.jpg'); }
+.swiper-slide:nth-child(4) { background-image: url('https://i.pinimg.com/236x/13/b9/98/13b998e05826ee20f238cf3b0f739000.jpg'); }
+.swiper-slide:nth-child(5) { background-image: url('https://i.pinimg.com/236x/10/43/3c/10433c98906331e048c4a9d7cff10e3a.jpg'); }
+.swiper-slide:nth-child(6) { background-image: url('https://i.pinimg.com/236x/75/87/df/7587df77ef521cf98057d0028ee983f1.jpg'); }
+.swiper-slide:nth-child(7) { background-image: url('https://i.pinimg.com/736x/e9/56/a0/e956a08618dd691c53c9404feba70f99.jpg'); }
+.swiper-slide:nth-child(8) { background-image: url('https://i.pinimg.com/236x/fd/a2/65/fda265907b5aa6bb2d4a7b3a990137d8.jpg'); }
+.swiper-slide:nth-child(9) { background-image: url('https://i.pinimg.com/736x/f8/f3/83/f8f383d10a7a73a23338cdd1938e3758.jpg'); }
+.swiper-slide:nth-child(10) { background-image: url('https://i.pinimg.com/236x/90/5f/9f/905f9f5ee99dd5e88079fb85cb29e2d6.jpg'); }
+.swiper-slide:nth-child(11) { background-image: url('https://i.pinimg.com/236x/dd/0f/c1/dd0fc1fd0993b5f33d3d11f5486eb06f.jpg'); }
+.swiper-slide:nth-child(11) { background-image: url('https://i.pinimg.com/236x/a8/96/e7/a896e73429c7028d4dd5d0a5c53782ee.jpg'); }
 
 .slide-content {
     color: white;
