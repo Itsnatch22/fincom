@@ -26,6 +26,7 @@
             color: #33ff33;
             overflow: hidden;
             min-height: 100px;
+            position: relative;
         }
         .typing::after {
             content: '|';
@@ -33,6 +34,18 @@
         }
         @keyframes blink {
             50% { opacity: 0; }
+        }
+        .suggestion-box {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            background: rgba(50, 50, 50, 0.9);
+            color: #ffffff;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -51,18 +64,22 @@
             <div class="code-box">
                 <p class="text-green-400">// Full-Stack Development</p>
                 <pre><code id="code1" class="typing"></code></pre>
+                <div class="suggestion-box" id="suggestion1">💡 Try using Express.js for backend routing.</div>
             </div>
             <div class="code-box">
                 <p class="text-green-400">// Frontend Frameworks</p>
                 <pre><code id="code2" class="typing"></code></pre>
+                <div class="suggestion-box" id="suggestion2">💡 Consider using React for dynamic UI.</div>
             </div>
             <div class="code-box">
                 <p class="text-green-400">// AI & Automation</p>
                 <pre><code id="code3" class="typing"></code></pre>
+                <div class="suggestion-box" id="suggestion3">💡 Implement OpenAI’s API for automation.</div>
             </div>
             <div class="code-box">
                 <p class="text-green-400">// Cybersecurity Measures</p>
                 <pre><code id="code4" class="typing"></code></pre>
+                <div class="suggestion-box" id="suggestion4">💡 Secure authentication with JWT tokens.</div>
             </div>
         </div>
     </section>
@@ -81,22 +98,24 @@
         gsap.from("h2", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
         gsap.from(".code-box", { opacity: 0, y: 50, duration: 1, delay: 0.5, stagger: 0.3, ease: "power2.out" });
         
-        function typeCode(id, text, speed) {
+        function typeCode(id, text, speed, suggestionId) {
             let i = 0;
             function type() {
                 if (i < text.length) {
                     document.getElementById(id).textContent += text.charAt(i);
                     i++;
                     setTimeout(type, speed);
+                } else {
+                    document.getElementById(suggestionId).style.opacity = 1;
                 }
             }
             type();
         }
         
-        typeCode("code1", "const express = require('express');\nconst app = express();\napp.listen(3000, () => console.log('Server running...'));", 50);
-        typeCode("code2", "function App() {\n  return (<h1>Welcome to Fincom</h1>);\n}", 50);
-        typeCode("code3", "const ai = new GPT4();\nai.generateCode('Optimize server performance');", 50);
-        typeCode("code4", "if(user.attempts > 3) {\n  lockAccount(user);\n}", 50);
+        typeCode("code1", "const express = require('express');\nconst app = express();\napp.listen(3000, () => console.log('Server running...'));", 50, "suggestion1");
+        typeCode("code2", "function App() {\n  return (<h1>Welcome to Fincom</h1>);\n}", 50, "suggestion2");
+        typeCode("code3", "const ai = new GPT4();\nai.generateCode('Optimize server performance');", 50, "suggestion3");
+        typeCode("code4", "if(user.attempts > 3) {\n  lockAccount(user);\n}", 50, "suggestion4");
     </script>
 </body>
 </html>
