@@ -25,6 +25,14 @@
             font-family: 'Courier New', Courier, monospace;
             color: #33ff33;
             overflow: hidden;
+            min-height: 100px;
+        }
+        .typing::after {
+            content: '|';
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
         }
     </style>
 </head>
@@ -42,26 +50,19 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
             <div class="code-box">
                 <p class="text-green-400">// Full-Stack Development</p>
-                <pre><code id="code1">const express = require('express');
-const app = express();
-app.listen(3000, () => console.log('Server running...'));</code></pre>
+                <pre><code id="code1" class="typing"></code></pre>
             </div>
             <div class="code-box">
                 <p class="text-green-400">// Frontend Frameworks</p>
-                <pre><code id="code2">function App() {
-  return (<h1>Welcome to Fincom</h1>);
-}</code></pre>
+                <pre><code id="code2" class="typing"></code></pre>
             </div>
             <div class="code-box">
                 <p class="text-green-400">// AI & Automation</p>
-                <pre><code id="code3">const ai = new GPT4();
-ai.generateCode("Optimize server performance");</code></pre>
+                <pre><code id="code3" class="typing"></code></pre>
             </div>
             <div class="code-box">
                 <p class="text-green-400">// Cybersecurity Measures</p>
-                <pre><code id="code4">if(user.attempts > 3) {
-  lockAccount(user);
-}</code></pre>
+                <pre><code id="code4" class="typing"></code></pre>
             </div>
         </div>
     </section>
@@ -79,6 +80,23 @@ ai.generateCode("Optimize server performance");</code></pre>
     <script>
         gsap.from("h2", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
         gsap.from(".code-box", { opacity: 0, y: 50, duration: 1, delay: 0.5, stagger: 0.3, ease: "power2.out" });
+        
+        function typeCode(id, text, speed) {
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    document.getElementById(id).textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+        
+        typeCode("code1", "const express = require('express');\nconst app = express();\napp.listen(3000, () => console.log('Server running...'));", 50);
+        typeCode("code2", "function App() {\n  return (<h1>Welcome to Fincom</h1>);\n}", 50);
+        typeCode("code3", "const ai = new GPT4();\nai.generateCode('Optimize server performance');", 50);
+        typeCode("code4", "if(user.attempts > 3) {\n  lockAccount(user);\n}", 50);
     </script>
 </body>
 </html>
