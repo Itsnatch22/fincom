@@ -5,39 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Networking | Fincom</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+        .data-stream {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            opacity: 0.1;
+            animation: moveData 10s linear infinite;
+        }
+        @keyframes moveData {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(100%); }
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
-    <!-- Hero Section -->
-    <section class="relative bg-cover bg-center h-64 flex items-center justify-center text-white" style="background-image: url('https://source.unsplash.com/1600x900/?network,technology');">
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-        <h1 class="relative text-4xl font-bold">Networking Solutions</h1>
+<body>
+    <div class="data-stream"></div>
+    
+    <section class="relative py-20 text-center px-6">
+        <h1 class="text-5xl font-bold text-blue-500">Advanced Networking Solutions</h1>
+        <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">Ensuring secure, fast, and reliable network infrastructure for businesses of all sizes.</p>
     </section>
-
-    <!-- Content Section -->
-    <div class="container mx-auto px-6 py-12">
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">Empowering Your Business with Reliable Networking</h2>
-        <p class="text-gray-600 mb-6">At Fincom Africa, we design, implement, and manage robust networking solutions tailored to businesses of all sizes. From secure LAN setups to high-performance cloud networking, we ensure seamless connectivity for your operations.</p>
-        
-        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Our Networking Solutions:</h3>
-        <ul class="list-disc pl-6 text-gray-600 mb-6">
-            <li>Enterprise LAN & WAN Solutions</li>
-            <li>Cloud Networking & Hybrid Infrastructure</li>
-            <li>Cybersecurity & Network Protection</li>
-            <li>Wireless Network Setup & Optimization</li>
-            <li>Data Center Networking & Management</li>
-        </ul>
-        
-        <h3 class="text-2xl font-semibold text-gray-800 mb-3">Why Choose Fincom?</h3>
-        <ul class="list-disc pl-6 text-gray-600 mb-6">
-            <li>Expert team with years of experience</li>
-            <li>Custom solutions to fit your business needs</li>
-            <li>24/7 monitoring & proactive support</li>
-            <li>Advanced security to keep your data safe</li>
-        </ul>
-        
-        <div class="text-center mt-8">
-            <a href="contact.html" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition">Get in Touch</a>
+    
+    <section class="max-w-6xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transition-all">
+            <h2 class="text-xl font-semibold text-blue-400">Network Security</h2>
+            <p class="mt-2 text-gray-300">Robust firewall configurations, DDoS protection, and encrypted communications.</p>
         </div>
-    </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transition-all">
+            <h2 class="text-xl font-semibold text-blue-400">Infrastructure Setup</h2>
+            <p class="mt-2 text-gray-300">Expert installation and management of routers, switches, and access points.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transition-all">
+            <h2 class="text-xl font-semibold text-blue-400">Cloud Networking</h2>
+            <p class="mt-2 text-gray-300">Seamless cloud integrations for scalable and flexible network solutions.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg hover:scale-105 transition-all">
+            <h2 class="text-xl font-semibold text-blue-400">Managed IT Services</h2>
+            <p class="mt-2 text-gray-300">24/7 monitoring and maintenance to keep your network at peak performance.</p>
+        </div>
+    </section>
 </body>
 </html>
