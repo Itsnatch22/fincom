@@ -29,7 +29,7 @@
             transform: translateX(-50%) scale(1);
             width: 200px;
             height: 200px;
-            background: url('dall.webp') no-repeat center;
+            background: url('/mnt/data/A_futuristic_AI-themed_illustration_featuring_a_gl.png') no-repeat center;
             background-size: contain;
             opacity: 0.1;
             animation: neural-glow 3s infinite alternate;
@@ -60,6 +60,13 @@
             0% { opacity: 0.8; }
             100% { opacity: 1; text-shadow: 0px 0px 5px cyan, 0px 0px 10px magenta; }
         }
+        .typing-effect::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
@@ -88,43 +95,41 @@
             </div>
         </div>
     </section>
-
-    <section class="py-16 bg-gray-800 px-6">
-        <div class="max-w-5xl mx-auto text-center">
-            <h2 class="text-3xl font-bold text-blue-400">How AI Will Optimize ICT</h2>
-            <p class="text-gray-400 mt-4">Key areas where AI will enhance our services.</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-                <div class="p-6 bg-gray-900 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold">Predictive Maintenance 🛠️</h3>
-                    <p class="text-gray-400 mt-2">AI will foresee IT failures before they happen.</p>
-                </div>
-                <div class="p-6 bg-gray-900 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold">Automated IT Support 🖥️</h3>
-                    <p class="text-gray-400 mt-2">Instant AI assistance for troubleshooting.</p>
-                </div>
-                <div class="p-6 bg-gray-900 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold">Data-Driven Decisions 📊</h3>
-                    <p class="text-gray-400 mt-2">AI-powered analytics for better strategies.</p>
-                </div>
-            </div>
-        </div>
-    </section>
     
-    <section class="py-16 px-6 text-center">
-        <div class="max-w-2xl mx-auto">
-            <h2 class="text-3xl font-bold text-blue-400">Meet Your Future AI Assistant</h2>
-            <p class="text-gray-400 mt-4">Coming soon to revolutionize customer interactions.</p>
-            <div class="mt-6 p-6 bg-gray-800 rounded-lg shadow-lg inline-block text-left">
-                <p class="text-gray-300 text-lg">AI: "I may not be functional yet, but soon, I'll revolutionize ICT for you!"</p>
-            </div>
-        </div>
-    </section>
     <div class="chat-box glowing-border">
-        <p class="text-sm text-gray-300">🤖 Nova AI: "How can I assist you today?"</p>
+        <p id="ai-text" class="text-sm text-gray-300 typing-effect">🤖 Nova AI: "Initializing..."</p>
     </div>
+    
+    <script>
+        const aiMessages = [
+            "🤖 Nova AI: 'The future of IT is automation and intelligence.'",
+            "🤖 Nova AI: 'Predictive AI will enhance cybersecurity by 2026.'",
+            "🤖 Nova AI: 'Cloud AI will optimize data efficiency at Fincom.'",
+            "🤖 Nova AI: 'Fincom is set to launch AI-driven analytics soon.'",
+            "🤖 Nova AI: 'Revolutionizing tech support with AI bots by 2025.'"
+        ];
+        
+        function updateAIText() {
+            let aiText = document.getElementById("ai-text");
+            let randomMessage = aiMessages[Math.floor(Math.random() * aiMessages.length)];
+            aiText.innerHTML = "";
+            
+            let i = 0;
+            function typeEffect() {
+                if (i < randomMessage.length) {
+                    aiText.innerHTML += randomMessage.charAt(i);
+                    i++;
+                    setTimeout(typeEffect, 50);
+                }
+            }
+            typeEffect();
+        }
+        
+        setInterval(updateAIText, 10000);
+    </script>
+    
     <footer class="mt-10 text-center p-4 bg-gray-800 text-gray-300">
         <p>&copy; 2025 Fincom Africa | All Rights Reserved.</p>
     </footer>
 </body>
 </html>
- 
