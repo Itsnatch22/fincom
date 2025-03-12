@@ -464,34 +464,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 document.addEventListener("DOMContentLoaded", function () {
-        const restrictedDoc = document.getElementById("restricted-doc");
-        const featureMessage = document.getElementById("feature-message");
-        const adminLoginBtn = document.getElementById("admin-login-btn");
+    const isAdmin = localStorage.getItem("isAdmin"); 
+    const docSection = document.getElementById("restricted-doc");
+    const featureMessage = document.getElementById("feature-message");
+    const loginBtn = document.getElementById("admin-login-btn");
 
-        // Check if admin is already logged in
-        if (localStorage.getItem("fincomAdminAuth") === "true") {
-            restrictedDoc.classList.remove("hidden");
-            featureMessage.classList.add("hidden");
-            adminLoginBtn.classList.add("hidden");
-        }
-
-        // Admin Login Button Click
-        adminLoginBtn.addEventListener("click", function () {
-            let access = prompt("Enter Admin Password:");
-            if (access === "fincom2025") {
-                localStorage.setItem("fincomAdminAuth", "true");
-                alert("Welcome, Admin!");
-                restrictedDoc.classList.remove("hidden");
-                featureMessage.classList.add("hidden");
-                adminLoginBtn.classList.add("hidden");
-            } else {
-                alert("Incorrect Password! Access Denied.");
-            }
-        });
-    });
-
-    function adminLogout() {
-        localStorage.removeItem("fincomAdminAuth");
-        alert("Logged out successfully.");
-        location.reload();
+    // Check Admin Status
+    if (isAdmin === "true") {
+        docSection.classList.remove("hidden");
+        featureMessage.classList.add("hidden");
+    } else {
+        docSection.classList.add("hidden");
+        featureMessage.classList.remove("hidden");
     }
+
+    // Admin Login Button (Click to Enable Access)
+    loginBtn.addEventListener("click", function () {
+        localStorage.setItem("isAdmin", "true"); 
+        alert("Admin access granted! Reloading page...");
+        location.reload(); 
+    });
+});
+
