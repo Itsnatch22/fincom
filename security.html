@@ -10,13 +10,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/plugins/debug.addIndicators.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
         .glitch {
             position: relative;
             display: inline-block;
             color: #0ff;
             font-weight: bold;
-            animation: glitch 1s infinite linear alternate-reverse;
+            animation: glitch 1s infinite linear alternate-reverse, flicker 2s infinite;
         }
+        
         @keyframes glitch {
             0% { text-shadow: 2px 2px #ff0000; }
             25% { text-shadow: -2px -2px #00ff00; }
@@ -24,6 +31,7 @@
             75% { text-shadow: -2px 2px #ff00ff; }
             100% { text-shadow: 2px 2px #00ffff; }
         }
+        
         .shield {
             position: fixed;
             top: 20px;
@@ -35,14 +43,33 @@
             opacity: 0;
             transition: opacity 0.5s;
         }
+        
+        .circuit-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.imgur.com/LZ5xLOp.gif') repeat;
+            opacity: 0.1;
+        }
+        
+        .terminal-footer {
+            font-family: 'Courier New', monospace;
+            background: #111;
+            color: #0f0;
+            padding: 10px;
+            text-align: center;
+        }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="bg-gray-900 text-white relative">
+    <div class="circuit-animation"></div>
     <header class="bg-black text-white py-4 text-center text-3xl font-bold shadow-md">
         <span class="glitch">Cybersecurity Solutions</span>
     </header>
     <div class="shield" id="shield"></div>
-    <section class="container mx-auto px-6 py-12">
+    <section class="container mx-auto px-6 py-12 relative z-10">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-4xl font-bold text-green-400 mb-6">Protecting Your Digital Assets</h2>
             <p class="text-lg text-gray-300 leading-relaxed">Cybersecurity is essential in today's digital landscape, safeguarding sensitive information, preventing cyber threats, and ensuring business continuity.</p>
@@ -57,8 +84,9 @@
             </div>
         </div>
     </section>
-    <footer class="bg-black text-white text-center py-4 mt-10">
+    <footer class="terminal-footer mt-10">
         <p>&copy; 2025 Fincom Africa | All Rights Reserved.</p>
+        <p>Last system scan: <span id="scan-time"></span></p>
     </footer>
     <script>
         gsap.from("h2", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
@@ -74,6 +102,9 @@
                 shield.style.opacity = "0";
             }
         });
+        
+        // Terminal-style last system scan
+        document.getElementById("scan-time").innerText = new Date().toLocaleString();
     </script>
 </body>
 </html>
