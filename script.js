@@ -464,29 +464,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const isAdmin = localStorage.getItem("isAdmin"); 
-    const docSection = document.getElementById("restricted-doc");
-    const featureMessage = document.getElementById("feature-message");
-    const loginBtn = document.getElementById("admin-login-btn");
-
-    // Check Admin Status
-    if (isAdmin === "true") {
-        docSection.classList.remove("hidden");
-        featureMessage.classList.add("hidden");
-    } else {
-        docSection.classList.add("hidden");
-        featureMessage.classList.remove("hidden");
-    }
-
-    // Admin Login Button (Click to Enable Access)
-    loginBtn.addEventListener("click", function () {
-        localStorage.setItem("isAdmin", "true"); 
-        alert("Admin access granted! Reloading page...");
-        location.reload(); 
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
         const restrictedDoc = document.getElementById("restricted-doc");
         const featureMessage = document.getElementById("feature-message");
         const adminLoginBtn = document.getElementById("admin-login-btn");
