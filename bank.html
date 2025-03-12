@@ -4,35 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banking Equipment | Fincom</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes pulse-glow {
+            0% { text-shadow: 0 0 5px #FFD700; }
+            50% { text-shadow: 0 0 20px #FFD700; }
+            100% { text-shadow: 0 0 5px #FFD700; }
+        }
+        .glow-text {
+            animation: pulse-glow 1.5s infinite alternate;
+        }
+        .equipment-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+        .equipment-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <header class="bg-blue-600 text-white py-4 text-center text-3xl font-bold">
-        Banking Equipment Solutions
+<body class="bg-gray-900 text-white">
+    <header class="bg-gray-800 text-white py-4 text-center text-3xl font-bold shadow-md">
+        <span class="glow-text">Banking Equipment</span>
     </header>
-    <main class="max-w-6xl mx-auto p-6">
-        <section class="bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold mb-4">Advanced Banking Equipment for Modern Financial Institutions</h2>
-            <p class="text-gray-700 mb-4">Fincom Africa provides top-tier banking equipment to support financial institutions with efficiency, security, and reliability. Our solutions enhance banking operations, ensuring seamless transactions and compliance with industry standards.</p>
+    
+    <section class="container mx-auto px-6 py-12 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold text-white mb-6">Advanced Banking Solutions</h2>
+            <p class="text-lg text-gray-300 leading-relaxed">Fincom Africa provides cutting-edge banking equipment to enhance security and efficiency.</p>
             
-            <h3 class="text-xl font-semibold mt-6">Our Banking Equipment Offerings</h3>
-            <ul class="list-disc list-inside text-gray-700 mt-2">
-                <li>Automated Teller Machines (ATMs)</li>
-                <li>Cash Counting Machines</li>
-                <li>Cheque Scanners & Processing Systems</li>
-                <li>Secure Vault & Safe Systems</li>
-                <li>Point of Sale (POS) Terminals</li>
-                <li>Self-Service Kiosks</li>
-                <li>Banknote Sorters</li>
-                <li>Document Authentication Systems</li>
-            </ul>
-
-            <h3 class="text-xl font-semibold mt-6">Why Choose Fincom?</h3>
-            <p class="text-gray-700">Our solutions integrate cutting-edge security features, reduce processing time, and improve customer experience. We ensure compliance with global banking regulations and offer robust after-sales support.</p>
-        </section>
-    </main>
-    <footer class="text-center py-6 bg-blue-600 text-white mt-6">
-        &copy; 2025 Fincom Africa. All Rights Reserved.
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <div class="equipment-card p-6 text-left">
+                    <h3 class="text-xl font-semibold text-blue-400">Automated Teller Machines (ATMs)</h3>
+                    <p class="text-gray-300 mt-2">Reliable and secure ATMs designed for seamless banking operations.</p>
+                </div>
+                <div class="equipment-card p-6 text-left">
+                    <h3 class="text-xl font-semibold text-green-400">Currency Counting Machines</h3>
+                    <p class="text-gray-300 mt-2">Fast and accurate bill counters to enhance financial transactions.</p>
+                </div>
+                <div class="equipment-card p-6 text-left">
+                    <h3 class="text-xl font-semibold text-yellow-400">Cheque Scanners</h3>
+                    <p class="text-gray-300 mt-2">Efficient cheque processing with high-speed scanning capabilities.</p>
+                </div>
+                <div class="equipment-card p-6 text-left">
+                    <h3 class="text-xl font-semibold text-red-400">Secure Vault Systems</h3>
+                    <p class="text-gray-300 mt-2">State-of-the-art vaults ensuring maximum security for banking institutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="mt-10 text-center p-4 bg-gray-800 text-gray-300">
+        <p>&copy; 2025 Fincom Africa | All Rights Reserved.</p>
     </footer>
+    
+    <script>
+        gsap.from("h2", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
+        gsap.from("p", { opacity: 0, y: 30, duration: 1, delay: 0.3, ease: "power2.out" });
+        gsap.from(".equipment-card", { opacity: 0, y: 50, duration: 1, delay: 0.5, stagger: 0.3, ease: "power2.out" });
+    </script>
 </body>
 </html>
