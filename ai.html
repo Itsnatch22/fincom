@@ -11,6 +11,7 @@
             background: radial-gradient(circle at top, #0a0a0a, #111111);
             color: #d1d5db;
             font-family: 'Courier New', Courier, monospace;
+            overflow-x: hidden;
         }
         .glowing-border {
             border: 2px solid transparent;
@@ -25,7 +26,7 @@
             position: absolute;
             top: 10%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) scale(1);
             width: 200px;
             height: 200px;
             background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Artificial_intelligence.svg/1200px-Artificial_intelligence.svg.png') no-repeat center;
@@ -71,7 +72,6 @@
         <p class="text-lg text-gray-300 leading-relaxed">Harnessing AI-driven solutions for efficiency, automation, and innovation.</p>
     </section>
     
-    <!-- AI Roadmap -->
     <section class="py-16 px-6">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-3xl font-bold text-blue-400">AI Implementation Roadmap</h2>
@@ -89,7 +89,6 @@
         </div>
     </section>
 
-    <!-- AI Use Cases -->
     <section class="py-16 bg-gray-800 px-6">
         <div class="max-w-5xl mx-auto text-center">
             <h2 class="text-3xl font-bold text-blue-400">How AI Will Optimize ICT</h2>
@@ -111,7 +110,6 @@
         </div>
     </section>
     
-    <!-- AI Chatbot Placeholder -->
     <section class="py-16 px-6 text-center">
         <div class="max-w-2xl mx-auto">
             <h2 class="text-3xl font-bold text-blue-400">Meet Your Future AI Assistant</h2>
@@ -121,11 +119,9 @@
             </div>
         </div>
     </section>
-
     <div class="chat-box glowing-border">
         <p class="text-sm text-gray-300">🤖 Nova AI: "How can I assist you today?"</p>
     </div>
-    
     <footer class="mt-10 text-center p-4 bg-gray-800 text-gray-300">
         <p>&copy; 2025 Fincom Africa | All Rights Reserved.</p>
     </footer>
