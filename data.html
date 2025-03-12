@@ -5,81 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Backup & Recovery | Fincom</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/ScrollMagic.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/plugins/animation.gsap.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes pulse {
-            0% { opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { opacity: 0.5; }
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 10px #ffcc00; }
+            50% { box-shadow: 0 0 25px #ffcc00; }
+            100% { box-shadow: 0 0 10px #ffcc00; }
         }
-        
-        .cloud-sync {
-            animation: pulse 2s infinite;
+        .vault-secure {
+            animation: pulseGlow 1.5s infinite alternate;
         }
-
-        .glitch {
-            color: white;
-            position: relative;
-            text-transform: uppercase;
-            font-size: 2rem;
-        }
-        .glitch::before, .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            width: 100%;
-            top: 0;
-        }
-        .glitch::before {
-            left: -2px;
-            text-shadow: -2px 0 red;
-            animation: glitch-anim 0.8s infinite linear alternate-reverse;
-        }
-        .glitch::after {
-            left: 2px;
-            text-shadow: 2px 0 blue;
-            animation: glitch-anim 0.8s infinite linear alternate;
-        }
-        @keyframes glitch-anim {
-            0% { transform: skew(0deg); }
-            50% { transform: skew(10deg); }
-            100% { transform: skew(0deg); }
+        .cyber-grid {
+            background: url('https://www.transparenttextures.com/patterns/dark-matter.png');
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white relative">
+<body class="bg-gray-900 text-white cyber-grid">
     <header class="bg-gray-800 text-white py-4 text-center text-3xl font-bold shadow-md">
-        <span class="glitch" data-text="Data Backup & Recovery">Data Backup & Recovery</span>
+        <span class="text-yellow-400">Data Backup & Recovery</span>
     </header>
-    <section class="container mx-auto px-6 py-12 relative z-10 text-center">
+    
+    <section class="container mx-auto px-6 py-12 text-center">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl font-bold text-white mb-6">Ensuring Data Integrity & Security</h2>
-            <p class="text-lg text-gray-300 leading-relaxed">Our backup solutions protect your business from data loss, providing seamless recovery and security.</p>
-            <div class="mt-6 p-6 bg-gray-800 bg-opacity-80 shadow-lg rounded-lg">
-                <h3 class="text-2xl font-semibold text-white">Backup & Recovery Features</h3>
-                <ul class="list-disc pl-5 text-gray-300 mt-3 text-left">
-                    <li>Automated Cloud & On-Premise Backups</li>
-                    <li>AI-driven Threat Detection & Prevention</li>
-                    <li>Instant Disaster Recovery Solutions</li>
-                    <li>Real-time Data Synchronization</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="flex justify-center mt-10">
-            <div class="w-48 h-48 flex items-center justify-center bg-gray-700 rounded-full relative">
-                <div class="w-20 h-20 bg-blue-500 rounded-full cloud-sync"></div>
+            <h2 class="text-4xl font-bold text-yellow-400 mb-6">Your Data. Always Secure.</h2>
+            <p class="text-lg text-gray-300 leading-relaxed">Fincom Africa provides enterprise-grade backup solutions, ensuring seamless disaster recovery and business continuity.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <div class="vault-secure bg-gray-800 p-6 text-left rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-blue-400">Automated Cloud Backups</h3>
+                    <p class="text-gray-300 mt-2">Secure cloud backups with real-time synchronization to prevent data loss.</p>
+                </div>
+                <div class="vault-secure bg-gray-800 p-6 text-left rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-red-400">Disaster Recovery Solutions</h3>
+                    <p class="text-gray-300 mt-2">Instant recovery protocols to minimize downtime during data failures.</p>
+                </div>
+                <div class="vault-secure bg-gray-800 p-6 text-left rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-green-400">AI-Powered Threat Detection</h3>
+                    <p class="text-gray-300 mt-2">Machine learning algorithms monitor and prevent data corruption.</p>
+                </div>
+                <div class="vault-secure bg-gray-800 p-6 text-left rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-yellow-400">Secure Data Encryption</h3>
+                    <p class="text-gray-300 mt-2">End-to-end encryption ensures your data remains confidential.</p>
+                </div>
             </div>
         </div>
     </section>
+    
+    <section class="text-center mt-10">
+        <h3 class="text-2xl font-semibold mb-3">Protect Your Business Data</h3>
+        <p class="text-lg text-gray-300">Join Fincom Africa for unmatched backup and recovery services.</p>
+        <a href="contact.html" class="mt-4 inline-block bg-yellow-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-yellow-700 transition-transform transform hover:scale-110">Get Protected</a>
+    </section>
+    
     <footer class="mt-10 text-center p-4 bg-gray-800 text-gray-300">
         <p>&copy; 2025 Fincom Africa | All Rights Reserved.</p>
     </footer>
+    
     <script>
         gsap.from("h2", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
         gsap.from("p", { opacity: 0, y: 30, duration: 1, delay: 0.3, ease: "power2.out" });
-        gsap.from(".bg-opacity-80", { opacity: 0, scale: 0.8, duration: 1, delay: 0.6, ease: "power2.out" });
+        gsap.from(".vault-secure", { opacity: 0, y: 50, duration: 1, delay: 0.5, stagger: 0.3, ease: "power2.out" });
     </script>
 </body>
 </html>
