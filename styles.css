@@ -101,6 +101,8 @@
 .swiper-slide:nth-child(1) { background-image: url('network.jpg'); }
 .swiper-slide:nth-child(2) { background-image: url('cyber.jpg'); }
 .swiper-slide:nth-child(3) { background-image: url('cloud.jpg'); }
+.swiper-slide:nth-child(4) { background-image: url('ict.jpg'); }
+.swiper-slide:nth-child(5) { background-image: url('bank.jpg'); }
 
 .slide-content {
     color: white;
