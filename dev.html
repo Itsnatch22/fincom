@@ -4,118 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Software Development | Fincom</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
     <style>
-        @keyframes glitch {
-            0% { text-shadow: 2px 2px 0px #ff00ff; }
-            50% { text-shadow: -2px -2px 0px #00ffff; }
-            100% { text-shadow: 2px 2px 0px #ff00ff; }
+        body {
+            background-color: #0D1117;
+            color: #C9D1D9;
+            font-family: 'Fira Code', monospace;
         }
-        .glitch {
-            animation: glitch 0.8s infinite alternate;
-        }
-        .terminal-bg {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-        }
-        .code-box {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 1rem;
+        .editor-container {
+            width: 90%;
+            max-width: 800px;
+            height: 400px;
+            margin: auto;
             border-radius: 8px;
-            font-family: 'Courier New', Courier, monospace;
-            color: #33ff33;
-            overflow: hidden;
-            min-height: 100px;
-            position: relative;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
-        .typing::after {
-            content: '|';
-            animation: blink 0.8s infinite;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-        .suggestion-box {
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            background: rgba(50, 50, 50, 0.9);
-            color: #ffffff;
-            font-size: 14px;
-            padding: 5px 10px;
-            border-radius: 4px;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
+        .copilot-suggestion {
+            background: rgba(3, 102, 214, 0.2);
+            color: #58A6FF;
+            font-style: italic;
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white terminal-bg">
-    <header class="bg-gray-800 text-white py-4 text-center text-3xl font-bold shadow-md">
-        <span class="glitch">Software Development</span>
-    </header>
+<body class="flex flex-col items-center py-10">
+    <h1 class="text-3xl font-bold text-blue-400 mb-6">Software Development: AI-Powered Coding</h1>
     
-    <section class="container mx-auto px-6 py-12 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl font-bold text-blue-400 mb-6">Code. Deploy. Innovate.</h2>
-            <p class="text-lg text-gray-300 leading-relaxed">Building intelligent applications with cutting-edge technologies.</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-            <div class="code-box">
-                <p class="text-green-400">// Full-Stack Development</p>
-                <pre><code id="code1" class="typing"></code></pre>
-                <div class="suggestion-box" id="suggestion1">💡 Try using Express.js for backend routing.</div>
-            </div>
-            <div class="code-box">
-                <p class="text-green-400">// Frontend Frameworks</p>
-                <pre><code id="code2" class="typing"></code></pre>
-                <div class="suggestion-box" id="suggestion2">💡 Consider using React for dynamic UI.</div>
-            </div>
-            <div class="code-box">
-                <p class="text-green-400">// AI & Automation</p>
-                <pre><code id="code3" class="typing"></code></pre>
-                <div class="suggestion-box" id="suggestion3">💡 Implement OpenAI’s API for automation.</div>
-            </div>
-            <div class="code-box">
-                <p class="text-green-400">// Cybersecurity Measures</p>
-                <pre><code id="code4" class="typing"></code></pre>
-                <div class="suggestion-box" id="suggestion4">💡 Secure authentication with JWT tokens.</div>
-            </div>
-        </div>
-    </section>
+    <div class="editor-container">
+        <pre id="editor">// Setting up a simple Node.js server with Express
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+    res.send('Hello, world!');
+});
+
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+});</pre>
+    </div>
     
-    <section class="text-center mt-10">
-        <h3 class="text-2xl font-semibold mb-3">Join Our Development Revolution</h3>
-        <p class="text-lg text-gray-300">Get in touch with us and start innovating today.</p>
-        <a href="contact.html" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-110">Get Started</a>
-    </section>
-    
-    <footer class="mt-10 text-center p-4 bg-gray-800 text-gray-300">
-        <p>&copy; 2025 Fincom Africa | All Rights Reserved.</p>
-    </footer>
+    <p id="copilot" class="text-green-400 text-lg mt-4 copilot-suggestion">// Copilot: "Consider adding error handling for robustness."</p>
     
     <script>
-        gsap.from("h2", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
-        gsap.from(".code-box", { opacity: 0, y: 50, duration: 1, delay: 0.5, stagger: 0.3, ease: "power2.out" });
-        
-        function typeCode(id, text, speed, suggestionId) {
-            let i = 0;
-            function type() {
-                if (i < text.length) {
-                    document.getElementById(id).textContent += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                } else {
-                    document.getElementById(suggestionId).style.opacity = 1;
-                }
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/javascript");
+        editor.setReadOnly(true);
+
+        function simulateTyping(text, index = 0) {
+            if (index < text.length) {
+                editor.session.insert({ row: index, column: 0 }, text[index] + "\n");
+                setTimeout(() => simulateTyping(text, index + 1), 500);
             }
-            type();
         }
         
-        typeCode("code1", "const express = require('express');\nconst app = express();\napp.listen(3000, () => console.log('Server running...'));", 50, "suggestion1");
-        typeCode("code2", "function App() {\n  return (<h1>Welcome to Fincom</h1>);\n}", 50, "suggestion2");
-        typeCode("code3", "const ai = new GPT4();\nai.generateCode('Optimize server performance');", 50, "suggestion3");
-        typeCode("code4", "if(user.attempts > 3) {\n  lockAccount(user);\n}", 50, "suggestion4");
+        const codeLines = [
+            "// Initializing React Component",
+            "import React from 'react';",
+            "const App = () => {",
+            "  return <h1>Hello from React!</h1>;",
+            "};",
+            "export default App;"
+        ];
+        
+        setTimeout(() => simulateTyping(codeLines), 2000);
     </script>
 </body>
 </html>
