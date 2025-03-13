@@ -3,99 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontend ✨ Meets Backend ⚡</title>
+    <title>Live Coding: React & Node.js</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0d1117; color: white; font-family: 'Courier New', monospace; }
-        .editor { background: #161b22; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,255,255,0.2); }
-        .code { white-space: pre-wrap; font-size: 14px; line-height: 1.5; overflow: hidden; }
-        .cursor { display: inline-block; width: 8px; height: 14px; background: cyan; animation: blink 0.8s infinite; }
-        @keyframes blink { 50% { opacity: 0; } }
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Courier New', monospace;
+        }
+        .editor {
+            background: #161b22;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.1);
+            height: 300px;
+            overflow: hidden;
+            white-space: pre-wrap;
+        }
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: #c9d1d9;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
     </style>
 </head>
-<body class="p-10">
-    <h1 class="text-3xl text-center text-blue-400 font-bold mb-8">Frontend ✨ Meets Backend ⚡</h1>
+<body class="p-6">
+    <h1 class="text-3xl font-bold text-center mb-6">Software Development😎✔</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- React Code Editor -->
-        <div class="editor">
-            <h2 class="text-xl font-bold text-green-400 mb-3">React (App.js)</h2>
-            <div id="reactCode" class="code text-green-300"></div>
-        </div>
-        
-        <!-- Node.js + Express Code Editor -->
-        <div class="editor">
-            <h2 class="text-xl font-bold text-yellow-400 mb-3">Node.js + Express (server.js)</h2>
-            <div id="nodeCode" class="code text-yellow-300"></div>
-        </div>
+        <div class="editor p-4 text-sm" id="react-editor"></div>
+        <!-- Node.js Code Editor -->
+        <div class="editor p-4 text-sm" id="node-editor"></div>
     </div>
-    
+
     <script>
-        const reactCode = `import styles from "./style";
-import { Billing, Business, CardDeal, Clients, CTA, Footer, Navbar, Stats, Testimonials, Hero } from "./components";
+        const reactCode = [
+            "import styles from './style';",
+            "import { Billing, Business, CardDeal, Clients, CTA, Footer, Navbar, Stats, Testimonials, Hero } from './components';",
+            "", 
+            "const App = () => (", 
+            "  <div className='bg-primary w-full overflow-hidden'>", 
+            "    <div className={`${styles.paddingX} ${styles.flexCenter}`}>", 
+            "      <div className={`${styles.boxWidth}`}>", 
+            "        <Navbar />", 
+            "      </div>", 
+            "    </div>", 
+            "  </div>", 
+            ");",
+            "export default App;"
+        ];
 
-const App = () => (
-  <div className="bg-primary w-full overflow-hidden">
-    <div className={\`${styles.paddingX} ${styles.flexCenter}\`}>
-      <div className={\`${styles.boxWidth}\`}>
-        <Navbar />
-      </div>
-    </div>
-    <div className={\`bg-primary ${styles.flexStart}\`}>
-      <div className={\`${styles.boxWidth}\`}>
-        <Hero />
-      </div>
-    </div>
-    <div className={\`bg-primary ${styles.paddingX} ${styles.flexCenter}\`}>
-      <div className={\`${styles.boxWidth}\`}>
-        <Stats />
-        <Business />
-        <Billing />
-        <CardDeal />
-        <Testimonials />
-        <Clients />
-        <CTA />
-        <Footer />
-      </div>
-    </div>
-  </div>
-);
-export default App;`;
+        const nodeCode = [
+            "const express = require('express');",
+            "const app = express();",
+            "const PORT = process.env.PORT || 5000;",
+            "", 
+            "app.get('/', (req, res) => {", 
+            "  res.send('Hello from Express!');", 
+            "});",
+            "", 
+            "app.listen(PORT, () => {", 
+            "  console.log(`Server running on port ${PORT}`);", 
+            "});"
+        ];
 
-        const nodeCode = `const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 5000;
+        function typeCode(editorId, codeLines, speed = 100) {
+            let index = 0;
+            const editor = document.getElementById(editorId);
+            editor.innerHTML = '<pre></pre>';
+            const pre = editor.querySelector('pre');
 
-app.use(express.json());
-
-app.get('/', (req, res) => {
-    res.send('Welcome to Fincom API');
-});
-
-// Copilot Suggests: Adding a dynamic endpoint
-app.get('/api/data', (req, res) => {
-    res.json({ message: "This is data from the server." });
-});
-
-app.listen(PORT, () => {
-    console.log(\`Server running on port ${PORT}\`);
-});`;
-
-        function typeCode(element, code, speed) {
-            let i = 0;
-            function typing() {
-                if (i < code.length) {
-                    element.innerHTML += code[i] === '\n' ? '<br>' : code[i];
-                    i++;
-                    setTimeout(typing, speed);
+            function typeLine() {
+                if (index < codeLines.length) {
+                    pre.innerHTML += codeLines[index] + "\n";
+                    index++;
+                    setTimeout(typeLine, speed);
                 } else {
-                    element.innerHTML += '<span class="cursor"></span>';
+                    pre.innerHTML += '<span class="cursor"></span>';
                 }
             }
-            typing();
+            typeLine();
         }
-        
-        typeCode(document.getElementById("reactCode"), reactCode, 20);
-        typeCode(document.getElementById("nodeCode"), nodeCode, 20);
+
+        document.addEventListener("DOMContentLoaded", function() {
+            typeCode("react-editor", reactCode, 150);
+            typeCode("node-editor", nodeCode, 150);
+        });
     </script>
 </body>
 </html>
