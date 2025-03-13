@@ -3,72 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VS Code AI Simulation</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <title>Software Development | Fincom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #1e1e1e; color: #ffffff; font-family: 'Courier New', Courier, monospace; }
-        .editor { background: #252526; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
-        .terminal { background: #000; padding: 15px; border-radius: 8px; margin-top: 20px; }
-        .error { color: red; }
-        .copilot { color: #00ff99; }
+        @keyframes blink {
+            50% { border-right-color: transparent; }
+        }
+        .typing::after {
+            content: '|';
+            display: inline-block;
+            margin-left: 2px;
+            animation: blink 0.7s step-end infinite;
+        }
     </style>
 </head>
-<body class="p-6">
-    <h1 class="text-3xl text-blue-400 text-center mb-6">VS Code AI-Powered Coding Simulation</h1>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Node.js Code Editor -->
-        <div class="editor p-4">
-            <h2 class="text-xl text-blue-300">Node.js (Express) File</h2>
-            <pre id="node-code" class="mt-4 text-green-400"></pre>
-            <p id="copilot-node" class="copilot mt-2"></p>
+<body class="bg-gray-900 text-gray-100 flex items-center justify-center min-h-screen p-6">
+    <div class="w-full max-w-4xl bg-gray-800 rounded-lg shadow-lg p-6 relative">
+        <div class="text-xs bg-gray-700 text-gray-300 px-4 py-2 rounded-t-lg flex justify-between">
+            <span>server.js - Express Backend</span>
+            <span>Copilot Suggestions Enabled 🚀</span>
         </div>
-        
-        <!-- React Code Editor -->
-        <div class="editor p-4">
-            <h2 class="text-xl text-blue-300">React Component File</h2>
-            <pre id="react-code" class="mt-4 text-yellow-400"></pre>
-            <p id="copilot-react" class="copilot mt-2"></p>
+        <div class="bg-gray-900 p-4 rounded-b-lg font-mono text-sm text-green-400 leading-relaxed">
+            <pre id="nodeCode" class="typing"></pre>
         </div>
     </div>
-    
-    <!-- Fake Terminal Output -->
-    <div class="terminal text-green-400 mt-6">
-        <h2 class="text-xl text-green-300">Terminal</h2>
-        <pre id="terminal-log" class="mt-2"></pre>
-    </div>
-    
+
     <script>
-        const nodeTyped = new Typed("#node-code", {
-            strings: [
-                "const express = require('express');\nconst app = express();\napp.get('/', (req, res) => {\n   res.send('Hello, World!');\n});\napp.listen(3000, () => console.log('Server running on port 3000'));"
-            ],
-            typeSpeed: 50,
-            showCursor: false,
-            onComplete: () => {
-                document.getElementById("copilot-node").innerText = "Copilot: 'You should add error handling for robustness.'";
+        const expressCode = [
+            "const express = require('express');",
+            "const app = express();",
+            "const PORT = 3000;",
+            "app.use(express.json());",
+            "app.get('/', (req, res) => res.send('Hello World!'));",
+            "app.listen(PORT, () => console.log(`Server running on port ${PORT}`));"
+        ];
+        
+        let index = 0;
+        let charIndex = 0;
+        const nodeCodeElement = document.getElementById("nodeCode");
+        
+        function typeCode() {
+            if (index < expressCode.length) {
+                if (charIndex < expressCode[index].length) {
+                    nodeCodeElement.innerHTML += expressCode[index][charIndex];
+                    charIndex++;
+                    setTimeout(typeCode, 50);
+                } else {
+                    nodeCodeElement.innerHTML += "\n";
+                    charIndex = 0;
+                    index++;
+                    setTimeout(typeCode, 300);
+                }
+            } else {
+                setTimeout(() => {
+                    nodeCodeElement.innerHTML += "\n\n// Copilot Suggests: Try adding a POST route for data input!";
+                }, 1000);
             }
-        });
+        }
 
-        const reactTyped = new Typed("#react-code", {
-            strings: [
-                "import React from 'react';\nfunction App() {\n   return <h1>Hello, Fincom AI</h1>;\n}\nexport default App;"
-            ],
-            typeSpeed: 50,
-            showCursor: false,
-            onComplete: () => {
-                document.getElementById("copilot-react").innerText = "Copilot: 'Consider adding PropTypes for better component validation.'";
-            }
-        });
-
-        const terminalTyped = new Typed("#terminal-log", {
-            strings: [
-                "$ npm install express\n$ node server.js\nServer running on port 3000\n$ npm start\nCompiled successfully! Your app is running."
-            ],
-            typeSpeed: 30,
-            showCursor: false
-        });
+        document.addEventListener("DOMContentLoaded", typeCode);
     </script>
 </body>
 </html>
