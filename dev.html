@@ -19,6 +19,7 @@
             height: 300px;
             overflow: hidden;
             white-space: pre-wrap;
+            position: relative;
         }
         .cursor {
             display: inline-block;
@@ -27,33 +28,42 @@
             background: #c9d1d9;
             animation: blink 1s infinite;
         }
+        .ghost-text {
+            color: rgba(255, 255, 255, 0.3);
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            font-size: 0.9em;
+        }
         @keyframes blink {
             50% { opacity: 0; }
         }
     </style>
 </head>
 <body class="p-6">
-    <h1 class="text-3xl font-bold text-center mb-6">Software Development😎✔</h1>
+    <h1 class="text-3xl font-bold text-center mb-6">Software Development 😎✔</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- React Code Editor -->
-        <div class="editor p-4 text-sm" id="react-editor"></div>
-        <!-- Node.js Code Editor -->
-        <div class="editor p-4 text-sm" id="node-editor"></div>
+        <div class="editor p-4 text-sm relative" id="react-editor">
+            <div class="ghost-text">// Copilot: "Maybe you need a useState hook here?"</div>
+        </div>
+        <div class="editor p-4 text-sm relative" id="node-editor">
+            <div class="ghost-text">// Copilot: "You might want to add a middleware for security."</div>
+        </div>
     </div>
 
     <script>
         const reactCode = [
             "import styles from './style';",
             "import { Billing, Business, CardDeal, Clients, CTA, Footer, Navbar, Stats, Testimonials, Hero } from './components';",
-            "", 
-            "const App = () => (", 
-            "  <div className='bg-primary w-full overflow-hidden'>", 
-            "    <div className={`${styles.paddingX} ${styles.flexCenter}`}>", 
-            "      <div className={`${styles.boxWidth}`}>", 
-            "        <Navbar />", 
-            "      </div>", 
-            "    </div>", 
-            "  </div>", 
+            "",
+            "const App = () => (",
+            "  <div className=\"bg-primary w-full overflow-hidden\">",
+            "    <div className={\"${styles.paddingX} ${styles.flexCenter}\"}">",
+            "      <div className={\"${styles.boxWidth}\"}">",
+            "        <Navbar />",
+            "      </div>",
+            "    </div>",
+            "  </div>",
             ");",
             "export default App;"
         ];
@@ -62,21 +72,25 @@
             "const express = require('express');",
             "const app = express();",
             "const PORT = process.env.PORT || 5000;",
-            "", 
-            "app.get('/', (req, res) => {", 
-            "  res.send('Hello from Express!');", 
+            "",
+            "app.get('/', (req, res) => {",
+            "  res.send('Hello from Express!');",
             "});",
-            "", 
-            "app.listen(PORT, () => {", 
-            "  console.log(`Server running on port ${PORT}`);", 
+            "",
+            "app.listen(PORT, () => {",
+            "  console.log(`Server running on port ${PORT}`);",
             "});"
         ];
 
-        function typeCode(editorId, codeLines, speed = 100) {
+        function typeCode(editorId, codeLines, ghostTextId, speed = 100) {
             let index = 0;
             const editor = document.getElementById(editorId);
+            const ghostText = editor.querySelector(".ghost-text");
             editor.innerHTML = '<pre></pre>';
             const pre = editor.querySelector('pre');
+            ghostText.style.display = "block"; 
+
+            setTimeout(() => ghostText.style.opacity = "0", 2000);
 
             function typeLine() {
                 if (index < codeLines.length) {
@@ -87,12 +101,12 @@
                     pre.innerHTML += '<span class="cursor"></span>';
                 }
             }
-            typeLine();
+            setTimeout(typeLine, 2500);
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            typeCode("react-editor", reactCode, 150);
-            typeCode("node-editor", nodeCode, 150);
+            typeCode("react-editor", reactCode, "react-ghost", 150);
+            typeCode("node-editor", nodeCode, "node-ghost", 150);
         });
     </script>
 </body>
