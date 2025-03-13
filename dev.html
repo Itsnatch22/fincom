@@ -3,71 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VS Code AI Simulation</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <title>Live Coding: React & Node.js</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #1e1e1e; color: #ffffff; font-family: 'Courier New', Courier, monospace; }
-        .editor { background: #252526; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
-        .terminal { background: #000; padding: 15px; border-radius: 8px; margin-top: 20px; }
-        .error { color: red; }
-        .copilot { color: #00ff99; }
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Courier New', monospace;
+        }
+        .editor {
+            background: #161b22;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.1);
+            height: 300px;
+            overflow: auto;
+            white-space: pre-wrap;
+            position: relative;
+        }
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: #c9d1d9;
+            animation: blink 1s infinite;
+        }
+        .ghost-text {
+            color: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            font-size: 0.9em;
+            transition: opacity 1s ease-in-out;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
     </style>
 </head>
 <body class="p-6">
-    <h1 class="text-3xl text-blue-400 text-center mb-6">VS Code AI-Powered Coding Simulation</h1>
-    
+    <h1 class="text-3xl font-bold text-center mb-6">Software Development 😎✔</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Node.js Code Editor -->
-        <div class="editor p-4">
-            <h2 class="text-xl text-blue-300">Node.js (Express) File</h2>
-            <pre id="node-code" class="mt-4 text-green-400"></pre>
-            <p id="copilot-node" class="copilot mt-2"></p>
+        <div class="editor p-4 text-sm relative" id="react-editor">
+            <div class="ghost-text" id="react-ghost">// Copilot: "Maybe you need a useState hook here?"</div>
+            <pre></pre>
         </div>
-        
-        <!-- React Code Editor -->
-        <div class="editor p-4">
-            <h2 class="text-xl text-blue-300">React Component File</h2>
-            <pre id="react-code" class="mt-4 text-yellow-400"></pre>
-            <p id="copilot-react" class="copilot mt-2"></p>
+        <div class="editor p-4 text-sm relative" id="node-editor">
+            <div class="ghost-text" id="node-ghost">// Copilot: "You might want to add a middleware for security."</div>
+            <pre></pre>
         </div>
     </div>
-    
-    <!-- Fake Terminal Output -->
-    <div class="terminal text-green-400 mt-6">
-        <h2 class="text-xl text-green-300">Terminal</h2>
-        <pre id="terminal-log" class="mt-2"></pre>
-    </div>
-    
+
     <script>
-        const nodeTyped = new Typed("#node-code", {
-            strings: [
-                "const express = require('express');\nconst app = express();\napp.get('/', (req, res) => {\n   res.send('Hello, World!');\n});\napp.listen(3000, () => console.log('Server running on port 3000'));"
-            ],
-            typeSpeed: 50,
-            showCursor: false,
-            onComplete: () => {
-                document.getElementById("copilot-node").innerText = "Copilot: 'You should add error handling for robustness.'";
-            }
-        });
+        const reactCode = [
+            "import styles from './style';",
+            "import { Billing, Business, CardDeal, Clients, CTA, Footer, Navbar, Stats, Testimonials, Hero } from './components';",
+            "",
+            "const App = () => (",
+            "  <div className=\"bg-primary w-full overflow-hidden\">",
+            "    <div className={\"${styles.paddingX} ${styles.flexCenter}\"}",
+            "      <div className={\"${styles.boxWidth}\"}",
+            "        <Navbar />",
+            "      </div>",
+            "    </div>",
+            "  </div>",
+            ");",
+            "export default App;"
+        ];
 
-        const reactTyped = new Typed("#react-code", {
-            strings: [
-                "import React from 'react';\nfunction App() {\n   return <h1>Hello, Fincom AI</h1>;\n}\nexport default App;"
-            ],
-            typeSpeed: 50,
-            showCursor: false,
-            onComplete: () => {
-                document.getElementById("copilot-react").innerText = "Copilot: 'Consider adding PropTypes for better component validation.'";
-            }
-        });
+        const nodeCode = [
+            "const express = require('express');",
+            "const app = express();",
+            "const PORT = process.env.PORT || 5000;",
+            "",
+            "app.get('/', (req, res) => {",
+            "  res.send('Hello from Express!');",
+            "});",
+            "",
+            "app.listen(PORT, () => {",
+            "  console.log(`Server running on port ${PORT}`);",
+            "});"
+        ];
 
-        const terminalTyped = new Typed("#terminal-log", {
-            strings: [
-                "$ npm install express\n$ node server.js\nServer running on port 3000\n$ npm start\nCompiled successfully! Your app is running."
-            ],
-            typeSpeed: 30,
-            showCursor: false
+        function typeCode(editorId, codeLines, ghostTextId, speed = 100) {
+            let index = 0;
+            const editor = document.getElementById(editorId);
+            const ghostText = document.getElementById(ghostTextId);
+            const pre = editor.querySelector('pre');
+            ghostText.style.opacity = "1";
+            setTimeout(() => ghostText.style.opacity = "0", 2500);
+
+            function typeLine() {
+                if (index < codeLines.length) {
+                    pre.innerHTML += codeLines[index] + "\n";
+                    index++;
+                    setTimeout(typeLine, speed);
+                } else {
+                    pre.innerHTML += '<span class="cursor"></span>';
+                }
+            }
+            setTimeout(typeLine, 2500);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            typeCode("react-editor", reactCode, "react-ghost", 150);
+            typeCode("node-editor", nodeCode, "node-ghost", 150);
         });
     </script>
 </body>
