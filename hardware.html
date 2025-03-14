@@ -4,34 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hardware Sales & Procurement | Fincom</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .glow-effect {
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+        }
+        .card:hover {
+            transform: scale(1.05);
+            transition: 0.3s ease-in-out;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <header class="bg-blue-600 text-white py-4 text-center text-3xl font-bold">
+<body class="bg-gray-900 text-white">
+    <header class="bg-blue-600 text-white py-6 text-center text-3xl font-bold glow-effect">
         Hardware Sales & Procurement
     </header>
-    <main class="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-6">
-        <h2 class="text-2xl font-semibold mb-4">Reliable Hardware Solutions for Your Business</h2>
-        <p class="mb-4">At Fincom Africa, we provide top-tier ICT hardware solutions to meet the diverse needs of businesses. From computers and accessories to networking equipment, we ensure quality and reliability.</p>
+    
+    <main class="container mx-auto px-6 py-10">
+        <section class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-semibold text-blue-400">Top-Tier Hardware Solutions</h2>
+            <p class="text-lg text-gray-300 mt-2">We provide high-performance hardware, sourced and delivered with precision.</p>
+        </section>
         
-        <h3 class="text-xl font-semibold mt-4">Our Product Offerings</h3>
-        <ul class="list-disc list-inside mb-4">
-            <li>Laptops & Desktops (HP, Dell, Lenovo, Apple)</li>
-            <li>Printers & Scanners</li>
-            <li>Networking Equipment (Routers, Switches, Firewalls)</li>
-            <li>Servers & Storage Devices</li>
-            <li>Point-of-Sale (POS) Systems</li>
-            <li>UPS & Power Backup Solutions</li>
-        </ul>
+        <section class="mt-10">
+            <h3 class="text-2xl font-semibold text-blue-300">Categories We Offer</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+                <div class="bg-gray-700 p-4 rounded-lg shadow-md card">
+                    <h4 class="text-xl font-bold text-blue-400">Computers & Laptops 💻</h4>
+                    <p class="text-gray-300 mt-2">From high-end gaming rigs to ultra-thin business laptops.</p>
+                </div>
+                <div class="bg-gray-700 p-4 rounded-lg shadow-md card">
+                    <h4 class="text-xl font-bold text-blue-400">Networking Equipment 🌐</h4>
+                    <p class="text-gray-300 mt-2">Routers, switches, access points, and security devices.</p>
+                </div>
+                <div class="bg-gray-700 p-4 rounded-lg shadow-md card">
+                    <h4 class="text-xl font-bold text-blue-400">Peripherals & Accessories 🎧</h4>
+                    <p class="text-gray-300 mt-2">Monitors, keyboards, headsets, and storage devices.</p>
+                </div>
+                <div class="bg-gray-700 p-4 rounded-lg shadow-md card">
+                    <h4 class="text-xl font-bold text-blue-400">Server Hardware 🖥️</h4>
+                    <p class="text-gray-300 mt-2">Enterprise-grade server systems for scalable performance.</p>
+                </div>
+                <div class="bg-gray-700 p-4 rounded-lg shadow-md card">
+                    <h4 class="text-xl font-bold text-blue-400">Office & Printing Solutions 🖨️</h4>
+                    <p class="text-gray-300 mt-2">Printers, scanners, and business-grade office equipment.</p>
+                </div>
+                <div class="bg-gray-700 p-4 rounded-lg shadow-md card">
+                    <h4 class="text-xl font-bold text-blue-400">Custom-Built PCs 🚀</h4>
+                    <p class="text-gray-300 mt-2">Tailor-made setups for gamers, developers, and creatives.</p>
+                </div>
+            </div>
+        </section>
         
-        <h3 class="text-xl font-semibold mt-4">Why Choose Us?</h3>
-        <p class="mb-4">We source directly from trusted manufacturers, ensuring you get genuine and high-performance products. Our procurement process is seamless, offering businesses competitive pricing and efficient logistics.</p>
+        <section class="mt-10">
+            <h3 class="text-2xl font-semibold text-blue-300">Why Choose Fincom?</h3>
+            <ul class="list-disc list-inside text-gray-300">
+                <li>✅ Genuine, high-performance hardware</li>
+                <li>✅ Competitive pricing with bulk discounts</li>
+                <li>✅ Professional procurement & logistics</li>
+                <li>✅ Vendor partnerships with top-tier brands</li>
+            </ul>
+        </section>
         
-        <h3 class="text-xl font-semibold mt-4">Get in Touch</h3>
-        <p>If you're looking for high-quality hardware, reach out to us for a consultation and customized solutions tailored to your business needs.</p>
+        <section class="mt-10 text-center">
+            <h3 class="text-2xl font-semibold text-blue-300">Get Your Hardware Now</h3>
+            <p class="text-lg text-gray-300">Talk to our sales team for a tailored quote.</p>
+            <a href="contact.html" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">Contact Us</a>
+        </section>
     </main>
     
-    <footer class="text-center text-gray-600 py-4 mt-6">
+    <footer class="bg-gray-800 text-white text-center py-4 mt-10">
         &copy; 2025 Fincom Africa. All Rights Reserved.
     </footer>
 </body>
