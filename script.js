@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { font: "underline", color: "green" }, // Wednesday
         { font: "font-serif", color: "orange" }, // Thursday
         { font: "font-sans", color: "purple" }, // Friday
-        { font: "font-cursive", color: "yellow" }, // Saturday
+        { font: "font-cursive", color: "red" }, // Saturday
         { font: "font-extrabold", color: "pink" } // Sunday
     ];
 
