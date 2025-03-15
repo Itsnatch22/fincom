@@ -486,38 +486,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const messages = [
-        "Welcome to Fincom Africa 🚀",
-        "Empowering Tech Solutions ⚡",
-        "Your Future in ICT Starts Here 💡",
-        "AI-Powered Innovation at Work 🤖"
-    ];
-    
-    const novaText = document.getElementById("nova-ai-text");
-    let messageIndex = 0;
-    let charIndex = 0;
-
-    function typeMessage() {
-        if (charIndex < messages[messageIndex].length) {
-            novaText.textContent += messages[messageIndex].charAt(charIndex);
-            charIndex++;
-            setTimeout(typeMessage, 100);
-        } else {
-            setTimeout(eraseMessage, 2000);
-        }
-    }
-
-    function eraseMessage() {
-        if (charIndex > 0) {
-            novaText.textContent = messages[messageIndex].substring(0, charIndex - 1);
-            charIndex--;
-            setTimeout(eraseMessage, 50);
-        } else {
-            messageIndex = (messageIndex + 1) % messages.length;
-            setTimeout(typeMessage, 500);
-        }
-    }
-
-    typeMessage();
-});
