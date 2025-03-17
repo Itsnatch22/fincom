@@ -17,19 +17,54 @@
 <body class="p-6">
     <h1 class="text-3xl text-blue-400 text-center mb-6">VS Code AI-Powered Coding Simulation</h1>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Node.js Code Editor -->
         <div class="editor p-4">
-            <h2 class="text-xl text-blue-300">Node.js (Express) File</h2>
+            <h2 class="text-xl text-blue-300">Node.js (Express)</h2>
             <pre id="node-code" class="mt-4 text-green-400"></pre>
             <p id="copilot-node" class="copilot mt-2"></p>
         </div>
         
         <!-- React Code Editor -->
         <div class="editor p-4">
-            <h2 class="text-xl text-blue-300">React Component File</h2>
+            <h2 class="text-xl text-blue-300">React Component</h2>
             <pre id="react-code" class="mt-4 text-yellow-400"></pre>
             <p id="copilot-react" class="copilot mt-2"></p>
+        </div>
+
+        <!-- Python Code Editor -->
+        <div class="editor p-4">
+            <h2 class="text-xl text-blue-300">Python Script</h2>
+            <pre id="python-code" class="mt-4 text-blue-400"></pre>
+            <p id="copilot-python" class="copilot mt-2"></p>
+        </div>
+
+        <!-- Java Code Editor -->
+        <div class="editor p-4">
+            <h2 class="text-xl text-blue-300">Java Class</h2>
+            <pre id="java-code" class="mt-4 text-orange-400"></pre>
+            <p id="copilot-java" class="copilot mt-2"></p>
+        </div>
+
+        <!-- C++ Code Editor -->
+        <div class="editor p-4">
+            <h2 class="text-xl text-blue-300">C++ Program</h2>
+            <pre id="cpp-code" class="mt-4 text-red-400"></pre>
+            <p id="copilot-cpp" class="copilot mt-2"></p>
+        </div>
+
+        <!-- SQL Query Editor -->
+        <div class="editor p-4">
+            <h2 class="text-xl text-blue-300">SQL Query</h2>
+            <pre id="sql-code" class="mt-4 text-purple-400"></pre>
+            <p id="copilot-sql" class="copilot mt-2"></p>
+        </div>
+
+        <!-- PHP Code Editor -->
+        <div class="editor p-4">
+            <h2 class="text-xl text-blue-300">PHP Script</h2>
+            <pre id="php-code" class="mt-4 text-pink-400"></pre>
+            <p id="copilot-php" class="copilot mt-2"></p>
         </div>
     </div>
     
@@ -40,29 +75,28 @@
     </div>
     
     <script>
-        const nodeTyped = new Typed("#node-code", {
-            strings: [
-                "const express = require('express');\nconst app = express();\napp.get('/', (req, res) => {\n   res.send('Hello, World!');\n});\napp.listen(3000, () => console.log('Server running on port 3000'));"
-            ],
-            typeSpeed: 50,
-            showCursor: false,
-            onComplete: () => {
-                document.getElementById("copilot-node").innerText = "Copilot: 'You should add error handling for robustness.'";
-            }
+        const codeSnippets = {
+            node: "const express = require('express');\nconst app = express();\napp.get('/', (req, res) => {\n   res.send('Hello, World!');\n});\napp.listen(3000, () => console.log('Server running on port 3000'));",
+            react: "import React from 'react';\nfunction App() {\n   return <h1>Hello, Fincom AI</h1>;\n}\nexport default App;",
+            python: "def greet():\n    print('Hello, World!')\ngreet()",
+            java: "public class Main {\n    public static void main(String[] args) {\n        System.out.println('Hello, World!');\n    }\n}",
+            cpp: "#include <iostream>\nusing namespace std;\nint main() {\n    cout << 'Hello, World!' << endl;\n    return 0;\n}",
+            sql: "SELECT * FROM users WHERE active = 1;",
+            php: "<?php\necho 'Hello, World!';\n?>"
+        };
+
+        Object.keys(codeSnippets).forEach(lang => {
+            new Typed(`#${lang}-code`, {
+                strings: [codeSnippets[lang]],
+                typeSpeed: 50,
+                showCursor: false,
+                onComplete: () => {
+                    document.getElementById(`copilot-${lang}`).innerText = `Copilot: 'Consider optimizing your ${lang} code for better efficiency.'`;
+                }
+            });
         });
 
-        const reactTyped = new Typed("#react-code", {
-            strings: [
-                "import React from 'react';\nfunction App() {\n   return <h1>Hello, Fincom AI</h1>;\n}\nexport default App;"
-            ],
-            typeSpeed: 50,
-            showCursor: false,
-            onComplete: () => {
-                document.getElementById("copilot-react").innerText = "Copilot: 'Consider adding PropTypes for better component validation.'";
-            }
-        });
-
-        const terminalTyped = new Typed("#terminal-log", {
+        new Typed("#terminal-log", {
             strings: [
                 "$ npm install express\n$ node server.js\nServer running on port 3000\n$ npm start\nCompiled successfully! Your app is running."
             ],
