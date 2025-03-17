@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Services Contact</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body { background: linear-gradient(to bottom, #001f3f, #0074D9); color: #ffffff; font-family: 'Courier New', Courier, monospace; overflow: hidden; }
+        .cloud { position: absolute; width: 100px; height: 50px; background: rgba(255, 255, 255, 0.8); border-radius: 50px; filter: blur(5px); }
+        .cloud:nth-child(1) { top: 10%; left: -10%; animation: moveClouds 20s linear infinite; }
+        .cloud:nth-child(2) { top: 40%; left: -15%; animation: moveClouds 25s linear infinite; }
+        .cloud:nth-child(3) { top: 70%; left: -20%; animation: moveClouds 30s linear infinite; }
+        @keyframes moveClouds { 0% { left: -10%; } 100% { left: 110%; } }
+        .glowing-input:focus { box-shadow: 0 0 15px #00ffcc; }
+        .fade-in { opacity: 0; animation: fadeIn ease-in 2s forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="p-6">
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    
+    <section class="mt-10 bg-gray-900 p-6 rounded-lg shadow-lg border border-blue-500 relative fade-in">
+        <h2 class="text-2xl text-blue-400 text-center">Request Cloud Services</h2>
+        <form id="cloud-form" class="mt-6">
+            <input type="text" placeholder="Enter your name" class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
+            <input type="email" placeholder="Enter your email" class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
+            <select class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
+                <option>Select Cloud Service</option>
+                <option>Cloud Hosting</option>
+                <option>Cloud Security</option>
+                <option>Data Storage & Backup</option>
+                <option>AI & Cloud Integration</option>
+            </select>
+            <button type="submit" class="w-full bg-blue-500 p-3 text-white rounded">Submit Request</button>
+        </form>
+        <p id="confirmation-message" class="mt-4 text-blue-400 text-center hidden"></p>
+    </section>
+
+    <script>
+        document.getElementById("cloud-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let typed = new Typed("#confirmation-message", {
+                strings: ["Connecting to the cloud... ☁️", "Cloud Services Request Submitted Successfully!"],
+                typeSpeed: 50,
+                showCursor: false
+            });
+            document.getElementById("confirmation-message").classList.remove("hidden");
+        });
+    </script>
+</body>
+</html>
