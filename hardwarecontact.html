@@ -3,36 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VS Code AI Simulation</title>
+    <title>Hardware Contact</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
         body { background-color: #1e1e1e; color: #ffffff; font-family: 'Courier New', Courier, monospace; }
+        .glitch {
+            position: relative;
+            display: inline-block;
+            color: #00ff99;
+            animation: glitch-animation 1s infinite;
+        }
+        @keyframes glitch-animation {
+            0% { text-shadow: 2px 2px #ff0000; }
+            25% { text-shadow: -2px -2px #00ffff; }
+            50% { text-shadow: 2px -2px #ff00ff; }
+            75% { text-shadow: -2px 2px #ffff00; }
+            100% { text-shadow: 2px 2px #ff0000; }
+        }
         .progress-bar { width: 100%; height: 10px; background: #333; border-radius: 5px; overflow: hidden; }
         .progress { width: 0%; height: 100%; background: #00ff99; }
+        .pulse-button:hover { animation: pulse 0.5s infinite alternate; }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+        .glowing-input:focus {
+            box-shadow: 0 0 10px #00ff99;
+        }
     </style>
 </head>
 <body class="p-6">
     <!-- Hardware Procurement Contact Form -->
-    <section class="mt-10 bg-gray-900 p-6 rounded-lg shadow-lg">
-        <h2 class="text-2xl text-green-400 text-center">Request Hardware Procurement</h2>
+    <section class="mt-10 bg-gray-900 p-6 rounded-lg shadow-lg border border-green-500 relative">
+        <h2 class="text-2xl text-green-400 text-center glitch">Request Hardware Procurement</h2>
         <form id="procurement-form" class="mt-6">
-            <input type="text" placeholder="Enter your name" class="block w-full p-3 mb-4 bg-gray-800 text-white rounded">
-            <input type="email" placeholder="Enter your email" class="block w-full p-3 mb-4 bg-gray-800 text-white rounded">
-            <select class="block w-full p-3 mb-4 bg-gray-800 text-white rounded">
+            <input type="text" placeholder="Enter your name" class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
+            <input type="email" placeholder="Enter your email" class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
+            <select class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
                 <option>Choose Hardware Type</option>
                 <option>Laptops</option>
                 <option>Printers</option>
                 <option>Monitors</option>
                 <option>Networking Equipment</option>
             </select>
-            <button type="submit" class="w-full bg-green-500 p-3 text-white rounded hover:bg-green-600">Submit Request</button>
+            <button type="submit" class="w-full bg-green-500 p-3 text-white rounded pulse-button">Submit Request</button>
         </form>
         <div class="progress-bar mt-4 hidden">
             <div class="progress"></div>
         </div>
-        <p id="confirmation-message" class="mt-4 text-green-400 text-center hidden">Order Processing... ✅</p>
+        <p id="confirmation-message" class="mt-4 text-green-400 text-center hidden"></p>
     </section>
 
     <script>
@@ -40,6 +61,11 @@
             event.preventDefault();
             document.querySelector(".progress-bar").classList.remove("hidden");
             gsap.to(".progress", { width: "100%", duration: 3, onComplete: function() {
+                let typed = new Typed("#confirmation-message", {
+                    strings: ["Order Processing... ✅", "Hardware Request Submitted Successfully!"],
+                    typeSpeed: 50,
+                    showCursor: false
+                });
                 document.getElementById("confirmation-message").classList.remove("hidden");
             }});
         });
