@@ -89,28 +89,35 @@
     });
 
     function loadTypedText() {
-        new Typed("#intro", {
-            strings: ["Welcome to the Fincom Admin Portal.\nFincom Africa is a leading ICT solutions provider, specializing in Managed ICT Services, Networking & Infrastructure, Servers & Storage."],
-            typeSpeed: 50,
-            showCursor: false
-        });
+    new Typed("#intro", {
+        strings: ["Welcome to the Fincom Admin Portal.\nThis documentation outlines upcoming features and integrations."],
+        typeSpeed: 50,
+        showCursor: false
+    });
 
-        new Typed("#features", {
-            strings: [
-                "<li>✔️ Dynamic Logo Changing</li>",
-                "<li>✔️ Interactive Product Search</li>",
-                "<li>✔️ Shopping Cart & Checkout Redirection</li>",
-                "<li>✔️ Testimonials Section with Swiper.js</li>",
-                "<li>🚀 OpenAI API (Chatbot)</li>",
-                "<li>🚀 Daraja API (MPesa Payments)</li>",
-                "<li>🚀 External Tech Stores API (Product Prices)</li>"
-            ],
-            typeSpeed: 50,
-            backSpeed: 25,
-            showCursor: false,
-            loop: false
-        });
-    }
+    let features = [
+        "✔️ Dynamic Logo Changing",
+        "✔️ Interactive Product Search",
+        "✔️ Shopping Cart & Checkout Redirection",
+        "✔️ Testimonials Section with Swiper.js",
+        "🚀 OpenAI API (Chatbot)",
+        "🚀 Daraja API (MPesa Payments)",
+        "🚀 External Tech Stores API (Product Prices)"
+    ];
+
+    let featuresHTML = features.map(feature => `<li>${feature}</li>`).join("");
+
+    document.getElementById("features").innerHTML = ""; // Clear any existing content
+
+    new Typed("#features", {
+        strings: [featuresHTML],
+        typeSpeed: 50,
+        backSpeed: 0,  // No deleting!
+        showCursor: false,
+        loop: false
+    });
+}
+
 </script>
 </body>
 </html>
