@@ -3,56 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banking Contact</title>
+    <title>Bank Equipment Purchases Contact</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
-        body { background-color: #0b0f19; color: #ffffff; font-family: 'Courier New', Courier, monospace; }
-        .secure-glow { border: 2px solid #00ffcc; box-shadow: 0 0 10px #00ffcc; }
-        .progress-bar { width: 100%; height: 10px; background: #222; border-radius: 5px; overflow: hidden; }
-        .progress { width: 0%; height: 100%; background: #00ffcc; }
-        .shield-icon { display: inline-block; animation: pulse 1.5s infinite alternate; }
-        @keyframes pulse {
-            from { transform: scale(1); opacity: 0.8; }
-            to { transform: scale(1.1); opacity: 1; }
-        }
+        body { background: linear-gradient(to bottom, #1a1a2e, #16213e); color: #ffffff; font-family: 'Courier New', Courier, monospace; overflow: hidden; }
+        .secure-glow { position: absolute; width: 100px; height: 100px; background: rgba(255, 215, 0, 0.3); border-radius: 50%; filter: blur(12px); animation: pulse 4s infinite alternate; }
+        @keyframes pulse { from { transform: scale(1); opacity: 0.7; } to { transform: scale(1.5); opacity: 0.4; } }
+        .glowing-input:focus { box-shadow: 0 0 15px #ffd700; }
+        .fade-in { opacity: 0; animation: fadeIn ease-in 2s forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body class="p-6">
-    <!-- Banking Contact Form -->
-    <section class="mt-10 bg-gray-900 p-6 rounded-lg shadow-lg border border-green-500 relative">
-        <h2 class="text-2xl text-green-400 text-center">Secure Banking Request <span class="shield-icon">🛡️</span></h2>
-        <form id="banking-form" class="mt-6">
-            <input type="text" placeholder="Enter your name" class="block w-full p-3 mb-4 bg-gray-800 text-white rounded secure-glow">
-            <input type="email" placeholder="Enter your email" class="block w-full p-3 mb-4 bg-gray-800 text-white rounded secure-glow">
-            <select class="block w-full p-3 mb-4 bg-gray-800 text-white rounded secure-glow">
-                <option>Select Banking Service</option>
-                <option>Loan Application</option>
-                <option>Account Management</option>
-                <option>Fraud Investigation</option>
-                <option>Business Banking</option>
+    <div class="secure-glow"></div>
+    <section class="mt-10 bg-gray-900 p-6 rounded-lg shadow-lg border border-yellow-500 relative fade-in">
+        <h2 class="text-2xl text-yellow-400 text-center">Bank Equipment Purchases</h2>
+        <form id="bank-equipment-form" class="mt-6">
+            <input type="text" placeholder="Enter your name" class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
+            <input type="email" placeholder="Enter your email" class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
+            <select class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
+                <option>Select Equipment</option>
+                <option>ATM Machines</option>
+                <option>Bank Security Systems</option>
+                <option>Cash Counting Machines</option>
+                <option>POS Terminals</option>
+                <option>Other Banking Equipment</option>
             </select>
-            <button type="submit" class="w-full bg-green-500 p-3 text-white rounded hover:bg-green-600">Submit Request</button>
+            <button type="submit" class="w-full bg-yellow-500 p-3 text-white rounded">Submit Request</button>
         </form>
-        <div class="progress-bar mt-4 hidden">
-            <div class="progress"></div>
-        </div>
-        <p id="confirmation-message" class="mt-4 text-green-400 text-center hidden"></p>
+        <p id="confirmation-message" class="mt-4 text-yellow-400 text-center hidden"></p>
     </section>
 
     <script>
-        document.getElementById("banking-form").addEventListener("submit", function(event) {
+        document.getElementById("bank-equipment-form").addEventListener("submit", function(event) {
             event.preventDefault();
-            document.querySelector(".progress-bar").classList.remove("hidden");
-            gsap.to(".progress", { width: "100%", duration: 3, onComplete: function() {
-                let typed = new Typed("#confirmation-message", {
-                    strings: ["Verifying Request... ✅", "Transaction Processed Securely!"],
-                    typeSpeed: 50,
-                    showCursor: false
-                });
-                document.getElementById("confirmation-message").classList.remove("hidden");
-            }});
+            let typed = new Typed("#confirmation-message", {
+                strings: ["Processing bank equipment request... 🏦", "Bank Equipment Purchase Request Submitted Successfully!"],
+                typeSpeed: 50,
+                showCursor: false
+            });
+            document.getElementById("confirmation-message").classList.remove("hidden");
         });
     </script>
 </body>
