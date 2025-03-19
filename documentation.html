@@ -5,104 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fincom Admin Documentation</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-    if (localStorage.getItem("fincomAdminAuth")) {
-        alert("Admin already logged in. Only one admin session allowed.");
-        document.body.innerHTML = "<h1 class='text-2xl text-center text-gray-700 mt-10'>Feature Rolling Out Soon🚀🔥</h1>";
-        return;
-    }
-
-    let passwordPrompt = document.createElement("div");
-    passwordPrompt.innerHTML = `
-        <div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-            <div class="bg-white p-6 rounded-lg shadow-lg w-80 text-center">
-                <h2 class="text-xl font-semibold mb-3">Enter Admin Password</h2>
-                <div class="relative">
-                    <input type="password" id="admin-password" class="w-full p-2 border rounded-lg text-center" placeholder="********">
-                    <button id="toggle-password" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-                        👁️
-                    </button>
-                </div>
-                <button id="submit-password" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg">Login</button>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(passwordPrompt);
-
-    document.getElementById("toggle-password").addEventListener("click", function () {
-        let passwordField = document.getElementById("admin-password");
-        passwordField.type = passwordField.type === "password" ? "text" : "password";
-    });
-
-    document.getElementById("submit-password").addEventListener("click", function () {
-        let access = document.getElementById("admin-password").value;
-        if (access !== "1234567890") {
-            document.body.innerHTML = "<h1 class='text-2xl text-center text-gray-700 mt-10'>Feature Rolling Out Soon 🚀🔥</h1>";
-        } else {
-            localStorage.setItem("fincomAdminAuth", "true");
-            alert("Welcome, Admin!");
-            location.reload();
-        }
-    });
-});
-
-function adminLogout() {
-    localStorage.removeItem("fincomAdminAuth");
-    alert("Logged out successfully.");
-    location.reload();
-}
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <style>
+        body { background: #0d0d0d; color: #00ffcc; font-family: 'Courier New', Courier, monospace; }
+        .glow-text { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+        .hidden { display: none; }
+    </style>
 </head>
-<body class="bg-gray-100 p-6">
-    <div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-        <h1 class="text-3xl font-bold text-gray-800">Fincom Africa - Admin Documentation</h1>
-        <h2 class="text-2xl font-semibold mt-6">1. Introduction</h2>
-        <p class="text-gray-700 mt-2">Fincom Africa is a leading ICT solutions provider, specializing in Managed ICT Services, Networking & Infrastructure, Servers & Storage, and more. This documentation serves as a reference for internal administration, updates, and system maintenance.</p>
-        <p class="text-gray-700 mt-2"><strong>Note:</strong>This document is only accessible to admins. Regular users will see a "Feature Rolling Out Soon" message.</p>
-        
-        <h2 class="text-2xl font-semibold mt-6">2. Installation & Setup</h2>
-        <pre class="bg-gray-200 p-4 rounded-md mt-2">git clone https://github.com/Fincom-Africa/website.git</pre>
-        <pre class="bg-gray-200 p-4 rounded-md mt-2">npm install</pre>
-        <pre class="bg-gray-200 p-4 rounded-md mt-2">vercel --prod</pre>
-        
-        <h2 class="text-2xl font-semibold mt-6">3. Features & Services</h2>
-        <ul class="list-disc list-inside text-gray-700 mt-2">
-            <li>✔️ Dynamic Logo Changing</li>
-            <li>✔️ Interactive Product Search</li>
-            <li>✔️ Shopping Cart & Checkout Redirection</li>
-            <li>✔️ Testimonials Section with Swiper.js</li>
-        </ul>
-
-        <h2 class="text-2xl font-semibold mt-6">4. API Integration (Planned)</h2>
-        <ul class="list-disc list-inside text-gray-700 mt-2">
-            <li>🚀 OpenAI API (Chatbot)</li>
-            <li>🚀 Daraja API (MPesa Payments)</li>
-            <li>🚀 External Tech Stores API (Product Prices)</li>
-        </ul>
-
-        <h2 class="text-2xl font-semibold mt-6">5. Maintenance & Updates</h2>
-        <pre class="bg-gray-200 p-4 rounded-md mt-2">git add .
-git commit -m "Updated product search feature"
-git push origin main</pre>
-        <p class="text-gray-700 mt-2">Re-deploy the site on Vercel.</p>
-
-        <h2 class="text-2xl font-semibold mt-6">6. Access Control</h2>
-        <p class="text-gray-700 mt-2"><strong>Admins Can:</strong> Manage products, track users, push updates.</p>
-        <p class="text-gray-700"><strong>Regular Users:</strong> Can browse, but restricted from admin features.</p>
+<body class="p-6 flex items-center justify-center h-screen">
+    <div id="password-screen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80">
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg text-center">
+            <h2 class="text-xl font-semibold text-white mb-3">Enter Admin Password</h2>
+            <input type="password" id="admin-password" class="w-full p-2 bg-gray-800 text-white rounded-lg text-center" placeholder="********">
+            <button id="submit-password" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg">Login</button>
+        </div>
     </div>
+    
+    <div id="content" class="hidden max-w-3xl mx-auto bg-gray-900 p-6 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-bold glow-text">Fincom Africa - Admin Documentation</h1>
+        <h2 class="text-2xl font-semibold mt-6 glow-text">1. Introduction</h2>
+        <p class="text-gray-400 mt-2" id="intro"></p>
+        
+        <h2 class="text-2xl font-semibold mt-6 glow-text">2. Features & Services</h2>
+        <ul class="list-disc list-inside text-gray-400 mt-2" id="features"></ul>
+    </div>
+    
+    <script>
+        document.getElementById("submit-password").addEventListener("click", function () {
+            let access = document.getElementById("admin-password").value;
+            if (access === "1234567890") {
+                document.getElementById("password-screen").classList.add("hidden");
+                document.getElementById("content").classList.remove("hidden");
+                loadTypedText();
+            } else {
+                alert("Incorrect password. Access denied.");
+            }
+        });
 
-    <h2 class="text-2xl font-semibold mt-6">7. Future Plans</h2>
-        <ul class="list-disc list-inside text-gray-700 mt-2">
-            <li>✔️ Ensure the website scales efficiently</li>
-            <li>✔️ Maintain a high-performance, secure ICT platform</li>
-            <li>✔️ Continuously enhance user experience</li>
-            <li>✔️ A more updated UI with cool and stunning features</li>
-        </ul>
+        function loadTypedText() {
+            new Typed("#intro", {
+                strings: ["Welcome to the Fincom Admin Portal.\nThis documentation outlines upcoming features and integrations."],
+                typeSpeed: 50,
+                showCursor: false
+            });
 
-    <!-- Logout & Emergency Reset Buttons -->
-<button onclick="adminLogout()" class="fixed bottom-5 right-5 bg-red-500 text-white px-4 py-2 rounded-lg">Logout</button>
-<button onclick="resetAdminAccess()" class="fixed bottom-5 left-5 bg-gray-600 text-white px-4 py-2 rounded-lg">Reset Access</button>
+            new Typed("#features", {
+                strings: [
+                    "<li>✔️ Dynamic Logo Changing</li>",
+                    "<li>✔️ Interactive Product Search</li>",
+                    "<li>✔️ Shopping Cart & Checkout Redirection</li>",
+                    "<li>✔️ Testimonials Section with Swiper.js</li>",
+                    "<li>🚀 OpenAI API (Chatbot)</li>",
+                    "<li>🚀 Daraja API (MPesa Payments)</li>",
+                    "<li>🚀 External Tech Stores API (Product Prices)</li>"
+                ],
+                typeSpeed: 50,
+                backSpeed: 0,
+                showCursor: false,
+                loop: false
+            });
+        }
+    </script>
 </body>
 </html>
