@@ -1,0 +1,25 @@
+const aiMessages = [
+        "🤖 Nova AI: 'Still keeping our documentation safe👀.'",
+        "🤖 Nova AI: 'Here to have a playful banter with you😊..'",
+        "🤖 Nova AI: 'I expect by now you have new updates to roll out😂😂.'",
+        "🤖 Nova AI: 'My g whatchu cooking by the minute😎.'",
+        "🤖 Nova AI: 'Systems shutdown...goodbye Mark.'"
+    ];
+
+    function updateAIText() {
+        let aiText = document.getElementById("ai-text");
+        let randomMessage = aiMessages[Math.floor(Math.random() * aiMessages.length)];
+        aiText.innerHTML = "";
+        
+        let i = 0;
+        function typeEffect() {
+            if (i < randomMessage.length) {
+                aiText.innerHTML += randomMessage.charAt(i);
+                i++;
+                setTimeout(typeEffect, 50);
+            }
+        }
+        typeEffect();
+    }
+
+    setInterval(updateAIText, 10000);
