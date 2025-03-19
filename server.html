@@ -4,67 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Server Management | Fincom</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes powerGlow {
-            0% { box-shadow: 0 0 5px #0ff; }
-            50% { box-shadow: 0 0 20px #0ff; }
-            100% { box-shadow: 0 0 5px #0ff; }
-        }
-        .server-glow {
-            animation: powerGlow 1.5s infinite alternate;
-        }
-        .terminal-bg {
-            background: url('https://www.transparenttextures.com/patterns/dark-matter.png');
-        }
+        body { background-color: #0d0d0d; color: #ffffff; font-family: 'Courier New', Courier, monospace; }
+        .glitch-text { text-shadow: 0px 0px 5px cyan, 0px 0px 10px cyan; }
+        .server-animation { opacity: 0; transform: translateY(20px); }
     </style>
 </head>
-<body class="bg-gray-900 text-white terminal-bg">
-    <header class="bg-gray-800 text-white py-4 text-center text-3xl font-bold shadow-md">
-        <span class="text-green-400">Server Management</span>
-    </header>
+<body class="p-6">
+    <header class="text-center py-6 text-3xl font-bold text-blue-400">Server Management</header>
     
-    <section class="container mx-auto px-6 py-12 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl font-bold text-green-400 mb-6">Optimized Server Performance</h2>
-            <p class="text-lg text-gray-300 leading-relaxed">Fincom Africa ensures high availability, load balancing, and secure server solutions to maximize business uptime.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                <div class="server-glow bg-gray-800 p-6 text-left rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold text-blue-400">Cloud & On-Prem Servers</h3>
-                    <p class="text-gray-300 mt-2">Seamless cloud-based and on-premise server solutions for modern enterprises.</p>
-                </div>
-                <div class="server-glow bg-gray-800 p-6 text-left rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold text-yellow-400">Load Balancing</h3>
-                    <p class="text-gray-300 mt-2">Distributing traffic across servers for optimal performance and redundancy.</p>
-                </div>
-                <div class="server-glow bg-gray-800 p-6 text-left rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold text-red-400">Automated Backups</h3>
-                    <p class="text-gray-300 mt-2">Ensuring data safety with scheduled and real-time server backups.</p>
-                </div>
-                <div class="server-glow bg-gray-800 p-6 text-left rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold text-green-400">Security & Monitoring</h3>
-                    <p class="text-gray-300 mt-2">AI-driven real-time monitoring and automated threat prevention.</p>
-                </div>
-            </div>
+    <section class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl text-blue-300 glitch-text">Efficient & Secure Server Solutions</h2>
+        <p class="text-gray-400 mt-4 text-lg" id="typed-text"></p>
+    </section>
+    
+    <section class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="server-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-blue-500">
+            <h3 class="text-xl font-semibold text-blue-400">Server Maintenance</h3>
+            <p class="text-gray-300 mt-2">Regular updates and monitoring for optimal performance.</p>
+        </div>
+        <div class="server-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-green-500">
+            <h3 class="text-xl font-semibold text-green-400">Cloud Server Management</h3>
+            <p class="text-gray-300 mt-2">Scalable cloud solutions for business efficiency.</p>
+        </div>
+        <div class="server-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-purple-500">
+            <h3 class="text-xl font-semibold text-purple-400">Backup & Recovery</h3>
+            <p class="text-gray-300 mt-2">Ensuring data safety with reliable backup strategies.</p>
+        </div>
+        <div class="server-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-yellow-500">
+            <h3 class="text-xl font-semibold text-yellow-400">Security & Compliance</h3>
+            <p class="text-gray-300 mt-2">Ensuring secure and compliant server environments.</p>
         </div>
     </section>
-    
-    <section class="text-center mt-10">
-        <h3 class="text-2xl font-semibold mb-3">Maximize Server Efficiency</h3>
-        <p class="text-lg text-gray-300">Partner with Fincom Africa to scale and secure your server infrastructure.</p>
-        <a href="servercontact.html" class="mt-4 inline-block bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-700 transition-transform transform hover:scale-110">Contact Us</a>
+
+    <section class="mt-10 text-center">
+        <h3 class="text-2xl font-semibold text-blue-300">Optimize Your Servers Today</h3>
+        <p class="text-lg text-gray-300">Contact our server management experts.</p>
+        <a href="servercontact.html" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">Contact Us</a>
     </section>
     
-    <footer class="mt-10 text-center p-4 bg-gray-800 text-gray-300">
-        <p>&copy; 2025 Fincom Africa | All Rights Reserved.</p>
-    </footer>
-    
     <script>
-        gsap.from("h2", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
-        gsap.from("p", { opacity: 0, y: 30, duration: 1, delay: 0.3, ease: "power2.out" });
-        gsap.from(".server-glow", { opacity: 0, y: 50, duration: 1, delay: 0.5, stagger: 0.3, ease: "power2.out" });
+        // Auto-Typing Effect
+        new Typed("#typed-text", {
+            strings: [
+                "Reliable and efficient server management...",
+                "Cloud and on-premise server solutions...",
+                "Ensure maximum uptime and security..."
+            ],
+            typeSpeed: 50,
+            backSpeed: 25,
+            loop: true
+        });
+
+        // GSAP Animations
+        gsap.to(".server-animation", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.3,
+            ease: "power2.out"
+        });
     </script>
 </body>
 </html>
