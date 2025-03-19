@@ -73,6 +73,19 @@
     </section>
     
     <script>
+        document.addEventListener("keydown", (e) => {
+            let konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+            let inputSequence = [];
+            document.addEventListener("keydown", (event) => {
+                inputSequence.push(event.keyCode);
+                if (inputSequence.toString().includes(konamiCode.toString())) {
+                    document.body.style.background = "#00ff00";
+                    document.body.innerHTML += "<div class='terminal text-black p-4'>Hacker Mode Activated</div>";
+                    setTimeout(() => { document.body.style.background = "#1e1e1e"; }, 2000);
+                }
+            });
+        });
+        
         const codeSnippets = {
             node: "const express = require('express');\nconst app = express();\napp.get('/', (req, res) => {\n   res.send('Hello, World!');\n});\napp.listen(3000, () => console.log('Server running on port 3000'));",
             react: "import React from 'react';\nfunction App() {\n   return <h1>Hello, Fincom AI</h1>;\n}\nexport default App;",
