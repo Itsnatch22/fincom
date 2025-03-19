@@ -486,3 +486,26 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+  const firebaseConfig = {
+    apiKey: "AIzaSyBPliUV7jGBlup8IA1UfS7xZ35DOI471M8",
+    authDomain: "fincom-tech.firebaseapp.com",
+    projectId: "fincom-tech",
+    storageBucket: "fincom-tech.firebasestorage.app",
+    messagingSenderId: "719007057204",
+    appId: "1:719007057204:web:e896b3e895a4dac70bd161",
+    measurementId: "G-JZW2N9QWB7"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+const userRef = db.ref("activeUsers").push();
+userRef.set({ active: true });
+
+// Remove user on disconnect
+userRef.onDisconnect().remove();
+db.ref("activeUsers").on("value", (snapshot) => {
+  const activeUsers = snapshot.numChildren();
+  document.getElementById("user-count").innerText = `👥 Active Users: ${activeUsers}`;
+});
