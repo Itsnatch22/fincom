@@ -3,84 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ICT Support | Fincom</title>
+    <title>Networking | Fincom</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes glitch {
-            0% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
-            50% { text-shadow: -2px -2px #ff00ff, 2px 2px #00ffff; }
-            100% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
-        }
-        .glitch-text {
-            animation: glitch 0.8s infinite alternate;
-        }
-        .neon-border {
-            border: 2px solid #00ffcc;
-            box-shadow: 0 0 10px #00ffcc, 0 0 40px #00ffcc;
-            transition: transform 0.3s ease-in-out;
-        }
-        .neon-border:hover {
-            transform: scale(1.08);
-        }
-        .support-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 20px;
-            transition: transform 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .support-card:hover {
-            transform: scale(1.05);
-            border-color: #00ffcc;
-            box-shadow: 0 0 10px #00ffcc;
-        }
+        body { background-color: #0d0d0d; color: #ffffff; font-family: 'Courier New', Courier, monospace; }
+        .glitch-text { text-shadow: 0px 0px 5px cyan, 0px 0px 10px cyan; }
+        .network-animation { opacity: 0; transform: translateY(20px); }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <header class="bg-gray-800 text-white py-4 text-center text-3xl font-bold shadow-md">
-        <span class="glitch-text">ICT Support</span>
-    </header>
+<body class="p-6">
+    <header class="text-center py-6 text-3xl font-bold text-blue-400">Networking Solutions</header>
     
-    <section class="container mx-auto px-6 py-12 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl font-bold text-white mb-6 glitch-text">Reliable ICT Support Solutions</h2>
-            <p class="text-lg text-gray-300 leading-relaxed">Fincom Africa provides top-tier ICT support services to ensure smooth business operations.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                <div class="support-card p-6 text-left neon-border">
-                    <h3 class="text-xl font-semibold text-blue-400">24/7 Technical Support</h3>
-                    <p class="text-gray-300 mt-2">Round-the-clock assistance to keep your business running smoothly.</p>
-                </div>
-                <div class="support-card p-6 text-left neon-border">
-                    <h3 class="text-xl font-semibold text-green-400">On-Site & Remote Support</h3>
-                    <p class="text-gray-300 mt-2">Flexible support solutions tailored to your needs.</p>
-                </div>
-                <div class="support-card p-6 text-left neon-border">
-                    <h3 class="text-xl font-semibold text-yellow-400">Hardware & Software Troubleshooting</h3>
-                    <p class="text-gray-300 mt-2">Diagnosing and resolving IT issues efficiently.</p>
-                </div>
-                <div class="support-card p-6 text-left neon-border">
-                    <h3 class="text-xl font-semibold text-red-400">Network Maintenance</h3>
-                    <p class="text-gray-300 mt-2">Ensuring optimal performance of your IT infrastructure.</p>
-                </div>
-            </div>
+    <section class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl text-blue-300 glitch-text">Building Seamless & Secure Connections</h2>
+        <p class="text-gray-400 mt-4 text-lg" id="typed-text"></p>
+    </section>
+    
+    <section class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="network-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-blue-500">
+            <h3 class="text-xl font-semibold text-blue-400">Enterprise Networking</h3>
+            <p class="text-gray-300 mt-2">Optimized network solutions for seamless communication.</p>
+        </div>
+        <div class="network-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-green-500">
+            <h3 class="text-xl font-semibold text-green-400">Infrastructure & Cabling</h3>
+            <p class="text-gray-300 mt-2">Structured cabling and data centers to support connectivity.</p>
+        </div>
+        <div class="network-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-purple-500">
+            <h3 class="text-xl font-semibold text-purple-400">Network Security</h3>
+            <p class="text-gray-300 mt-2">Firewalls, VPNs, and secure architecture for protection.</p>
+        </div>
+        <div class="network-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-yellow-500">
+            <h3 class="text-xl font-semibold text-yellow-400">Cloud Networking</h3>
+            <p class="text-gray-300 mt-2">Hybrid and cloud-based networking for modern enterprises.</p>
         </div>
     </section>
-    <section class="mt-10 text-center">
+
+  <section class="mt-10 text-center">
             <h3 class="text-2xl font-semibold text-blue-300">Upgrade your network today</h3>
             <p class="text-lg text-gray-300">Contact our networking team for efficient services.</p>
             <a href="networkcontact.html" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">Contact Us</a>
         </section>
-    <footer class="mt-10 text-center p-4 bg-gray-800 text-gray-300">
-        <p>&copy; 2025 Fincom Africa | All Rights Reserved.</p>
-    </footer>
     
     <script>
-        gsap.from("h2", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
-        gsap.from("p", { opacity: 0, y: 30, duration: 1, delay: 0.3, ease: "power2.out" });
-        gsap.from(".support-card", { opacity: 0, y: 50, duration: 1, delay: 0.5, stagger: 0.3, ease: "power2.out" });
+        // Auto-Typing Effect
+        new Typed("#typed-text", {
+            strings: [
+                "Optimized connectivity for enterprises...",
+                "Seamless infrastructure for uninterrupted operations...",
+                "Cutting-edge security to protect your data..."
+            ],
+            typeSpeed: 50,
+            backSpeed: 25,
+            loop: true
+        });
+
+        // GSAP Animations
+        gsap.to(".network-animation", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.3,
+            ease: "power2.out"
+        });
     </script>
 </body>
 </html>
