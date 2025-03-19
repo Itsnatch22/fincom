@@ -3,86 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity Solutions | Fincom</title>
+    <title>CyberSecurity Solutions | Fincom</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes glitch {
-            0% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
-            50% { text-shadow: -2px -2px #ff00ff, 2px 2px #00ffff; }
-            100% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
-        }
-        .glitch-text {
-            animation: glitch 0.8s infinite alternate;
-        }
-        .neon-border {
-            border: 2px solid #00ffcc;
-            box-shadow: 0 0 10px #00ffcc, 0 0 40px #00ffcc;
-            transition: transform 0.3s ease-in-out;
-        }
-        .neon-border:hover {
-            transform: scale(1.08);
-        }
-        .security-card {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 20px;
-            transition: transform 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .security-card:hover {
-            transform: scale(1.05);
-            border-color: #ff00ff;
-            box-shadow: 0 0 15px #ff00ff;
-        }
+        body { background-color: #0d0d0d; color: #ffffff; font-family: 'Courier New', Courier, monospace; }
+        .glitch-text { text-shadow: 0px 0px 5px cyan, 0px 0px 10px cyan; }
+        .cyber-animation { opacity: 0; transform: translateY(20px); }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <header class="bg-gray-800 text-white py-4 text-center text-3xl font-bold shadow-md">
-        <span class="glitch-text">Cybersecurity Solutions</span>
-    </header>
+<body class="p-6">
+    <header class="text-center py-6 text-3xl font-bold text-blue-400">CyberSecurity Solutions</header>
     
-    <section class="container mx-auto px-6 py-12 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl font-bold text-white mb-6 glitch-text">Fortify Your Digital Assets</h2>
-            <p class="text-lg text-gray-300 leading-relaxed">Fincom Africa provides world-class cybersecurity solutions to protect businesses from evolving digital threats.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                <div class="security-card p-6 text-left neon-border">
-                    <h3 class="text-xl font-semibold text-red-400">Network Security</h3>
-                    <p class="text-gray-300 mt-2">Advanced firewalls, intrusion detection systems, and encrypted connections.</p>
-                </div>
-                <div class="security-card p-6 text-left neon-border">
-                    <h3 class="text-xl font-semibold text-blue-400">Endpoint Protection</h3>
-                    <p class="text-gray-300 mt-2">AI-powered antivirus, anti-malware, and device monitoring solutions.</p>
-                </div>
-                <div class="security-card p-6 text-left neon-border">
-                    <h3 class="text-xl font-semibold text-green-400">Data Encryption</h3>
-                    <p class="text-gray-300 mt-2">256-bit encryption for secure communications and storage.</p>
-                </div>
-                <div class="security-card p-6 text-left neon-border">
-                    <h3 class="text-xl font-semibold text-yellow-400">Threat Intelligence</h3>
-                    <p class="text-gray-300 mt-2">Real-time monitoring and AI-driven cybersecurity threat detection.</p>
-                </div>
-            </div>
+    <section class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl text-blue-300 glitch-text">Protecting Your Business from Cyber Threats</h2>
+        <p class="text-gray-400 mt-4 text-lg" id="typed-text"></p>
+    </section>
+    
+    <section class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="cyber-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-blue-500">
+            <h3 class="text-xl font-semibold text-blue-400">Threat Detection</h3>
+            <p class="text-gray-300 mt-2">Advanced monitoring to identify and mitigate threats.</p>
+        </div>
+        <div class="cyber-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-green-500">
+            <h3 class="text-xl font-semibold text-green-400">Data Encryption</h3>
+            <p class="text-gray-300 mt-2">Secure encryption methods to protect sensitive data.</p>
+        </div>
+        <div class="cyber-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-purple-500">
+            <h3 class="text-xl font-semibold text-purple-400">Network Security</h3>
+            <p class="text-gray-300 mt-2">Firewalls, VPNs, and intrusion prevention systems.</p>
+        </div>
+        <div class="cyber-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-yellow-500">
+            <h3 class="text-xl font-semibold text-yellow-400">Security Audits</h3>
+            <p class="text-gray-300 mt-2">Comprehensive security assessments to ensure compliance.</p>
         </div>
     </section>
-    
-    <section class="text-center mt-10">
-        <h3 class="text-2xl font-semibold mb-3">Secure Your Business Today</h3>
-        <p class="text-lg text-gray-300">Enhance your cybersecurity infrastructure with Fincom Africa’s expertise.</p>
-        <a href="securitycontact.html" class="mt-4 inline-block bg-red-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-700 transition-transform transform hover:scale-110">Contact Us</a>
+
+    <section class="mt-10 text-center">
+        <h3 class="text-2xl font-semibold text-blue-300">Secure Your Business Today</h3>
+        <p class="text-lg text-gray-300">Get in touch with our cybersecurity experts.</p>
+        <a href="cybercontact.html" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">Contact Us</a>
     </section>
     
-    <footer class="mt-10 text-center p-4 bg-gray-800 text-gray-300">
-        <p>&copy; 2025 Fincom Africa | All Rights Reserved.</p>
-    </footer>
-    
     <script>
-        gsap.from("h2", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
-        gsap.from("p", { opacity: 0, y: 30, duration: 1, delay: 0.3, ease: "power2.out" });
-        gsap.from(".security-card", { opacity: 0, y: 50, duration: 1, delay: 0.5, stagger: 0.3, ease: "power2.out" });
+        // Auto-Typing Effect
+        new Typed("#typed-text", {
+            strings: [
+                "Cutting-edge cybersecurity solutions...",
+                "Advanced threat detection and prevention...",
+                "Ensure compliance and data protection..."
+            ],
+            typeSpeed: 50,
+            backSpeed: 25,
+            loop: true
+        });
+
+        // GSAP Animations
+        gsap.to(".cyber-animation", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.3,
+            ease: "power2.out"
+        });
     </script>
 </body>
 </html>
