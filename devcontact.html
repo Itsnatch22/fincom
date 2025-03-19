@@ -3,71 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Software Development Contact</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <title>Software & Development Contact</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0d0d0d; color: #ffffff; font-family: 'Courier New', Courier, monospace; }
+        body {
+            background: radial-gradient(circle at top, #0a0a0a, #111111);
+            color: #d1d5db;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+        }
+        .grid-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 2px, transparent 2px, transparent 50px),
+                        repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 2px, transparent 2px, transparent 50px);
+            pointer-events: none;
+        }
+        .glowing-input:focus {
+            box-shadow: 0 0 15px #00ffcc;
+        }
         .glitch {
             position: relative;
             display: inline-block;
-            color: #00ff99;
-            animation: glitch-animation 1s infinite;
+            animation: glitch 1s infinite;
         }
-        @keyframes glitch-animation {
-            0% { text-shadow: 2px 2px #ff0000; }
-            25% { text-shadow: -2px -2px #00ffff; }
-            50% { text-shadow: 2px -2px #ff00ff; }
-            75% { text-shadow: -2px 2px #ffff00; }
-            100% { text-shadow: 2px 2px #ff0000; }
-        }
-        .progress-bar { width: 100%; height: 10px; background: #222; border-radius: 5px; overflow: hidden; }
-        .progress { width: 0%; height: 100%; background: #ff00ff; }
-        .neon-button:hover { animation: flicker 0.5s infinite alternate; }
-        @keyframes flicker {
-            from { opacity: 1; }
-            to { opacity: 0.7; }
-        }
-        .glowing-input:focus {
-            box-shadow: 0 0 15px #ff00ff;
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
+            50% { text-shadow: -2px -2px #ff00ff, 2px 2px #00ffff; }
+            100% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
         }
     </style>
 </head>
 <body class="p-6">
-    <!-- Software Development Contact Form -->
-    <section class="mt-10 bg-gray-900 p-6 rounded-lg shadow-lg border border-purple-500 relative">
-        <h2 class="text-2xl text-purple-400 text-center glitch">Request Software Development Services</h2>
+    <div class="grid-lines"></div>
+    
+    <section class="mt-10 bg-gray-900 p-6 rounded-lg shadow-lg border border-cyan-500 relative fade-in">
+        <h2 class="text-2xl text-cyan-400 text-center glitch">Request Software Development Services</h2>
         <form id="dev-form" class="mt-6">
             <input type="text" placeholder="Enter your name" class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
             <input type="email" placeholder="Enter your email" class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
             <select class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
-                <option>Select Development Type</option>
+                <option>Select Development Service</option>
                 <option>Web Development</option>
-                <option>Mobile Apps</option>
-                <option>AI & Machine Learning</option>
-                <option>Blockchain Solutions</option>
+                <option>Mobile App Development</option>
+                <option>Custom Software Solutions</option>
+                <option>API Development & Integration</option>
             </select>
-            <button type="submit" class="w-full bg-purple-500 p-3 text-white rounded neon-button">Submit Request</button>
+            <button type="submit" class="w-full bg-cyan-500 p-3 text-white rounded">Submit Request</button>
         </form>
-        <div class="progress-bar mt-4 hidden">
-            <div class="progress"></div>
-        </div>
-        <p id="confirmation-message" class="mt-4 text-purple-400 text-center hidden"></p>
+        <p id="confirmation-message" class="mt-4 text-cyan-400 text-center hidden"></p>
     </section>
 
     <script>
         document.getElementById("dev-form").addEventListener("submit", function(event) {
             event.preventDefault();
-            document.querySelector(".progress-bar").classList.remove("hidden");
-            gsap.to(".progress", { width: "100%", duration: 3, onComplete: function() {
-                let typed = new Typed("#confirmation-message", {
-                    strings: ["Compiling... ✅", "Software Development Request Submitted Successfully!"],
-                    typeSpeed: 50,
-                    showCursor: false
-                });
-                document.getElementById("confirmation-message").classList.remove("hidden");
-            }});
+            let message = document.getElementById("confirmation-message");
+            message.innerHTML = "<span class='glitch'>Processing Request... ⚡</span>";
+            message.classList.remove("hidden");
+            setTimeout(() => {
+                message.innerHTML = "<span class='glitch'>Software Development Request Submitted! ✅</span>";
+            }, 2000);
         });
     </script>
 </body>
