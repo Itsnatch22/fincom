@@ -105,17 +105,27 @@
         "🚀 External Tech Stores API (Product Prices)"
     ];
 
-    let featuresHTML = features.map(feature => `<li>${feature}</li>`).join("");
+    let featuresContainer = document.getElementById("features");
+    featuresContainer.innerHTML = ""; // Clear previous content
 
-    document.getElementById("features").innerHTML = ""; // Clear any existing content
+    function typeFeature(index) {
+        if (index >= features.length) return; // Stop when all features are typed
 
-    new Typed("#features", {
-        strings: [featuresHTML],
-        typeSpeed: 50,
-        backSpeed: 0,  // No deleting!
-        showCursor: false,
-        loop: false
-    });
+        let li = document.createElement("li");
+        li.classList.add("text-gray-400");
+        featuresContainer.appendChild(li);
+
+        new Typed(li, {
+            strings: [features[index]],
+            typeSpeed: 50,
+            showCursor: false,
+            onComplete: function () {
+                typeFeature(index + 1); // Start typing the next feature
+            }
+        });
+    }
+
+    typeFeature(0); // Start typing features one by one
 }
 
 </script>
