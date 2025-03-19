@@ -5,76 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hardware Sales & Procurement | Fincom</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
-        .glow-effect {
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
-        }
-        .card:hover {
-            transform: scale(1.05);
-            transition: 0.3s ease-in-out;
-        }
+        body { background-color: #0d0d0d; color: #ffffff; font-family: 'Courier New', Courier, monospace; }
+        .glitch-text { text-shadow: 0px 0px 5px cyan, 0px 0px 10px cyan; }
+        .hardware-animation { opacity: 0; transform: translateY(20px); }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <header class="bg-blue-600 text-white py-6 text-center text-3xl font-bold glow-effect">
-        Hardware Sales & Procurement
-    </header>
+<body class="p-6">
+    <header class="text-center py-6 text-3xl font-bold text-blue-400">Hardware Sales & Procurement</header>
     
-    <main class="container mx-auto px-6 py-10">
-        <section class="bg-gray-800 p-6 rounded-lg shadow-lg">
-            <h2 class="text-3xl font-semibold text-blue-400">Top-Tier Hardware Solutions</h2>
-            <p class="text-lg text-gray-300 mt-2">We provide high-performance hardware, sourced and delivered with precision.</p>
-        </section>
-        
-        <section class="mt-10">
-            <h3 class="text-2xl font-semibold text-blue-300">Categories We Offer</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-                <div class="bg-gray-700 p-4 rounded-lg shadow-md card">
-                    <h4 class="text-xl font-bold text-blue-400">Computers & Laptops 💻</h4>
-                    <p class="text-gray-300 mt-2">From high-end gaming rigs to ultra-thin business laptops.</p>
-                </div>
-                <div class="bg-gray-700 p-4 rounded-lg shadow-md card">
-                    <h4 class="text-xl font-bold text-blue-400">Networking Equipment 🌐</h4>
-                    <p class="text-gray-300 mt-2">Routers, switches, access points, and security devices.</p>
-                </div>
-                <div class="bg-gray-700 p-4 rounded-lg shadow-md card">
-                    <h4 class="text-xl font-bold text-blue-400">Peripherals & Accessories 🎧</h4>
-                    <p class="text-gray-300 mt-2">Monitors, keyboards, headsets, and storage devices.</p>
-                </div>
-                <div class="bg-gray-700 p-4 rounded-lg shadow-md card">
-                    <h4 class="text-xl font-bold text-blue-400">Server Hardware 🖥️</h4>
-                    <p class="text-gray-300 mt-2">Enterprise-grade server systems for scalable performance.</p>
-                </div>
-                <div class="bg-gray-700 p-4 rounded-lg shadow-md card">
-                    <h4 class="text-xl font-bold text-blue-400">Office & Printing Solutions 🖨️</h4>
-                    <p class="text-gray-300 mt-2">Printers, scanners, and business-grade office equipment.</p>
-                </div>
-                <div class="bg-gray-700 p-4 rounded-lg shadow-md card">
-                    <h4 class="text-xl font-bold text-blue-400">Custom-Built PCs 🚀</h4>
-                    <p class="text-gray-300 mt-2">Tailor-made setups for gamers, developers, and creatives.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="mt-10">
-            <h3 class="text-2xl font-semibold text-blue-300">Why Choose Fincom?</h3>
-            <ul class="list-disc list-inside text-gray-300">
-                <li>✅ Genuine, high-performance hardware</li>
-                <li>✅ Competitive pricing with bulk discounts</li>
-                <li>✅ Professional procurement & logistics</li>
-                <li>✅ Vendor partnerships with top-tier brands</li>
-            </ul>
-        </section>
-        
-        <section class="mt-10 text-center">
-            <h3 class="text-2xl font-semibold text-blue-300">Get Your Hardware Now</h3>
-            <p class="text-lg text-gray-300">Talk to our sales team for a tailored quote.</p>
-            <a href="hardwarecontact.html" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">Contact Us</a>
-        </section>
-    </main>
+    <section class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl text-blue-300 glitch-text">Reliable Tech Equipment for Your Business</h2>
+        <p class="text-gray-400 mt-4 text-lg" id="typed-text"></p>
+    </section>
     
-    <footer class="bg-gray-800 text-white text-center py-4 mt-10">
-        &copy; 2025 Fincom Africa. All Rights Reserved.
-    </footer>
+    <section class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="hardware-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-blue-500">
+            <h3 class="text-xl font-semibold text-blue-400">Enterprise Hardware</h3>
+            <p class="text-gray-300 mt-2">High-performance servers, workstations, and peripherals.</p>
+        </div>
+        <div class="hardware-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-green-500">
+            <h3 class="text-xl font-semibold text-green-400">Networking Equipment</h3>
+            <p class="text-gray-300 mt-2">Reliable routers, switches, and wireless solutions.</p>
+        </div>
+        <div class="hardware-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-purple-500">
+            <h3 class="text-xl font-semibold text-purple-400">Security Solutions</h3>
+            <p class="text-gray-300 mt-2">CCTV, biometric access, and surveillance systems.</p>
+        </div>
+        <div class="hardware-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-yellow-500">
+            <h3 class="text-xl font-semibold text-yellow-400">Procurement Services</h3>
+            <p class="text-gray-300 mt-2">Custom sourcing and bulk orders at competitive prices.</p>
+        </div>
+    </section>
+
+    <section class="mt-10 text-center">
+        <h3 class="text-2xl font-semibold text-blue-300">Upgrade Your Hardware Today</h3>
+        <p class="text-lg text-gray-300">Get the best tech solutions for your enterprise.</p>
+        <a href="hardwarecontact.html" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">Contact Us</a>
+    </section>
+    
+    <script>
+        // Auto-Typing Effect
+        new Typed("#typed-text", {
+            strings: [
+                "Premium hardware solutions for enterprises...",
+                "High-performance networking and security equipment...",
+                "Efficient procurement services for all your IT needs..."
+            ],
+            typeSpeed: 50,
+            backSpeed: 25,
+            loop: true
+        });
+
+        // GSAP Animations
+        gsap.to(".hardware-animation", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.3,
+            ease: "power2.out"
+        });
+    </script>
 </body>
 </html>
