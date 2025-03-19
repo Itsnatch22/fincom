@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Management Contact</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body { background: linear-gradient(to bottom, #0d0d0d, #262626); color: #ffffff; font-family: 'Courier New', Courier, monospace; overflow: hidden; }
+        .server-rack { position: absolute; width: 150px; height: 200px; background: rgba(0, 128, 255, 0.2); border-radius: 10px; filter: blur(5px); animation: flicker 2s infinite alternate; }
+        @keyframes flicker { from { opacity: 0.7; } to { opacity: 0.4; } }
+        .glowing-input:focus { box-shadow: 0 0 15px #0088ff; }
+        .fade-in { opacity: 0; animation: fadeIn ease-in 2s forwards; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="p-6">
+    <div class="server-rack"></div>
+    <section class="mt-10 bg-gray-900 p-6 rounded-lg shadow-lg border border-blue-500 relative fade-in">
+        <h2 class="text-2xl text-blue-400 text-center">Request Server Management Services</h2>
+        <form id="server-form" class="mt-6">
+            <input type="text" placeholder="Enter your name" class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
+            <input type="email" placeholder="Enter your email" class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
+            <select class="block w-full p-3 mb-4 bg-gray-800 text-white rounded glowing-input">
+                <option>Select Service Type</option>
+                <option>Dedicated Server Management</option>
+                <option>Cloud Server Maintenance</option>
+                <option>Security & Performance Optimization</option>
+                <option>24/7 Server Monitoring</option>
+            </select>
+            <button type="submit" class="w-full bg-blue-500 p-3 text-white rounded">Submit Request</button>
+        </form>
+        <p id="confirmation-message" class="mt-4 text-blue-400 text-center hidden"></p>
+    </section>
+
+    <script>
+        document.getElementById("server-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let typed = new Typed("#confirmation-message", {
+                strings: ["Initializing server diagnostics... ⚙️", "Server Management Request Submitted Successfully!"],
+                typeSpeed: 50,
+                showCursor: false
+            });
+            document.getElementById("confirmation-message").classList.remove("hidden");
+        });
+    </script>
+</body>
+</html>
