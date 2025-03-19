@@ -120,39 +120,22 @@
 ];
 
 function updateAIText() {
-    let aiText = document.getElementById("ai-text");
-    let randomMessage = aiMessages[Math.floor(Math.random() * aiMessages.length)];
-    aiText.innerHTML = "";
-
-    let i = 0;
-    function typeEffect() {
-        if (i < randomMessage.length) {
-            aiText.innerHTML += randomMessage.charAt(i);
-            i++;
-            setTimeout(typeEffect, 50);
-        } else {
-            speakAI(randomMessage.replace("🤖 Nova AI: ", "")); // Remove emoji before speech
+            let aiText = document.getElementById("ai-text");
+            let randomMessage = aiMessages[Math.floor(Math.random() * aiMessages.length)];
+            aiText.innerHTML = "";
+            
+            let i = 0;
+            function typeEffect() {
+                if (i < randomMessage.length) {
+                    aiText.innerHTML += randomMessage.charAt(i);
+                    i++;
+                    setTimeout(typeEffect, 50);
+                }
+            }
+            typeEffect();
         }
-    }
-    typeEffect();
-}
-
-// Speech synthesis function
-function speakAI(text) {
-    if ('speechSynthesis' in window) {
-        let utterance = new SpeechSynthesisUtterance(text);
-        utterance.voice = speechSynthesis.getVoices().find(voice => voice.name.includes("Google UK English Male")) || null;
-        utterance.pitch = 1;
-        utterance.rate = 1;
-        speechSynthesis.speak(utterance);
-    } else {
-        console.warn("Speech synthesis not supported in this browser.");
-    }
-}
-
-// Run every 10 seconds
-setInterval(updateAIText, 10000);
-
+        
+        setInterval(updateAIText, 10000);
     </script>
 </body>
 </html>
