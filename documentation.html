@@ -116,26 +116,43 @@
             "🤖 Nova AI: 'Here to have a playful banter with you😊..'",
             "🤖 Nova AI: 'I expect by now you have new updates to roll out😂😂.'",
             "🤖 Nova AI: 'My g whatchu cooking by the minute😎.'",
-            "🤖 Nova AI: 'Systems shutdown...goodbye Mark.'"
-        ];
-        
-        function updateAIText() {
-            let aiText = document.getElementById("ai-text");
-            let randomMessage = aiMessages[Math.floor(Math.random() * aiMessages.length)];
-            aiText.innerHTML = "";
-            
-            let i = 0;
-            function typeEffect() {
-                if (i < randomMessage.length) {
-                    aiText.innerHTML += randomMessage.charAt(i);
-                    i++;
-                    setTimeout(typeEffect, 50);
-                }
-            }
-            typeEffect();
+            "🤖 Nova AI: 'Systems shutdown...goodbye Mark.'
+];
+
+function updateAIText() {
+    let aiText = document.getElementById("ai-text");
+    let randomMessage = aiMessages[Math.floor(Math.random() * aiMessages.length)];
+    aiText.innerHTML = "";
+
+    let i = 0;
+    function typeEffect() {
+        if (i < randomMessage.length) {
+            aiText.innerHTML += randomMessage.charAt(i);
+            i++;
+            setTimeout(typeEffect, 50);
+        } else {
+            speakAI(randomMessage.replace("🤖 Nova AI: ", "")); // Remove emoji before speech
         }
-        
-        setInterval(updateAIText, 10000);
+    }
+    typeEffect();
+}
+
+// Speech synthesis function
+function speakAI(text) {
+    if ('speechSynthesis' in window) {
+        let utterance = new SpeechSynthesisUtterance(text);
+        utterance.voice = speechSynthesis.getVoices().find(voice => voice.name.includes("Google UK English Male")) || null;
+        utterance.pitch = 1;
+        utterance.rate = 1;
+        speechSynthesis.speak(utterance);
+    } else {
+        console.warn("Speech synthesis not supported in this browser.");
+    }
+}
+
+// Run every 10 seconds
+setInterval(updateAIText, 10000);
+
     </script>
 </body>
 </html>
