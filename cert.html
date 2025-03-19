@@ -4,96 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Training & Certifications | Fincom</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes pulse-glow {
-            0% { text-shadow: 0 0 5px #4ADE80; }
-            50% { text-shadow: 0 0 20px #4ADE80; }
-            100% { text-shadow: 0 0 5px #4ADE80; }
-        }
-        .glow-text {
-            animation: pulse-glow 1.5s infinite alternate;
-        }
-        .course-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 20px;
-            transition: transform 0.3s;
-        }
-        .course-card:hover {
-            transform: scale(1.05);
-        }
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        .progress {
-            height: 100%;
-            background: #4ADE80;
-            width: 0%;
-            transition: width 1s ease-in-out;
-        }
+        body { background-color: #0d0d0d; color: #ffffff; font-family: 'Courier New', Courier, monospace; }
+        .glitch-text { text-shadow: 0px 0px 5px cyan, 0px 0px 10px cyan; }
+        .training-animation { opacity: 0; transform: translateY(20px); }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <header class="bg-gray-800 text-white py-4 text-center text-3xl font-bold shadow-md">
-        <span class="glow-text">Tech Training & Certifications</span>
-    </header>
+<body class="p-6">
+    <header class="text-center py-6 text-3xl font-bold text-blue-400">Tech Training & Certifications</header>
     
-    <section class="container mx-auto px-6 py-12 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl font-bold text-white mb-6">Empowering the Next Generation of Tech Experts</h2>
-            <p class="text-lg text-gray-300 leading-relaxed">Fincom Africa provides industry-recognized certifications and hands-on training to boost your IT career.</p>
-            
-            <!-- Skill Progression Tracker -->
-            <div class="mt-8 text-left">
-                <h3 class="text-2xl font-semibold text-blue-400">Your Certification Progress</h3>
-                <div class="progress-bar mt-2">
-                    <div class="progress" id="progress-bar"></div>
-                </div>
-            </div>
-
-            <!-- Course List UI -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                <div class="course-card p-6 text-left">
-                    <h3 class="text-xl font-semibold text-green-400">Networking Essentials</h3>
-                    <p class="text-gray-300 mt-2">Master the fundamentals of networking and earn Cisco CCNA certification.</p>
-                </div>
-                <div class="course-card p-6 text-left">
-                    <h3 class="text-xl font-semibold text-blue-400">Cloud Computing</h3>
-                    <p class="text-gray-300 mt-2">Learn AWS, Azure, and Google Cloud to become a certified cloud specialist.</p>
-                </div>
-                <div class="course-card p-6 text-left">
-                    <h3 class="text-xl font-semibold text-yellow-400">Cybersecurity</h3>
-                    <p class="text-gray-300 mt-2">Enhance security skills with CEH, CISSP, and ethical hacking training.</p>
-                </div>
-                <div class="course-card p-6 text-left">
-                    <h3 class="text-xl font-semibold text-red-400">Software Development</h3>
-                    <p class="text-gray-300 mt-2">Hands-on coding bootcamps in Python, JavaScript, and full-stack web development.</p>
-                </div>
-            </div>
-        </div>
+    <section class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl text-blue-300 glitch-text">Empowering the Future of Tech</h2>
+        <p class="text-gray-400 mt-4 text-lg" id="typed-text"></p>
     </section>
     
-    <footer class="mt-10 text-center p-4 bg-gray-800 text-gray-300">
-        <p>&copy; 2025 Fincom Africa | All Rights Reserved.</p>
-    </footer>
+    <section class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="training-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-blue-500">
+            <h3 class="text-xl font-semibold text-blue-400">Cybersecurity Training</h3>
+            <p class="text-gray-300 mt-2">Master security protocols and ethical hacking techniques.</p>
+        </div>
+        <div class="training-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-green-500">
+            <h3 class="text-xl font-semibold text-green-400">Cloud Computing Certifications</h3>
+            <p class="text-gray-300 mt-2">AWS, Azure, and Google Cloud training for IT professionals.</p>
+        </div>
+        <div class="training-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-purple-500">
+            <h3 class="text-xl font-semibold text-purple-400">AI & Machine Learning</h3>
+            <p class="text-gray-300 mt-2">Gain expertise in AI, data science, and automation.</p>
+        </div>
+        <div class="training-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-yellow-500">
+            <h3 class="text-xl font-semibold text-yellow-400">Software Development</h3>
+            <p class="text-gray-300 mt-2">Hands-on coding experience with industry-level projects.</p>
+        </div>
+    </section>
+
+    <section class="mt-10 text-center">
+        <h3 class="text-2xl font-semibold text-blue-300">Get Certified & Stay Ahead</h3>
+        <p class="text-lg text-gray-300">Join our training programs to boost your tech career.</p>
+        <a href="trainingcontact.html" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">Enroll Now</a>
+    </section>
     
     <script>
-        gsap.from("h2", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
-        gsap.from("p", { opacity: 0, y: 30, duration: 1, delay: 0.3, ease: "power2.out" });
-        gsap.from(".course-card", { opacity: 0, y: 50, duration: 1, delay: 0.5, stagger: 0.3, ease: "power2.out" });
-        
-        // Animate Progress Bar
-        let progressBar = document.getElementById("progress-bar");
-        setTimeout(() => {
-            progressBar.style.width = "70%"; // Example progress
-        }, 1000);
+        // Auto-Typing Effect
+        new Typed("#typed-text", {
+            strings: [
+                "Unlock new career opportunities with industry certifications...",
+                "Stay ahead in tech with hands-on training...",
+                "Expert-led courses for future tech professionals..."
+            ],
+            typeSpeed: 50,
+            backSpeed: 25,
+            loop: true
+        });
+
+        // GSAP Animations
+        gsap.to(".training-animation", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.3,
+            ease: "power2.out"
+        });
     </script>
 </body>
 </html>
