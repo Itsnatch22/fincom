@@ -4,74 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ICT Support | Fincom</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @keyframes pulse-glow {
-            0% { text-shadow: 0 0 5px #00FF00; }
-            50% { text-shadow: 0 0 20px #00FF00; }
-            100% { text-shadow: 0 0 5px #00FF00; }
-        }
-        .glow-text {
-            animation: pulse-glow 1.5s infinite alternate;
-        }
-        .support-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 20px;
-            transition: transform 0.3s;
-        }
-        .support-card:hover {
-            transform: scale(1.05);
-        }
+        body { background-color: #0d0d0d; color: #ffffff; font-family: 'Courier New', Courier, monospace; }
+        .glitch-text { text-shadow: 0px 0px 5px cyan, 0px 0px 10px cyan; }
+        .support-animation { opacity: 0; transform: translateY(20px); }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <header class="bg-gray-800 text-white py-4 text-center text-3xl font-bold shadow-md">
-        <span class="glow-text">ICT Support</span>
-    </header>
+<body class="p-6">
+    <header class="text-center py-6 text-3xl font-bold text-blue-400">ICT Support</header>
     
-    <section class="container mx-auto px-6 py-12 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl font-bold text-white mb-6">Reliable ICT Support Solutions</h2>
-            <p class="text-lg text-gray-300 leading-relaxed">Fincom Africa provides top-tier ICT support services to ensure smooth business operations.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                <div class="support-card p-6 text-left">
-                    <h3 class="text-xl font-semibold text-blue-400">24/7 Technical Support</h3>
-                    <p class="text-gray-300 mt-2">Round-the-clock assistance to keep your business running smoothly.</p>
-                </div>
-                <div class="support-card p-6 text-left">
-                    <h3 class="text-xl font-semibold text-green-400">On-Site & Remote Support</h3>
-                    <p class="text-gray-300 mt-2">Flexible support solutions tailored to your needs.</p>
-                </div>
-                <div class="support-card p-6 text-left">
-                    <h3 class="text-xl font-semibold text-yellow-400">Hardware & Software Troubleshooting</h3>
-                    <p class="text-gray-300 mt-2">Diagnosing and resolving IT issues efficiently.</p>
-                </div>
-                <div class="support-card p-6 text-left">
-                    <h3 class="text-xl font-semibold text-red-400">Network Maintenance</h3>
-                    <p class="text-gray-300 mt-2">Ensuring optimal performance of your IT infrastructure.</p>
-                </div>
-            </div>
+    <section class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl text-blue-300 glitch-text">Reliable & Proactive IT Assistance</h2>
+        <p class="text-gray-400 mt-4 text-lg" id="typed-text"></p>
+    </section>
+    
+    <section class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="support-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-blue-500">
+            <h3 class="text-xl font-semibold text-blue-400">Help Desk Services</h3>
+            <p class="text-gray-300 mt-2">24/7 technical support for IT-related issues.</p>
+        </div>
+        <div class="support-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-green-500">
+            <h3 class="text-xl font-semibold text-green-400">Hardware & Software Support</h3>
+            <p class="text-gray-300 mt-2">Installation, troubleshooting, and maintenance.</p>
+        </div>
+        <div class="support-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-purple-500">
+            <h3 class="text-xl font-semibold text-purple-400">Network Support</h3>
+            <p class="text-gray-300 mt-2">Ensuring seamless and secure network operations.</p>
+        </div>
+        <div class="support-animation bg-gray-900 p-6 rounded-lg shadow-lg border border-yellow-500">
+            <h3 class="text-xl font-semibold text-yellow-400">IT Consultation</h3>
+            <p class="text-gray-300 mt-2">Expert guidance for IT strategies and upgrades.</p>
         </div>
     </section>
 
     <section class="mt-10 text-center">
-            <h3 class="text-2xl font-semibold text-blue-300">Contact us for reliable ICT support</h3>
-            <p class="text-lg text-gray-300">Our support team is 24/7 * 365 availble.</p>
-            <a href="techcontact.html" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">Contact Us</a>
-        </section>
-    
-    <footer class="mt-10 text-center p-4 bg-gray-800 text-gray-300">
-        <p>&copy; 2025 Fincom Africa | All Rights Reserved.</p>
-    </footer>
+        <h3 class="text-2xl font-semibold text-blue-300">Get Expert ICT Support</h3>
+        <p class="text-lg text-gray-300">Contact our IT specialists for fast and effective solutions.</p>
+        <a href="ictsupportcontact.html" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">Contact Us</a>
+    </section>
     
     <script>
-        gsap.from("h2", { opacity: 0, y: -50, duration: 1, ease: "power2.out" });
-        gsap.from("p", { opacity: 0, y: 30, duration: 1, delay: 0.3, ease: "power2.out" });
-        gsap.from(".support-card", { opacity: 0, y: 50, duration: 1, delay: 0.5, stagger: 0.3, ease: "power2.out" });
+        // Auto-Typing Effect
+        new Typed("#typed-text", {
+            strings: [
+                "24/7 IT support for seamless business operations...",
+                "Expert assistance for all your ICT needs...",
+                "Reliable solutions to keep your systems running smoothly..."
+            ],
+            typeSpeed: 50,
+            backSpeed: 25,
+            loop: true
+        });
+
+        // GSAP Animations
+        gsap.to(".support-animation", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.3,
+            ease: "power2.out"
+        });
     </script>
 </body>
 </html>
