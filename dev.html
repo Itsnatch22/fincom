@@ -8,59 +8,52 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <style>
         body { background-color: #1e1e1e; color: #ffffff; font-family: 'Courier New', Courier, monospace; }
-        .editor { background: #252526; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+        .editor { background: #252526; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.5); transition: all 0.3s ease-in-out; }
+        .editor:hover { box-shadow: 0 0 15px rgba(0,255,153,0.7); transform: scale(1.02); }
         .terminal { background: #000; padding: 15px; border-radius: 8px; margin-top: 20px; }
         .error { color: red; }
         .copilot { color: #00ff99; }
+        .glitch-text { text-shadow: 0px 0px 5px cyan, 0px 0px 10px cyan; animation: glitch 0.8s infinite alternate; }
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px 5px red, -2px -2px 5px blue; }
+            100% { text-shadow: -2px -2px 5px red, 2px 2px 5px blue; }
+        }
     </style>
 </head>
 <body class="p-6">
-    <h1 class="text-3xl text-blue-400 text-center mb-6">VS Code AI-Powered Coding Simulation</h1>
+    <h1 class="text-3xl text-blue-400 text-center mb-6 glitch-text">VS Code AI-Powered Coding Simulation</h1>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Node.js Code Editor -->
         <div class="editor p-4">
             <h2 class="text-xl text-blue-300">Node.js (Express)</h2>
             <pre id="node-code" class="mt-4 text-green-400"></pre>
             <p id="copilot-node" class="copilot mt-2"></p>
         </div>
-        
-        <!-- React Code Editor -->
         <div class="editor p-4">
             <h2 class="text-xl text-blue-300">React Component</h2>
             <pre id="react-code" class="mt-4 text-yellow-400"></pre>
             <p id="copilot-react" class="copilot mt-2"></p>
         </div>
-
-        <!-- Python Code Editor -->
         <div class="editor p-4">
             <h2 class="text-xl text-blue-300">Python Script</h2>
             <pre id="python-code" class="mt-4 text-blue-400"></pre>
             <p id="copilot-python" class="copilot mt-2"></p>
         </div>
-
-        <!-- Java Code Editor -->
         <div class="editor p-4">
             <h2 class="text-xl text-blue-300">Java Class</h2>
             <pre id="java-code" class="mt-4 text-orange-400"></pre>
             <p id="copilot-java" class="copilot mt-2"></p>
         </div>
-
-        <!-- C++ Code Editor -->
         <div class="editor p-4">
             <h2 class="text-xl text-blue-300">C++ Program</h2>
             <pre id="cpp-code" class="mt-4 text-red-400"></pre>
             <p id="copilot-cpp" class="copilot mt-2"></p>
         </div>
-
-        <!-- SQL Query Editor -->
         <div class="editor p-4">
             <h2 class="text-xl text-blue-300">SQL Query</h2>
             <pre id="sql-code" class="mt-4 text-purple-400"></pre>
             <p id="copilot-sql" class="copilot mt-2"></p>
         </div>
-
-        <!-- PHP Code Editor -->
         <div class="editor p-4">
             <h2 class="text-xl text-blue-300">PHP Script</h2>
             <pre id="php-code" class="mt-4 text-pink-400"></pre>
@@ -68,17 +61,16 @@
         </div>
     </div>
     
-    <!-- Fake Terminal Output -->
     <div class="terminal text-green-400 mt-6">
         <h2 class="text-xl text-green-300">Terminal</h2>
         <pre id="terminal-log" class="mt-2"></pre>
     </div>
 
     <section class="mt-10 text-center">
-            <h3 class="text-2xl font-semibold text-blue-300">Start your Dev career today</h3>
-            <p class="text-lg text-gray-300">Reach us through.</p>
-            <a href="devcontact.html" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">Contact Us</a>
-        </section>
+        <h3 class="text-2xl font-semibold text-blue-300">Start your Dev career today</h3>
+        <p class="text-lg text-gray-300">Reach us through.</p>
+        <a href="devcontact.html" class="mt-4 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105">Contact Us</a>
+    </section>
     
     <script>
         const codeSnippets = {
@@ -104,7 +96,7 @@
 
         new Typed("#terminal-log", {
             strings: [
-                "$ npm install express\n$ node server.js\nServer running on port 3000\n$ npm start\nCompiled successfully! Your app is running."
+                "$ npm install express\n$ node server.js\nServer running on port 3000\n$ npm start\nCompiled successfully! Your app is running.\nWarning: Unused variable detected!\nError: Missing semicolon on line 4, fixing automatically..."
             ],
             typeSpeed: 30,
             showCursor: false
